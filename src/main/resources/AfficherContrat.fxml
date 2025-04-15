@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.AfficherContratController"
+            stylesheets="@style.css"
+            prefWidth="1200" prefHeight="700"
+            styleClass="main-pane">
+
+    <!-- Top section -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="header-box">
+            <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo"/>
+            <Label styleClass="title" text="InnerBloom"/>
+        </HBox>
+    </top>
+
+    <!-- Left sidebar -->
+    <left>
+        <fx:include source="Sidebar.fxml"/>
+    </left>
+
+    <!-- Main content -->
+    <center>
+        <VBox spacing="20" styleClass="content-box">
+            <Label text="Nos contrats" styleClass="section-title"/>
+
+            <ScrollPane fitToWidth="true" styleClass="card-scroll">
+                <FlowPane fx:id="cardsContainer" hgap="20" vgap="20" styleClass="card-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <!-- Bottom buttons -->
+    <bottom>
+        <HBox alignment="CENTER" styleClass="button-box" spacing="20">
+            <Button text="Ajouter Contrat" onAction="#handleAjouterContrat"
+                    styleClass="btn-green" prefWidth="200"/>
+            <Button text="Voir les Packs" onAction="#handleVoirPacks"
+                    styleClass="btn-blue" prefWidth="200"/>
+            <Button text="Voir les Centres" onAction="#handleVoirCentres"
+                    styleClass="btn-orange" prefWidth="200"/>
+        </HBox>
+    </bottom>
+</BorderPane>

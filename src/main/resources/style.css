@@ -1,0 +1,85 @@
+/* ======================== */
+/*         GLOBAL           */
+/* ======================== */
+.root {
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);
+}
+
+#formContainer {
+    -fx-background-color: white;
+    -fx-padding: 40;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 15, 0, 0, 5);
+    -fx-max-width: 800px;
+}
+
+.label {
+    -fx-text-fill: #2d3436;
+    -fx-font-weight: bold;
+}
+
+.text-field, .password-field, .combo-box {
+    -fx-pref-width: 150px;
+    -fx-background-radius: 10;
+    -fx-border-color: #2ecc71;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.2;
+    -fx-padding: 5 10;
+}
+
+.button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-padding: 8 20;
+}
+
+.button:hover {
+    -fx-background-color: #27ae60;
+}
+
+.title {
+    -fx-font-family: "InnerbloomFont";
+    -fx-text-fill: #2d3436;
+    -fx-font-weight: bold; /* la graisse est dans le fichier */
+}
+
+
+.logo {
+    -fx-effect: dropshadow(gaussian, rgba(0,100,0,0.5), 10, 0.3, 0, 2);
+}
+
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 4);
+    -fx-background-radius: 10;
+}
+.field-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: #333;
+}
+.formContainer {
+    -fx-padding: 20;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+
+.field-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #444;
+}
+
+.button-container {
+    -fx-padding: 20 0 0 0;
+}
+
+.text-field {
+    -fx-pref-width: 250px;
+}
+
+

@@ -95,4 +95,53 @@ public class SidebarController {
 
 
 
+    @FXML
+    private void goToCentre(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCentre.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Centres");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToPack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPack.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Packs");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToContrat(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherContrat.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Contrats");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToAddContrat(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjouterContrat.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Contrats");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
