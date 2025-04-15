@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.AfficherPackFrontController"
+            stylesheets="@style.css"
+            prefWidth="900" prefHeight="640"
+            styleClass="main-pane">
+
+    <children>
+
+        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="10.0" spacing="10.0">
+            <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo"/>
+            <Label styleClass="title" text="InnerBloom"/>
+        </HBox>
+
+        <Label text="Nos Packs"
+               layoutX="20.0" layoutY="70.0"
+               styleClass="section-title"/>
+
+        <ScrollPane fitToWidth="true" layoutX="20" layoutY="110" prefWidth="860" prefHeight="480"
+                    styleClass="card-scroll" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+            <FlowPane fx:id="cardsContainer"
+                      prefWrapLength="810"
+                      hgap="30" vgap="30"
+                      alignment="CENTER"
+                      styleClass="card-container">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+            </FlowPane>
+        </ScrollPane>
+
+        <HBox alignment="CENTER" layoutY="570" prefWidth="900" spacing="20">
+            <Button fx:id="retourAccueilBtn" text="Retour à l'accueil" onAction="#handleRetourAccueil"
+                    styleClass="btn-blue" prefWidth="200"/>
+        </HBox>
+    </children>
+</AnchorPane>
