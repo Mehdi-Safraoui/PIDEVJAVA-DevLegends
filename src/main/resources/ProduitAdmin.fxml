@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="420.0" prefWidth="674.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controllers.ProduitAdminController">
+    <children>
+        <!-- Titre des produits -->
+        <Label layoutX="219.0" layoutY="14.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333; -fx-alignment: center;" text="Listes des Produits" />
+
+        <!-- TableView pour afficher les produits -->
+        <TableView fx:id="produitTable" layoutX="12.0" layoutY="60.0" prefHeight="360.0" prefWidth="648.0">
+            <columns>
+                <TableColumn fx:id="nomProduitColumn" prefWidth="137.0" text="Nom Produit" />
+                <TableColumn fx:id="prixProduitColumn" prefWidth="113.0" text="Prix" />
+                <TableColumn fx:id="quantiteColumn" prefWidth="118.0" text="Quantité" />
+                <TableColumn fx:id="statutProduitColumn" prefWidth="122.0" text="Statut" />
+                <TableColumn fx:id="actionColumn" prefWidth="157.0" text="Actions" />
+            </columns>
+        </TableView>
+
+    </children>
+</AnchorPane>
