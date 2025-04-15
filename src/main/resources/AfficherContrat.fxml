@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.AfficherContratController"
+            stylesheets="@style.css"
+            prefWidth="900" prefHeight="600"
+            styleClass="main-pane">
+
+    <children>
+
+        <!-- En-tête avec logo et nom -->
+        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="10.0" spacing="10.0">
+            <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo"/>
+            <Label styleClass="title" text="InnerBloom"/>
+        </HBox>
+
+        <!-- Section de titre "Nos contrats" -->
+        <Label text="Nos contrats"
+               layoutX="20.0" layoutY="70.0"
+               styleClass="section-title"/>
+
+        <!-- Cartes dans ScrollPane -->
+        <ScrollPane fitToWidth="true" layoutX="20" layoutY="110" prefWidth="860" prefHeight="440"
+                    styleClass="card-scroll">
+            <content>
+                <FlowPane fx:id="cardsContainer" hgap="20" vgap="20" styleClass="card-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                </FlowPane>
+            </content>
+        </ScrollPane>
+
+        <!-- Boutons descendus -->
+        <HBox alignment="CENTER" layoutY="570" prefWidth="900" spacing="20">
+            <Button text="Ajouter Contrat" onAction="#handleAjouterContrat"
+                    styleClass="btn-green" prefWidth="200"/>
+            <Button text="Voir les Packs" onAction="#handleVoirPacks"
+                    styleClass="btn-blue" prefWidth="200"/>
+            <Button text="Voir les Centres" onAction="#handleVoirCentres"
+                    styleClass="btn-orange" prefWidth="200"/>
+        </HBox>
+
+    </children>
+</AnchorPane>

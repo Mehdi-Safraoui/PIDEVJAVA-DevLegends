@@ -1,0 +1,165 @@
+/* ======================== */
+/*         GLOBAL           */
+/* ======================== */
+.root {
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);
+}
+
+/* ======================== */
+/*     FORM CONTAINER       */
+/* ======================== */
+#formContainer {
+    -fx-background-color: white;
+    -fx-padding: 40;
+    -fx-spacing: 20;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 15, 0, 0, 5);
+    -fx-max-width: 800px;
+}
+
+/* ======================== */
+/*         TITRE            */
+/* ======================== */
+.title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2ecc71;
+}
+
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666;
+}
+
+/* ======================== */
+/*        TEXTFIELDS        */
+/* ======================== */
+.text-field {
+    -fx-pref-width: 400px;
+    -fx-padding: 8 12;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #a8e6cf;
+    -fx-border-width: 1;
+    -fx-background-color: #ffffff;
+}
+
+/* ======================== */
+/*          BUTTONS         */
+/* ======================== */
+.button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #27ae60;
+}
+
+.button:focused {
+    -fx-effect: dropshadow(gaussian, #76b852, 10, 0, 0, 0);
+}
+
+.cancel-button {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.cancel-button:hover {
+    -fx-background-color: #d32f2f;
+}
+
+/* ======================== */
+/*         LABELS           */
+/* ======================== */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+/* ======================== */
+/*       COMBOBOX / DATEPICKER / CHECKBOX   */
+/* ======================== */
+.combo-box, .date-picker {
+    -fx-pref-width: 400px;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #a8e6cf;
+    -fx-border-width: 1;
+}
+
+.check-box {
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+.section-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 10 0 0 0;
+}
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.text-field {
+    -fx-pref-width: 250px;
+    -fx-pref-height: 30px;
+    -fx-padding: 5;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #ccc;
+}
+
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 8 16;
+}
+
+.image-view {
+    -fx-border-color: #ccc;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.2, 0, 2);
+}
+.field-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: #333;
+}
+.formContainer {
+    -fx-padding: 20;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+
+.field-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #444;
+}
+
+.button-container {
+    -fx-padding: 20 0 0 0;
+}
+
+.text-field {
+    -fx-pref-width: 250px;
+}
+
+
