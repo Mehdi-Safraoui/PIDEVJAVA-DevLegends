@@ -9,8 +9,8 @@ public class MyDB {
     String url="jdbc:mysql://localhost:3306/innerbloom";
     String user="root";
     String password="";
-   private Connection con;
-   private static MyDB instanc;
+    private Connection con;
+    private static MyDB instanc;
 
     private MyDB() {
         try {
