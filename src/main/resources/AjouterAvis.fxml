@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane stylesheets="AvisRecStyle.css" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.AjouterAvisController" prefWidth="600" prefHeight="450">
+    <children>
+        <VBox spacing="10" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+            <Label text="Ajouter un Avis" style="-fx-font-size: 20px;"/>
+
+            <TextField fx:id="sujetAvisField" promptText="Sujet de l'Avis"/>
+            <TextArea fx:id="contenuAvisField" promptText="Contenu de l'Avis"/>
+            <TextField fx:id="emailAvisField" promptText="Email"/>
+
+            <Label text="Note" />
+            <Spinner fx:id="noteAvisField" min="1" max="10"/>
+
+            <!-- Les deux boutons dans un HBox pour les aligner horizontalement -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Ajouter" onAction="#handleAddAvis"/>
+                <Button text="Annuler" onAction="#clearFields"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

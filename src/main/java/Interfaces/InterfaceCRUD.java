@@ -8,4 +8,3 @@ public interface InterfaceCRUD <T>{
     public void delete(T t);
     public List<T> find();
 }
-

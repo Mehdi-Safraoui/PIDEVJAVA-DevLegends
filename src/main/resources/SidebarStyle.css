@@ -1,0 +1,131 @@
+/* Sidebar.css - Enhanced with Icons and Nested Styling */
+
+/* Base Styles */
+.sidebar {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 20px;
+    -fx-spacing: 15px;
+    -fx-border-color: #e9ecef;
+    -fx-border-width: 0 1px 0 0;
+}
+
+.sidebar-title {
+    -fx-font-size: 20px;
+    -fx-text-fill: #212529;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10px 0;
+}
+
+/* Icon Base Styling */
+.sidebar-icon {
+    -fx-fill: #495057;
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+}
+
+.titled-pane-icon {
+    -fx-fill: #6c757d;
+    -fx-scale-x: 0.7;
+    -fx-scale-y: 0.7;
+}
+
+.nested-icon {
+    -fx-fill: #6c757d;
+    -fx-scale-x: 0.7;
+    -fx-scale-y: 0.7;
+}
+
+/* Button Styling */
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #495057;
+    -fx-font-size: 14px;
+    -fx-alignment: center-left;
+    -fx-padding: 8px 15px 8px 10px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+    -fx-content-display: left;
+    -fx-graphic-text-gap: 10px;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #e9ecef;
+    -fx-text-fill: #212529;
+}
+
+.sidebar-button:hover .sidebar-icon {
+    -fx-fill: #212529;
+}
+
+/* Nested Button Styling */
+.nested-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6c757d;
+    -fx-font-size: 13px;
+    -fx-alignment: center-left;
+    -fx-padding: 6px 15px 6px 25px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+    -fx-content-display: left;
+    -fx-graphic-text-gap: 8px;
+}
+
+.nested-button:hover {
+    -fx-background-color: #f1f3f5;
+    -fx-text-fill: #495057;
+}
+
+.nested-button:hover .nested-icon {
+    -fx-fill: #495057;
+}
+
+/* Login Button Special Styling */
+.login-button {
+    -fx-background-color: #0d6efd;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+}
+
+.login-button:hover {
+    -fx-background-color: #0b5ed7;
+}
+
+.login-button .sidebar-icon {
+    -fx-fill: white;
+}
+
+/* TitledPane Styling */
+.titled-pane {
+    -fx-text-fill: #212529;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.titled-pane > .title {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 8px 0;
+    -fx-content-display: left;
+    -fx-graphic-text-gap: 8px;
+}
+
+.titled-pane > .title > .arrow-button > .arrow {
+    -fx-background-color: #6c757d;
+}
+
+.titled-pane > .content {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5px 0 0 0;
+}
+
+/* Nested Content VBox */
+.titled-pane-content {
+    -fx-spacing: 5px;
+    -fx-padding: 0 0 0 10px;
+}
