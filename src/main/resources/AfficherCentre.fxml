@@ -5,38 +5,46 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21.0.2"
+<BorderPane xmlns="http://javafx.com/javafx/21.0.2"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Controllers.AfficherCentreController"
             stylesheets="@style.css"
-            prefWidth="900" prefHeight="640"
+            prefWidth="1200" prefHeight="700"
             styleClass="main-pane">
 
-    <children>
-
-        <!-- En-tête avec logo et nom -->
-        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="10.0" spacing="10.0">
+    <!-- Top section with logo and title -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="header-box">
             <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo"/>
             <Label styleClass="title" text="InnerBloom"/>
         </HBox>
+    </top>
 
-        <!-- Titre de section "Nos centres" -->
-        <Label text="Nos centres"
-               layoutX="20.0" layoutY="70.0"
-               styleClass="section-title"/>
+    <!-- Left section with sidebar -->
+    <left>
+        <fx:include source="Sidebar.fxml"/>
+    </left>
 
-        <!-- Cartes dans ScrollPane -->
-        <ScrollPane fitToWidth="true" layoutX="20" layoutY="110" prefWidth="860" prefHeight="440"
-                    styleClass="card-scroll">
-            <FlowPane fx:id="cardsContainer" hgap="30" vgap="30" alignment="CENTER" styleClass="card-container">
-                <padding>
-                    <Insets top="20" right="20" bottom="20" left="20"/>
-                </padding>
-            </FlowPane>
-        </ScrollPane>
+    <!-- Center content -->
+    <center>
+        <VBox spacing="20" styleClass="content-box">
+            <!-- Section title -->
+            <Label text="Nos centres" styleClass="section-title"/>
 
-        <!-- Boutons en bas -->
-        <HBox alignment="CENTER" layoutY="570" prefWidth="900" spacing="20">
+            <!-- Cards in ScrollPane -->
+            <ScrollPane fitToWidth="true" styleClass="card-scroll">
+                <FlowPane fx:id="cardsContainer" hgap="30" vgap="30" alignment="CENTER" styleClass="card-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <!-- Bottom buttons -->
+    <bottom>
+        <HBox alignment="CENTER" styleClass="button-box" spacing="20">
             <Button text="Ajouter Centre" onAction="#handleAjouterCentre"
                     styleClass="btn-green" prefWidth="200"/>
             <Button text="Voir les Packs" onAction="#handleVoirPacks"
@@ -44,6 +52,5 @@
             <Button text="Voir les Contrats" onAction="#handleVoirContrats"
                     styleClass="btn-orange" prefWidth="200"/>
         </HBox>
-
-    </children>
-</AnchorPane>
+    </bottom>
+</BorderPane>
