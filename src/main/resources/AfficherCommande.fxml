@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="483.0" prefWidth="701.0" stylesheets="styleProduit.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherCommandeController">
-    <children>
-        <!-- Titre des commandes -->
-        <Label layoutX="216.0" layoutY="14.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333; -fx-alignment: center;" text="Liste des Commandes" />
+<HBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      fx:controller="Controllers.AfficherCommandeController"
+      stylesheets="styleProduit.css"
+      prefWidth="1366" prefHeight="720"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);">
+
+    <!-- Sidebar à gauche -->
+    <fx:include source="Sidebar.fxml" />
+
+    <!-- Contenu principal -->
+    <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 15;">
+        <!-- Titre -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333; -fx-alignment: center;" text="Liste des Commandes" />
 
         <!-- TableView pour afficher les commandes -->
-        <TableView fx:id="commandeTable" layoutX="22.0" layoutY="60.0" prefHeight="407.0" prefWidth="654.0">
+        <TableView fx:id="commandeTable" prefHeight="600.0" prefWidth="1000.0">
             <columns>
                 <TableColumn fx:id="idColumn" prefWidth="50" text="ID" />
                 <TableColumn fx:id="nomClientColumn" prefWidth="150" text="Nom Client" />
@@ -24,6 +33,6 @@
                 <TableColumn fx:id="actionColumn" prefWidth="100" text="Actions" />
             </columns>
         </TableView>
+    </VBox>
 
-    </children>
-</AnchorPane>
+</HBox>
