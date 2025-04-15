@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane stylesheets="AvisRecStyle.css" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.ModifierReclamationController" prefWidth="600" prefHeight="400">
+    <children>
+        <VBox spacing="10" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+            <Label text="Modifier une Réclamation" style="-fx-font-size: 20px;"/>
+
+            <TextField fx:id="tfSujet" promptText="Sujet"/>
+            <TextArea fx:id="taContenu" promptText="Contenu"/>
+            <TextField fx:id="tfEmail" promptText="Email"/>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Enregistrer" onAction="#modifierReclamation"/>
+                <Button text="Annuler" onAction="#annulerModification"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
