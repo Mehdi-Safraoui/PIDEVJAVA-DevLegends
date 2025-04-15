@@ -1,34 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.layout.HBox?>
-<AnchorPane stylesheets="styleProduit.css" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierProduitController">
-    <children>
-        <Label layoutX="50.0" layoutY="30.0" text="Nom Produit:" />
-        <TextField fx:id="nomProduitField" layoutX="200.0" layoutY="25.0" prefWidth="200.0" />
+<HBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx/21.0.2"
+      fx:controller="Controllers.ModifierProduitController"
+      stylesheets="styleProduit.css"
+      prefWidth="1366" prefHeight="720"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);">
 
-        <Label layoutX="50.0" layoutY="80.0" text="Prix Produit:" />
-        <TextField fx:id="prixProduitField" layoutX="200.0" layoutY="75.0" prefWidth="200.0" />
+    <!-- Sidebar à gauche -->
+    <fx:include source="Sidebar.fxml" />
 
-        <Label layoutX="50.0" layoutY="130.0" text="Quantité Produit:" />
-        <TextField fx:id="quantiteProduitField" layoutX="200.0" layoutY="125.0" prefWidth="200.0" />
+    <!-- Formulaire principal -->
+    <VBox alignment="CENTER" spacing="15" style="-fx-padding: 30;">
+        <Label text="Modifier Produit"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2b6f3e;" />
 
-        <Label layoutX="50.0" layoutY="180.0" text="Statut Produit:" />
-        <ComboBox fx:id="statutProduitCombo" layoutX="200.0" layoutY="175.0" prefWidth="200.0" />
+        <Label text="Nom Produit:" />
+        <TextField fx:id="nomProduitField" prefWidth="300.0" />
 
-        <Label layoutX="50.0" layoutY="230.0" text="Catégorie ID:" />
-        <ComboBox fx:id="categorieProduitCombo" layoutX="200.0" layoutY="225.0" prefWidth="200.0" />
+        <Label text="Prix Produit:" />
+        <TextField fx:id="prixProduitField" prefWidth="300.0" />
 
-        <HBox layoutX="200.0" layoutY="280.0" spacing="15">
-            <Button fx:id="retourButton" text="Retour" onAction="#handleRetour" styleClass="button" />
-            <Button text="Enregistrer Modifications" onAction="#ModifierProduit" styleClass="button" />
+        <Label text="Quantité Produit:" />
+        <TextField fx:id="quantiteProduitField" prefWidth="300.0" />
+
+        <Label text="Statut Produit:" />
+        <ComboBox fx:id="statutProduitCombo" prefWidth="300.0" />
+
+        <Label text="Catégorie ID:" />
+        <ComboBox fx:id="categorieProduitCombo" prefWidth="300.0" />
+
+        <HBox spacing="15" alignment="CENTER">
+            <Button fx:id="retourButton"
+                    text="Retour"
+                    onAction="#handleRetour"
+                    styleClass="button" />
+            <Button text="Enregistrer Modifications"
+                    onAction="#ModifierProduit"
+                    styleClass="btn-ajouter" />
         </HBox>
+    </VBox>
 
-    </children>
-</AnchorPane>
-
+</HBox>
