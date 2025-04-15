@@ -11,7 +11,7 @@ public class MainFX extends Application
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommande.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommande.fxml"));
 
         Parent root = loader.load();
         Scene scene = new Scene(root);
