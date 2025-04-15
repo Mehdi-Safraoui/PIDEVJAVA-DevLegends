@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.AjoutFormation" prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="50.0" layoutY="30.0" text="Titre de la formation :" />
+        <TextField fx:id="titreField" layoutX="220.0" layoutY="25.0" prefWidth="300.0" />
+
+        <Label layoutX="50.0" layoutY="80.0" text="Date de la formation :" />
+        <DatePicker fx:id="datePicker" layoutX="220.0" layoutY="75.0" prefWidth="300.0" />
+
+        <Label layoutX="50.0" layoutY="130.0" text="Lieu :" />
+        <TextField fx:id="lieuField" layoutX="220.0" layoutY="125.0" prefWidth="300.0" />
+
+        <Label layoutX="50.0" layoutY="180.0" text="Statut :" />
+        <TextField fx:id="statutField" layoutX="220.0" layoutY="175.0" prefWidth="300.0" />
+
+        <Button text="Ajouter Formation" layoutX="220.0" layoutY="230.0" prefWidth="300.0" onAction="#ajouterFormation" />
+
+        <Button text="Modifier un événement" layoutX="220.0" layoutY="340.0" prefWidth="145.0"
+                onAction="#allerModifierFormationPage" />
+
+        <Button text="Supprimer un événement" layoutX="375.0" layoutY="340.0" prefWidth="145.0"
+                onAction="#supprimerFormationPopup" />
+
+    </children>
+</AnchorPane>
