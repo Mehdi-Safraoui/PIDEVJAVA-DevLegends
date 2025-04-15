@@ -28,10 +28,14 @@ public class CommandeService implements InterfaceCRUD<Commande> {
             ps.setDouble(5, c.getTotalCom());
             ps.setString(6, c.getPays());
             ps.setInt(7, c.getNumTelephone());
-            //ps.setString(8, c.getPaymentId());
+
+            // Si tu n'as pas de paymentId pour l'instant, on met NULL
+            ps.setString(8, null);
+
             ps.executeUpdate();
+            System.out.println("✅ Commande ajoutée avec succès !");
         } catch (SQLException e) {
-            System.out.println("Erreur ajout commande : " + e.getMessage());
+            System.out.println("❌ Erreur ajout commande : " + e.getMessage());
         }
     }
 
@@ -47,11 +51,12 @@ public class CommandeService implements InterfaceCRUD<Commande> {
             ps.setDouble(5, c.getTotalCom());
             ps.setString(6, c.getPays());
             ps.setInt(7, c.getNumTelephone());
-
             ps.setInt(8, c.getId());
+
             ps.executeUpdate();
+            System.out.println("✅ Commande mise à jour avec succès !");
         } catch (SQLException e) {
-            System.out.println("Erreur mise à jour commande : " + e.getMessage());
+            System.out.println("❌ Erreur mise à jour commande : " + e.getMessage());
         }
     }
 
@@ -62,8 +67,9 @@ public class CommandeService implements InterfaceCRUD<Commande> {
             PreparedStatement ps = con.prepareStatement(req);
             ps.setInt(1, c.getId());
             ps.executeUpdate();
+            System.out.println("✅ Commande supprimée avec succès !");
         } catch (SQLException e) {
-            System.out.println("Erreur suppression commande : " + e.getMessage());
+            System.out.println("❌ Erreur suppression commande : " + e.getMessage());
         }
     }
 
@@ -87,8 +93,9 @@ public class CommandeService implements InterfaceCRUD<Commande> {
 
                 commandes.add(c);
             }
+            System.out.println("✅ Récupération des commandes terminée.");
         } catch (SQLException e) {
-            System.out.println("Erreur récupération commandes : " + e.getMessage());
+            System.out.println("❌ Erreur récupération commandes : " + e.getMessage());
         }
         return commandes;
     }

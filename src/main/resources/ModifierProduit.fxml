@@ -7,7 +7,7 @@
 <?import javafx.scene.control.ComboBox?>
 
 <?import javafx.scene.layout.HBox?>
-<AnchorPane stylesheets="style.css" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierProduitController">
+<AnchorPane stylesheets="styleProduit.css" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierProduitController">
     <children>
         <Label layoutX="50.0" layoutY="30.0" text="Nom Produit:" />
         <TextField fx:id="nomProduitField" layoutX="200.0" layoutY="25.0" prefWidth="200.0" />

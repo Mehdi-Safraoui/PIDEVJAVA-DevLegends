@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherCategorieController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="styleProduit.css" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherCategorieController">
 
     <children>
         <!-- Titre dans HBox avec fond vert -->

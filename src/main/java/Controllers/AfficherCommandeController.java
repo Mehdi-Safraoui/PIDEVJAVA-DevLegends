@@ -4,44 +4,43 @@ import Entities.Commande;
 import Services.CommandeService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AfficherCommandeController implements Initializable {
 
-    @FXML
-    private TableView<Commande> commandeTable;
+    @FXML private TableView<Commande> commandeTable;
 
-    @FXML
-    private TableColumn<Commande, String> nomClientColumn;
+    @FXML private TableColumn<Commande, Integer> idColumn;
+    @FXML private TableColumn<Commande, String> nomClientColumn;
+    @FXML private TableColumn<Commande, String> adresseEmailColumn;
+    @FXML private TableColumn<Commande, Date> dateCommandeColumn;
+    @FXML private TableColumn<Commande, String> adresseColumn;
+    @FXML private TableColumn<Commande, Double> totalColumn;
+    @FXML private TableColumn<Commande, String> paysColumn;
+    @FXML private TableColumn<Commande, Integer> numTelephoneColumn;
+    @FXML private TableColumn<Commande, Void> actionColumn;
 
-    @FXML
-    private TableColumn<Commande, String> adresseEmailColumn;
-
-    @FXML
-    private TableColumn<Commande, Double> totalColumn;
-
-    @FXML
-    private TableColumn<Commande, Void> actionColumn;
-
-    private CommandeService commandeService = new CommandeService();
+    private final CommandeService commandeService = new CommandeService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        idColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("id"));
         nomClientColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("nomClient"));
         adresseEmailColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("adresseEmail"));
+        dateCommandeColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("dateCommande"));
+        adresseColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("adresse"));
         totalColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("totalCom"));
+        paysColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("pays"));
+        numTelephoneColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("numTelephone"));
 
-        // Supprimer uniquement
+        // Actions bouton suppression
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Supprimer");
 
@@ -55,11 +54,7 @@ public class AfficherCommandeController implements Initializable {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(hbox);
-                }
+                setGraphic(empty ? null : hbox);
             }
         });
 
@@ -77,10 +72,10 @@ public class AfficherCommandeController implements Initializable {
         alert.setHeaderText("Supprimer la commande de : " + commande.getNomClient());
         alert.setContentText("Es-tu sûr de vouloir supprimer cette commande ?");
 
-        Optional<javafx.scene.control.ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == javafx.scene.control.ButtonType.OK) {
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             commandeService.delete(commande);
-            loadCommandes();  // Rafraîchir la liste
+            loadCommandes();  // Rafraîchir la liste après suppression
         }
     }
 }

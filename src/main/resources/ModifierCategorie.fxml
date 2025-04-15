@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <?import javafx.scene.layout.HBox?>
-<AnchorPane stylesheets="style.css" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierCategorieController">
+<AnchorPane stylesheets="styleProduit.css" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierCategorieController">
     <children>
         <Label layoutX="30.0" layoutY="30.0" text="Nom Catégorie:" />
         <TextField fx:id="nomCategorieField" layoutX="150.0" layoutY="25.0" prefWidth="200.0" />

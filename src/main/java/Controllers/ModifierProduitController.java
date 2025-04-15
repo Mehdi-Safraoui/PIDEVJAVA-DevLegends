@@ -41,7 +41,7 @@ public class ModifierProduitController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.getClass().getResource("/style.css").toExternalForm();
+        this.getClass().getResource("/styleProduit.css").toExternalForm();
         statutProduitCombo.setItems(FXCollections.observableArrayList("Disponible", "Indisponible"));
 
         CategorieService categorieService = new CategorieService();

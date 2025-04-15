@@ -6,16 +6,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane stylesheets="style.css"  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterCommandeController">
+<AnchorPane stylesheets="styleProduit.css" prefHeight="450.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.AjouterCommandeController">
     <children>
-        <!-- Titre de la fenêtre -->
+        <!-- Titre -->
         <Label text="Ajouter la Commande" styleClass="titre-label"
-               layoutY="20.0"
-               AnchorPane.leftAnchor="0.0"
-               AnchorPane.rightAnchor="0.0"
-               alignment="CENTER" />
+               layoutY="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" alignment="CENTER" />
 
-        <!-- Champs du formulaire -->
+        <!-- Formulaire -->
         <Label layoutX="50.0" layoutY="80.0" text="Nom Client:" />
         <TextField fx:id="nomClientField" layoutX="200.0" layoutY="75.0" prefWidth="200.0" />
 
@@ -29,7 +28,8 @@
         <TextField fx:id="adresseField" layoutX="200.0" layoutY="225.0" prefWidth="200.0" />
 
         <Label layoutX="50.0" layoutY="280.0" text="Total Commande:" />
-        <TextField fx:id="totalComField" layoutX="200.0" layoutY="275.0" prefWidth="200.0" />
+        <Label fx:id="totalComLabel" layoutX="200.0" layoutY="280.0" prefWidth="200.0"
+               style="-fx-background-color: lightgray; -fx-border-color: gray; -fx-padding: 5;" />
 
         <Label layoutX="50.0" layoutY="330.0" text="Pays:" />
         <TextField fx:id="paysField" layoutX="200.0" layoutY="325.0" prefWidth="200.0" />
