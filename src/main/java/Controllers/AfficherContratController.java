@@ -34,7 +34,7 @@ public class AfficherContratController {
 
     @FXML
     public void initialize() {
-        Image img = new Image(getClass().getResource("/logo.png").toExternalForm());
+        Image img = new Image(getClass().getResource("/images/logo.png").toExternalForm());
         logoImage.setImage(img);
         Circle clip = new Circle();
         clip.setRadius(25);

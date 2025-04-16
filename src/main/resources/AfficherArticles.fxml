@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane stylesheets="style.css" fx:id="scrollPane" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.AfficherArticlesController">
+    <VBox spacing="20">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20" />
+        </padding>
+
+        <!-- Bouton retour -->
+        <Button text="Retour" onAction="#goBack" style="-fx-background-color: #0b6614; -fx-text-fill: white;" />
+
+        <!-- Container des cartes -->
+        <FlowPane fx:id="cardContainer" hgap="15" vgap="15" />
+    </VBox>
+</ScrollPane>

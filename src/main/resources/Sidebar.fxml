@@ -14,7 +14,7 @@
     <Label text="INNERBLOOM" styleClass="sidebar-title"/>
 
     <!-- Profile Button -->
-    <Button styleClass="sidebar-button" maxWidth="Infinity">
+    <Button styleClass="sidebar-button" onAction="#goToUsers" maxWidth="Infinity">
         <graphic>
             <SVGPath content="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"
                      styleClass="sidebar-icon"/>
@@ -36,7 +36,7 @@
                 </graphic>
                 <text>Consultations</text>
             </Button>
-            <Button styleClass="nested-button" maxWidth="Infinity">
+            <Button styleClass="nested-button" onAction="#goToLandingpage" maxWidth="Infinity">
                 <graphic>
                     <SVGPath content="M18 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-6 6H8V7h4v2zm2 4H8v-2h6v2z"
                              styleClass="nested-icon"/>
@@ -144,14 +144,14 @@
                      styleClass="titled-pane-icon"/>
         </graphic>
         <VBox styleClass="titled-pane-content" spacing="5">
-            <Button styleClass="nested-button" maxWidth="Infinity">
+            <Button styleClass="nested-button" onAction="#goToEvent" maxWidth="Infinity">
                 <graphic>
                     <SVGPath content="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
                              styleClass="nested-icon"/>
                 </graphic>
                 <text>Événements</text>
             </Button>
-            <Button styleClass="nested-button" maxWidth="Infinity">
+            <Button styleClass="nested-button" onAction="#goToFormation" maxWidth="Infinity">
                 <graphic>
                     <SVGPath content="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"
                              styleClass="nested-icon"/>
