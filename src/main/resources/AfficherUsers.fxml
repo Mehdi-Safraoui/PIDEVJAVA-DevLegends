@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.AfficherUsersController"
+            prefHeight="700.0" prefWidth="1000.0" stylesheets="@style.css">
+
+    <!-- Sidebar incluse à gauche -->
+    <left>
+        <fx:include source="Sidebar.fxml"/>
+    </left>
+
+    <!-- Contenu principal au centre -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" styleClass="form-container" BorderPane.alignment="CENTER">
+            <!-- Titre + Logo -->
+            <HBox alignment="CENTER_LEFT" spacing="5">
+                <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo" />
+                <Label styleClass="title" text="InnerBloom" />
+            </HBox>
+
+            <!-- Tableau des utilisateurs -->
+            <TableView fx:id="userTableView" prefHeight="600" prefWidth="850">
+                <columns>
+                    <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colNom" text="Nom" prefWidth="100"/>
+                    <TableColumn fx:id="colPrenom" text="Prénom" prefWidth="100"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="150"/>
+                    <TableColumn fx:id="colRole" text="Rôle" prefWidth="80"/>
+                    <TableColumn fx:id="colAge" text="Âge" prefWidth="60"/>
+                    <TableColumn fx:id="colSpecialite" text="Spécialité" prefWidth="100"/>
+                    <TableColumn fx:id="colTelephone" text="Téléphone" prefWidth="100"/>
+                    <TableColumn fx:id="colAdresse" text="Adresse" prefWidth="150"/>
+                    <TableColumn fx:id="colPhoto" text="Photo" prefWidth="100"/>
+                    <TableColumn fx:id="colStatut" text="Statut" prefWidth="60"/>
+                    <TableColumn fx:id="colAction" text="Actions" prefWidth="200"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

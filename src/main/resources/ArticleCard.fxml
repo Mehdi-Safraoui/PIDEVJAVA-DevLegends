@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:id="card" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.ArticleCardController"
+           prefWidth="200" prefHeight="250" styleClass="card">
+    <ImageView fx:id="articleImage" fitWidth="200" fitHeight="250" preserveRatio="false" />
+    <VBox fx:id="overlay" alignment="CENTER" spacing="10" styleClass="card-overlay" visible="false">
+        <Label fx:id="titleLabel" textFill="white" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+        <Button text="Visualiser" onAction="#handleViewDetails" />
+    </VBox>
+</StackPane>

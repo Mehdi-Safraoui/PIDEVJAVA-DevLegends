@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" stylesheets="style.css" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.LandingPageController"
+            prefWidth="800" prefHeight="500">
+
+    <!-- Sidebar positionnée à gauche -->
+    <fx:include source="Sidebar.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" />
+
+    <!-- Contenu principal -->
+    <VBox alignment="CENTER" spacing="30"
+          layoutX="200" layoutY="50"
+          prefWidth="550" prefHeight="350"
+          AnchorPane.topAnchor="50" AnchorPane.leftAnchor="200">
+
+        <Label text="Bienvenue dans le tableau de bord"
+               style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+        <VBox spacing="15" alignment="CENTER"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #ccc; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+
+            <Button text="Articles de Conseil" onAction="#goToArticles" style="-fx-font-size: 16px; -fx-pref-width: 250;" />
+            <Button text="Consultations" onAction="#goToConsultations" style="-fx-font-size: 16px; -fx-pref-width: 250;" />
+            <Button text="Questions" onAction="#goToQuestion" style="-fx-font-size: 16px; -fx-pref-width: 250;" />
+            <Button text="Réponses" onAction="#goToReponse" style="-fx-font-size: 16px; -fx-pref-width: 250;" />
+            <Button text="Voir les Articles" onAction="#goToListArticles" style="-fx-font-size: 16px; -fx-pref-width: 250;" />
+
+        </VBox>
+    </VBox>
+</AnchorPane>
+

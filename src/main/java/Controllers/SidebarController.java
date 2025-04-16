@@ -143,5 +143,54 @@ public class SidebarController {
         }
     }
 
+    @FXML
+    private void goToUsers(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherUsers.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Utilisateurs");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    private void goToLandingpage(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/LandingPage.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Utilisateurs");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToFormation(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjoutFormation.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Formations");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToEvent(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AjoutEvent.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Evenement");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
