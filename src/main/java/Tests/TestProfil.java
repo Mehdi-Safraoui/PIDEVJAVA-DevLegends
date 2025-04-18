@@ -1,7 +1,7 @@
 package Tests;
 
-import Entities.Profil;
-import Services.ProfilService;
+import Entities.salsabil.Profil;
+import Services.salsabil.ProfilService;
 
 public class TestProfil {
     public static void main(String[] args) {

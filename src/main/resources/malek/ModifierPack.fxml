@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.malek.ModifierPackController"
+            prefHeight="600.0" prefWidth="700.0"
+            stylesheets="@/style.css"
+            styleClass="root">
+
+    <children>
+        <VBox fx:id="formContainer" spacing="10" alignment="CENTER_LEFT" layoutX="50" layoutY="30" styleClass="formContainer">
+
+            <Label text="Modifier un pack" styleClass="title" />
+
+            <!-- Affichage du nom actuel du pack -->
+            <VBox spacing="5">
+                <Label text="Pack actuel" styleClass="field-label"/>
+                <Label fx:id="labelNomPack" styleClass="subtitle"/>
+            </VBox>
+
+            <!-- Champ Nom -->
+            <VBox spacing="5">
+                <Label text="Nouveau nom" styleClass="field-label"/>
+                <TextField fx:id="TFNom" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Description -->
+            <VBox spacing="5">
+                <Label text="Description" styleClass="field-label"/>
+                <TextField fx:id="TFDescription" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Prix -->
+            <VBox spacing="5">
+                <Label text="Prix" styleClass="field-label"/>
+                <TextField fx:id="TFPrix" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Durée -->
+            <VBox spacing="5">
+                <Label text="Validité (jours)" styleClass="field-label"/>
+                <TextField fx:id="TFDuree" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Code réduction -->
+            <VBox spacing="5">
+                <Label text="Code de réduction" styleClass="field-label"/>
+                <TextField fx:id="TFDiscountCode" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Photo -->
+            <VBox spacing="5">
+                <Label text="Photo" styleClass="field-label"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="TFPhoto" styleClass="text-field"/>
+                    <Button fx:id="btnParcourir" text="Parcourir" onAction="#handleParcourirPhoto" styleClass="button"/>
+                </HBox>
+            </VBox>
+
+            <!-- Boutons -->
+            <HBox spacing="20" alignment="CENTER" styleClass="button-container">
+                <Button fx:id="btnEnregistrer" text="Enregistrer" onAction="#handleEnregistrer" styleClass="button"/>
+                <Button fx:id="btnAnnuler" text="Annuler" onAction="#handleAnnuler" styleClass="button cancel-button"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>

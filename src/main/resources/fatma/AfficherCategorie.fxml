@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx/21.0.2"
+      fx:controller="Controllers.fatma.AfficherCategorieController"
+      stylesheets="styleProduit.css"
+      prefWidth="1366" prefHeight="720"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);">
+
+    <!-- Sidebar à gauche -->
+    <fx:include source="../Sidebar.fxml" />
+
+    <!-- Contenu principal à droite -->
+    <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 15; -fx-background-color: transparent;">
+        <!-- Titre -->
+        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" styleClass="title-bar">
+            <children>
+                <Label styleClass="title" text="Listes des Catégories" textFill="#2b6f3e" />
+            </children>
+        </HBox>
+
+        <!-- TableView stylée -->
+        <TableView fx:id="categorieTable" prefHeight="600.0" prefWidth="700.0" styleClass="custom-table">
+            <columns>
+                <TableColumn fx:id="nomCategorieColumn" prefWidth="301.0" text="Nom Catégorie" />
+                <TableColumn fx:id="actionColumn" prefWidth="298.0" text="Actions" />
+            </columns>
+        </TableView>
+    </VBox>
+
+</HBox>

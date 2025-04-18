@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane stylesheets="@/style.css" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.maya.AjouterReponseController"
+            prefWidth="600" prefHeight="400">
+
+    <VBox spacing="15.0" alignment="TOP_CENTER" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0"
+          AnchorPane.rightAnchor="20.0">
+
+        <Label text="Ajouter une Réponse" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+        <!-- Conteneur avec cadre blanc -->
+        <VBox alignment="CENTER" layoutX="79.0" layoutY="121.0" prefHeight="209.0" prefWidth="489.0" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #ccc; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+
+            <GridPane hgap="10" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- Champ Texte de Réponse (ComboBox avec choix "Oui", "Non", "Parfois") -->
+                <Label text="Texte de la réponse:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="answerComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <!-- ComboBox Question -->
+                <Label text="Question:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="questionComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <!-- Score -->
+                <Label text="Score:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="scoreField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <!-- Label de statut -->
+            <Label fx:id="statusLabel" textFill="red"/>
+
+            <!-- Boutons -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Ajouter la réponse" onAction="#handleAjouterReponse"/>
+                <Button text="Afficher" onAction="#handleAfficherReponses"/>
+            </HBox>
+
+        </VBox>
+    </VBox>
+</AnchorPane>

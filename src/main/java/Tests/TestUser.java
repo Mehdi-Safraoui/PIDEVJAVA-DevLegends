@@ -1,9 +1,9 @@
 package Tests;
 
-import Entities.User;
-import Entities.Profil;
-import Services.ProfilService;
-import Services.UserService;
+import Entities.salsabil.User;
+import Entities.salsabil.Profil;
+import Services.salsabil.ProfilService;
+import Services.salsabil.UserService;
 import Utils.MyDB;
 
 public class TestUser {

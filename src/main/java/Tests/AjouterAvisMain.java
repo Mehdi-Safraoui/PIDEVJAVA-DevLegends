@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class AjouterAvisMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterAvis.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/AjouterAvis.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

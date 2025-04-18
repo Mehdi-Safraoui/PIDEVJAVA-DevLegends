@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx"
+      fx:controller="Controllers.mehdi.AfficherAvisController"
+      stylesheets="AvisRecStyle.css"
+      prefWidth="1366" prefHeight="720"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);">
+
+    <!-- Sidebar à gauche -->
+    <fx:include source="../Sidebar.fxml" />
+
+    <!-- Contenu principal -->
+    <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER"
+                style="-fx-background: transparent; -fx-background-color: transparent;">
+        <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 15; -fx-background-color: transparent;">
+            <Label text="Liste des Avis" styleClass="title" />
+
+            <TableView fx:id="tableAvis" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 8;">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colSujet" text="Sujet" prefWidth="100"/>
+                    <TableColumn fx:id="colContenu" text="Contenu" prefWidth="150"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="100"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="150"/>
+                    <TableColumn fx:id="colNote" text="Note" prefWidth="80"/>
+                    <TableColumn fx:id="colStatut" text="Statut" prefWidth="80"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="210"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </ScrollPane>
+</HBox>
