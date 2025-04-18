@@ -3,14 +3,15 @@ package Controllers.mehdi;
 import Entities.mehdi.Avis;
 import Services.mehdi.AvisService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.SpinnerValueFactory;
 
+import java.net.URL;
 import java.util.Date;
+import java.util.ResourceBundle;
 
-public class AjouterAvisController {
+public class AjouterAvisController implements Initializable {
 
     @FXML
     private TextField sujetAvisField;
@@ -23,14 +24,19 @@ public class AjouterAvisController {
 
     private final AvisService avisService = new AvisService();
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Initialiser le Spinner avec une plage de 1 à 10 et valeur par défaut 1
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
+        noteAvisField.setValueFactory(valueFactory);
+    }
+
     @FXML
     private void handleAddAvis() {
-        this.getClass().getResource("/AvisRecStyle.css").toExternalForm();
-
         String sujet = sujetAvisField.getText();
         String contenu = contenuAvisField.getText();
         String email = emailAvisField.getText();
-        int note = noteAvisField.getValue();
+        Integer note = noteAvisField.getValue();
 
         if (sujet.isEmpty() || contenu.isEmpty() || email.isEmpty()) {
             showAlert("Tous les champs doivent être remplis.");
@@ -42,17 +48,15 @@ public class AjouterAvisController {
             return;
         }
 
-
-        // Vérification de l'email
         if (!isValidEmail(email)) {
             showAlert("Veuillez entrer une adresse email valide.");
             return;
         }
 
-        // Création de l'avis
+        // Création et ajout de l'avis
         Avis avis = new Avis(0, sujet, contenu, note, new Date(), email, "Non traité");
         avisService.add(avis);
-        showSuccess("Avis ajouté avec succès !");
+        showSuccess("✅ Avis ajouté avec succès !");
         clearFields();
     }
 
@@ -61,7 +65,7 @@ public class AjouterAvisController {
         sujetAvisField.clear();
         contenuAvisField.clear();
         emailAvisField.clear();
-        noteAvisField.getValueFactory().setValue(1); // Remet la note par défaut à 1
+        noteAvisField.getValueFactory().setValue(1); // Réinitialiser la note à 1
     }
 
     private boolean isValidEmail(String email) {
@@ -70,7 +74,7 @@ public class AjouterAvisController {
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
+        alert.setTitle("Erreur");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();

@@ -29,26 +29,40 @@
                      styleClass="titled-pane-icon"/>
         </graphic>
         <VBox styleClass="titled-pane-content" spacing="5">
-            <Button styleClass="nested-button" maxWidth="Infinity">
+            <Button styleClass="nested-button" onAction="#goToArticles" maxWidth="Infinity">
                 <graphic>
                     <SVGPath content="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
                              styleClass="nested-icon"/>
                 </graphic>
-                <text>Consultations</text>
+                <text>Articles de conseil</text>
             </Button>
-            <Button styleClass="nested-button" onAction="#goToLandingpage" maxWidth="Infinity">
+            <Button styleClass="nested-button" onAction="#goToConsultations" maxWidth="Infinity">
                 <graphic>
                     <SVGPath content="M18 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-6 6H8V7h4v2zm2 4H8v-2h6v2z"
                              styleClass="nested-icon"/>
                 </graphic>
-                <text>Articles</text>
+                <text>Consultations</text>
             </Button>
-            <Button styleClass="nested-button" maxWidth="Infinity">
+            <Button styleClass="nested-button" onAction="#goToQuestion" maxWidth="Infinity">
                 <graphic>
                     <SVGPath content="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
                              styleClass="nested-icon"/>
                 </graphic>
-                <text>Quiz</text>
+                <text>Questions</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToReponse" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Réponses</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToListArticles" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Voir les Articles</text>
             </Button>
         </VBox>
     </TitledPane>
@@ -181,6 +195,14 @@
                              styleClass="nested-icon"/>
                 </graphic>
                 <text>Avis</text>
+            </Button>
+
+            <Button styleClass="nested-button" onAction="#goToAddAvis" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Ajouter Avis</text>
             </Button>
         </VBox>
     </TitledPane>
