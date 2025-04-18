@@ -5,15 +5,171 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e8515e2-fec0-4a82-a4e1-865c41c40ac0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/cssdialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/AfficherCentreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherContratController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/AfficherContratController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherPackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/AfficherPackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherArticlesController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherAvisController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherCategorieController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherCentreController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherCentreFrontController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherCommandeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherConsultationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherContratController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherContratFrontController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherFormation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherPackController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherPackFrontController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherReclamationsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AfficherUsersController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjoutEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjoutFormation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterArticleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterAvisController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterCategorieController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterCentreController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterCommandeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterConsultationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterContratController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterPackController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterProduitController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterQuestionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterReclamationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterReponseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/AjouterUserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ArticleCardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/CentreCardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ContratCardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/DetailsView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/Home.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/Homeuser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/LandingPageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ListArticleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ListQuestionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ListReponseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierArticleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierAvisController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierCategorieController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierCentreController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierConsultationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierContratController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierEvenement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierFormation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierPackController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierProduitController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierProfilController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierQuestionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierReclamationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierReponseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModifierUserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/PackCardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ProduitAdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ProduitFrontController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ProfilController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/SidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/SidebarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sidebar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/SupprimerFormation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/ArticleConseil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Avis.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Categorie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Centre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Commande.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Consultation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Contrat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Evenement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Formation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Pack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Personne.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Produit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Profil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Question.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Reclamation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Reponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ArticleConseilService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/AvisService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/CategorieService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/CentreService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/CommandeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ConsultationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ContratService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/PackService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ProduitService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ProfilService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/QuestionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ReclamationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ReponseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceEvenement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceFormation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/TestCentre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/TestContrat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/TestPack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/AjouterAvisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/AjouterAvisMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/AjouterReclamationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/AjouterReclamationMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/TestProfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/TestProfil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/TestUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/TestUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherArticles.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherAvis.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherCategorie.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherCentre.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherCentreFront.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherCommande.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherConsultation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherContrat.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherContratFront.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEvent.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherFormation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherPack.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherPackFront.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherReclamations.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherUsers.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjoutEvent.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjoutFormation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterArticle.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterAvis.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterCategorie.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterCentre.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterCommande.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterConsultation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterContrat.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterPack.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterProduit.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterQuestion.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterReclamation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterReponse.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterUser.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ArticleCard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AvisRecStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CentreCard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ContratCard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/LandingPage.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ListArticle.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ListQuestion.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ListReponse.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierArticle.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierAvis.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierCategorie.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierCentre.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierConsultation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierContrat.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierEvent.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierFormation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierPack.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierProduit.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierProfil.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierQuestion.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierReclamation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierReponse.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierUser.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PackCard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProduitAdmin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProduitFront.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Profil.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/SupprimerFormation.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/contrat.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styleProduit.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +208,7 @@
     &quot;Maven.testpidev [javafx:run].executor&quot;: &quot;Run&quot;,
     &quot;Maven.testpidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Gestion-Centres&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Backup&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/fatma/IdeaProjects/testpidev&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -156,6 +312,9 @@
       <workItem from="1741950515078" duration="89318000" />
       <workItem from="1744750563288" duration="5728000" />
       <workItem from="1744761654252" duration="2266000" />
+      <workItem from="1744763988331" duration="69000" />
+      <workItem from="1744791398941" duration="4125000" />
+      <workItem from="1744905365976" duration="5630000" />
     </task>
     <servers />
   </component>

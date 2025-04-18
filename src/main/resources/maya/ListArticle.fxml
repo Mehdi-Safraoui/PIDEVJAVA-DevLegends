@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane stylesheets="@/style.css" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.maya.ListArticleController">
+    <ScrollPane prefHeight="517.0" prefWidth="837.0" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+        <GridPane fx:id="container" hgap="20" vgap="20" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+            <!-- Dynamically added Article Cards will go here -->
+        </GridPane>
+    </ScrollPane>
+</AnchorPane>

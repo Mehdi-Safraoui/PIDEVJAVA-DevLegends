@@ -15,7 +15,7 @@ public class SidebarController {
     @FXML
     private void goToReclamations(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamations.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/mehdi/AfficherReclamations.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Réclamations");
@@ -27,7 +27,7 @@ public class SidebarController {
     @FXML
     private void goToAvis(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherAvis.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/mehdi/AfficherAvis.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Avis");
@@ -38,7 +38,7 @@ public class SidebarController {
     @FXML
     private void goToProduit(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/ProduitAdmin.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fatma/ProduitAdmin.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Produits");
@@ -49,7 +49,7 @@ public class SidebarController {
     @FXML
     private void goToCommande(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCommande.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fatma/AfficherCommande.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Commandes");
@@ -60,7 +60,7 @@ public class SidebarController {
     @FXML
     private void goToAjouterProduit(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterProduit.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fatma/AjouterProduit.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Ajouter un Produit");
@@ -72,7 +72,7 @@ public class SidebarController {
     @FXML
     private void goToAjouterCategorie(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterCategorie.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fatma/AjouterCategorie.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Ajouter une Catégorie");
@@ -84,7 +84,7 @@ public class SidebarController {
     @FXML
     private void goToAfficherCategorie(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCategorie.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fatma/AfficherCategorie.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Catégories");
@@ -98,7 +98,7 @@ public class SidebarController {
     @FXML
     private void goToCentre(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCentre.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/malek/AfficherCentre.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Centres");
@@ -110,7 +110,7 @@ public class SidebarController {
     @FXML
     private void goToPack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPack.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/malek/AfficherPack.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Packs");
@@ -122,7 +122,7 @@ public class SidebarController {
     @FXML
     private void goToContrat(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherContrat.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/malek/AfficherContrat.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Contrats");
@@ -134,7 +134,7 @@ public class SidebarController {
     @FXML
     private void goToAddContrat(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterContrat.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/malek/AjouterContrat.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Contrats");
@@ -146,7 +146,7 @@ public class SidebarController {
     @FXML
     private void goToUsers(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherUsers.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/salsabil/AfficherUsers.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Utilisateurs");
@@ -159,7 +159,7 @@ public class SidebarController {
     @FXML
     private void goToLandingpage(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/LandingPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/maya/LandingPage.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Utilisateurs");
@@ -171,7 +171,7 @@ public class SidebarController {
     @FXML
     private void goToFormation(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjoutFormation.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ali/AjoutFormation.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Formations");
@@ -183,7 +183,7 @@ public class SidebarController {
     @FXML
     private void goToEvent(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjoutEvent.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/ali/AjoutEvent.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Evenement");
