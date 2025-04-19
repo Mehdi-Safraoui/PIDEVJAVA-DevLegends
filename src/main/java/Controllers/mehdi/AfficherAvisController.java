@@ -5,6 +5,7 @@ import Services.mehdi.AvisService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -43,8 +45,6 @@ public class AfficherAvisController {
     @FXML
     public void initialize() {
         loadData();
-        this.getClass().getResource("/AvisRecStyle.css").toExternalForm();
-
     }
 
     private void loadData() {
@@ -58,7 +58,6 @@ public class AfficherAvisController {
         colNote.setCellValueFactory(new PropertyValueFactory<>("noteAvis"));
         colStatut.setCellValueFactory(new PropertyValueFactory<>("statutAvis"));
 
-        // Ajouter boutons
         addActionsButtons();
 
         tableAvis.setItems(avisList);
@@ -71,32 +70,26 @@ public class AfficherAvisController {
             private final HBox hbox = new HBox(10, btnModifier, btnSupprimer);
 
             {
-                hbox.setStyle("-fx-alignment: center;");
                 btnModifier.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
                 btnSupprimer.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
+                hbox.setStyle("-fx-alignment: center;");
 
                 btnModifier.setOnAction(event -> {
                     Avis avis = getTableView().getItems().get(getIndex());
                     try {
-                        // Charger le FXML de la fenêtre de modification
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/ModifierAvis.fxml"));
                         Parent root = loader.load();
 
-                        // Récupérer le contrôleur du FXML
                         ModifierAvisController controller = loader.getController();
-
-                        // Passer l'avis sélectionné au contrôleur
                         controller.setAvis(avis);
 
-                        // Créer une nouvelle scène et l'afficher dans une fenêtre modale
                         Stage stage = new Stage();
                         stage.setTitle("Modifier Avis");
                         stage.setScene(new Scene(root));
-                        stage.initOwner(tableAvis.getScene().getWindow()); // Définir la fenêtre principale comme propriétaire
-                        stage.initModality(javafx.stage.Modality.APPLICATION_MODAL); // Fenêtre modale
-                        stage.showAndWait(); // Attendre que l'utilisateur ferme la fenêtre
+                        stage.initOwner(tableAvis.getScene().getWindow());
+                        stage.initModality(Modality.APPLICATION_MODAL);
+                        stage.showAndWait();
 
-                        // 🔁 Rafraîchir la liste après modification
                         loadData();
 
                     } catch (IOException e) {
@@ -106,8 +99,18 @@ public class AfficherAvisController {
 
                 btnSupprimer.setOnAction(event -> {
                     Avis avis = getTableView().getItems().get(getIndex());
-                    service.deleteById(avis.getId());
-                    loadData(); // Rafraîchir la liste
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation");
+                    alert.setHeaderText("Voulez-vous vraiment supprimer cet avis ?");
+                    alert.setContentText("Sujet : " + avis.getSujetAvis());
+
+                    alert.showAndWait().ifPresent(response -> {
+                        if (response == ButtonType.OK) {
+                            service.deleteById(avis.getId());
+                            loadData();
+                        }
+                    });
                 });
             }
 
