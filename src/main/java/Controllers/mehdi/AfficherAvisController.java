@@ -108,36 +108,53 @@ public class AfficherAvisController {
 
     private void addActionsButtons() {
         colActions.setCellFactory(param -> new TableCell<>() {
-            private final Button btnModifier = new Button("Modifier");
+            //            private final Button btnModifier = new Button("Modifier");
+            private final Button btnTraiter = new Button("Traiter");
             private final Button btnSupprimer = new Button("Supprimer");
-            private final HBox hbox = new HBox(10, btnModifier, btnSupprimer);
+            private final HBox hbox = new HBox(10, btnTraiter, btnSupprimer);
 
             {
-                btnModifier.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+//                btnModifier.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+                btnTraiter.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
                 btnSupprimer.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
                 hbox.setStyle("-fx-alignment: center;");
 
-                btnModifier.setOnAction(event -> {
+//                btnModifier.setOnAction(event -> {
+//                    Avis avis = getTableView().getItems().get(getIndex());
+//                    try {
+//                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/ModifierAvis.fxml"));
+//                        Parent root = loader.load();
+//
+//                        ModifierAvisController controller = loader.getController();
+//                        controller.setAvis(avis);
+//
+//                        Stage stage = new Stage();
+//                        stage.setTitle("Modifier Avis");
+//                        stage.setScene(new Scene(root));
+//                        stage.initOwner(tableAvis.getScene().getWindow());
+//                        stage.initModality(Modality.APPLICATION_MODAL);
+//                        stage.showAndWait();
+//
+//                        loadData();
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                });
+
+                btnTraiter.setOnAction(event -> {
                     Avis avis = getTableView().getItems().get(getIndex());
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/ModifierAvis.fxml"));
-                        Parent root = loader.load();
 
-                        ModifierAvisController controller = loader.getController();
-                        controller.setAvis(avis);
+                    if ("Traitée".equalsIgnoreCase(avis.getStatutAvis())) return;
 
-                        Stage stage = new Stage();
-                        stage.setTitle("Modifier Avis");
-                        stage.setScene(new Scene(root));
-                        stage.initOwner(tableAvis.getScene().getWindow());
-                        stage.initModality(Modality.APPLICATION_MODAL);
-                        stage.showAndWait();
+                    avis.setStatutAvis("Traitée");
+                    service.update(avis); // Mets à jour en BDD
+                    getTableView().getItems().set(getIndex(), avis); // Mise à jour locale
 
-                        loadData();
+                    btnTraiter.setDisable(true);
+                    btnTraiter.setText("Déjà traité");
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println("✅ Avis traité : " + avis.getId());
                 });
 
                 btnSupprimer.setOnAction(event -> {
@@ -160,7 +177,23 @@ public class AfficherAvisController {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                setGraphic(empty ? null : hbox);
+
+                if (empty || getIndex() >= getTableView().getItems().size()) {
+                    setGraphic(null);
+                    return;
+                }
+
+                Avis avis = getTableView().getItems().get(getIndex());
+
+                if ("Traitée".equalsIgnoreCase(avis.getStatutAvis())) {
+                    btnTraiter.setText("Déjà traité");
+                    btnTraiter.setDisable(true);
+                } else {
+                    btnTraiter.setText("Traiter");
+                    btnTraiter.setDisable(false);
+                }
+
+                setGraphic(hbox);
             }
         });
     }

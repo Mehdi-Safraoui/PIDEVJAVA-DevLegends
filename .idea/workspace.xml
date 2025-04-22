@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e8515e2-fec0-4a82-a4e1-865c41c40ac0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/mehdi/AfficherAvisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/mehdi/AfficherAvisController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/CentreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/CentreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/ContratService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/ContratService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/PackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/PackService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/AfficherAvisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/AfficherAvisMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/AfficherReclamationsMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/AfficherReclamationsMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sidebar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mehdi/AfficherAvis.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mehdi/AfficherAvis.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/mehdi/AfficherReclamationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/mehdi/AfficherReclamationsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/mehdi/Reclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/mehdi/Reclamation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mehdi/AfficherReclamations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mehdi/AfficherReclamations.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +32,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mehdi-Safraoui&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Mehdi-Safraoui/PIDEVJAVA-DevLegends.git&quot;,
+    &quot;accountId&quot;: &quot;44780387-f644-4c71-a4e5-0f30cd441932&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -45,30 +52,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MainFX.executor": "Run",
-    "Application.MainFXConsultation.executor": "Run",
-    "Application.Test.executor": "Run",
-    "Application.TestBD.executor": "Run",
-    "Maven.testpidev [javafx:run].executor": "Run",
-    "Maven.testpidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Reclamations/avis",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fatma/IdeaProjects/testpidev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainFX.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainFXConsultation.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestBD.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.testpidev [javafx:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.testpidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Gestion__avis/rec&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fatma/IdeaProjects/testpidev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Controller" />
@@ -142,8 +150,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
       </set>
     </attachedChunks>
   </component>
@@ -163,6 +171,8 @@
       <workItem from="1744905365976" duration="5630000" />
       <workItem from="1744968829476" duration="1029000" />
       <workItem from="1744969880194" duration="2850000" />
+      <workItem from="1745309798545" duration="8490000" />
+      <workItem from="1745346051136" duration="2172000" />
     </task>
     <servers />
   </component>

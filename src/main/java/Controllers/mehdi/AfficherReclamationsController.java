@@ -63,34 +63,56 @@ public class AfficherReclamationsController {
 
     private void addActionsButtons() {
         colActions.setCellFactory(param -> new TableCell<>() {
-            private final Button btnModifier = new Button("Modifier");
+//            private final Button btnModifier = new Button("Modifier");
+            private final Button btnTraiter = new Button("Traiter");
             private final Button btnSupprimer = new Button("Supprimer");
-            private final HBox hbox = new HBox(10, btnModifier, btnSupprimer);
+            private final HBox hbox = new HBox(10, btnTraiter, btnSupprimer);
 
             {
                 hbox.setStyle("-fx-alignment: center;");
-                btnModifier.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+                btnTraiter.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
+//                btnModifier.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
                 btnSupprimer.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
 
-                btnModifier.setOnAction(event -> {
+//                btnModifier.setOnAction(event -> {
+//                    Reclamation rec = getTableView().getItems().get(getIndex());
+//                    try {
+//                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/ModifierReclamation.fxml"));
+//                        Parent root = loader.load();
+//
+//                        ModifierReclamationController controller = loader.getController();
+//                        controller.setReclamation(rec); // on lui envoie l’objet à modifier
+//
+//                        Stage stage = new Stage();
+//                        stage.setTitle("Modifier Réclamation");
+//                        stage.setScene(new Scene(root));
+//                        stage.showAndWait();
+//
+//                        loadData(); // rafraîchir la liste après modification
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                });
+
+                btnTraiter.setOnAction(event -> {
                     Reclamation rec = getTableView().getItems().get(getIndex());
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/ModifierReclamation.fxml"));
-                        Parent root = loader.load();
 
-                        ModifierReclamationController controller = loader.getController();
-                        controller.setReclamation(rec); // on lui envoie l’objet à modifier
-
-                        Stage stage = new Stage();
-                        stage.setTitle("Modifier Réclamation");
-                        stage.setScene(new Scene(root));
-                        stage.showAndWait();
-
-                        loadData(); // rafraîchir la liste après modification
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if ("Traitée".equalsIgnoreCase(rec.getStatutRec())) {
+                        return;
                     }
+
+                    rec.setStatutRec("Traitée");
+                    service.update(rec);
+                    // MAJ localement pour éviter de recharger toute la table
+                    getTableView().getItems().set(getIndex(), rec);
+
+                    // Mise à jour immédiate du bouton
+                    btnTraiter.setDisable(true);
+                    btnTraiter.setText("Déjà traitée");
+
+                    System.out.println("✅ Réclamation traitée : " + rec.getId());
                 });
+
 
                 btnSupprimer.setOnAction(event -> {
                     Reclamation rec = getTableView().getItems().get(getIndex());
@@ -103,7 +125,24 @@ public class AfficherReclamationsController {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                setGraphic(empty ? null : hbox);
+
+                if (empty || getIndex() >= getTableView().getItems().size()) {
+                    setGraphic(null);
+                    return;
+                }
+
+                Reclamation rec = getTableView().getItems().get(getIndex());
+
+                // Actualiser l'état du bouton "Traiter"
+                if ("Traitée".equalsIgnoreCase(rec.getStatutRec())) {
+                    btnTraiter.setText("Déjà traitée");
+                    btnTraiter.setDisable(true);
+                } else {
+                    btnTraiter.setText("Traiter");
+                    btnTraiter.setDisable(false);
+                }
+
+                setGraphic(hbox);
             }
         });
     }
