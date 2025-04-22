@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox xmlns="http://javafx.com/javafx/17.0.2"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controllers.malek.ContratCardController"
+      style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 10; -fx-background-radius: 10;
+             -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 2, 2);"
+      spacing="15" prefWidth="500">
+
+    <ImageView fx:id="imageContrat" fitWidth="80" fitHeight="80" preserveRatio="true"
+               style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 2, 2); -fx-border-radius: 5;"/>
+
+    <VBox alignment="TOP_LEFT" spacing="8" prefWidth="400">
+        <Label fx:id="labelId" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2a73cc;"/>
+
+        <Label fx:id="labelCentre" style="-fx-text-fill: #333; -fx-font-size: 14px;"/>
+
+        <HBox spacing="30">
+            <VBox spacing="5">
+                <Label fx:id="labelDateDebut" style="-fx-text-fill: #666;"/>
+                <Label fx:id="labelDateFin" style="-fx-text-fill: #666;"/>
+            </VBox>
+            <VBox spacing="5">
+                <Label fx:id="labelModePaiement" style="-fx-text-fill: #666;"/>
+                <Label fx:id="labelRenouvellement" style="-fx-text-fill: #666;"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="10" style="-fx-padding: 10 0 0 0;">
+            <Button text="Modifier"
+                    onAction="#handleModifier"
+                    style="-fx-background-color: #1976D2; -fx-text-fill: white;
+                           -fx-background-radius: 5; -fx-font-weight: bold;"/>
+            <Button text="Supprimer"
+                    onAction="#handleSupprimer"
+                    style="-fx-background-color: #E53935; -fx-text-fill: white;
+                           -fx-background-radius: 5; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+</HBox>

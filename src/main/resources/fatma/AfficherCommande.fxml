@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      fx:controller="Controllers.fatma.AfficherCommandeController"
+      stylesheets="styleProduit.css"
+      prefWidth="1366" prefHeight="720"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);">
+
+    <!-- Sidebar à gauche -->
+    <fx:include source="../Sidebar.fxml" />
+
+    <!-- Contenu principal -->
+    <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 15;">
+        <!-- Titre -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333; -fx-alignment: center;" text="Liste des Commandes" />
+
+        <!-- TableView pour afficher les commandes -->
+        <TableView fx:id="commandeTable" prefHeight="600.0" prefWidth="1000.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="50" text="ID" />
+                <TableColumn fx:id="nomClientColumn" prefWidth="150" text="Nom Client" />
+                <TableColumn fx:id="adresseEmailColumn" prefWidth="200" text="Adresse Email" />
+                <TableColumn fx:id="dateCommandeColumn" prefWidth="130" text="Date Commande" />
+                <TableColumn fx:id="adresseColumn" prefWidth="200" text="Adresse" />
+                <TableColumn fx:id="totalColumn" prefWidth="100" text="Total" />
+                <TableColumn fx:id="paysColumn" prefWidth="100" text="Pays" />
+                <TableColumn fx:id="numTelephoneColumn" prefWidth="120" text="Téléphone" />
+                <TableColumn fx:id="actionColumn" prefWidth="100" text="Actions" />
+            </columns>
+        </TableView>
+    </VBox>
+
+</HBox>

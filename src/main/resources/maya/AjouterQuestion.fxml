@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="554.0" prefWidth="753.0" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.maya.AjouterQuestionController">
+    <children>
+        <VBox alignment="CENTER" layoutX="150" layoutY="100" prefWidth="500" spacing="20" />
+
+             <!-- Submit Button -->
+          <Button fx:id="addButton" layoutX="326.0" layoutY="394.0" onAction="#handleAddQuestion" prefWidth="150" text="Ajouter" />
+
+        <!-- Bouton Afficher les questions -->
+        <Button fx:id="viewListButton" layoutX="326.0" layoutY="440.0" onAction="#handleAfficherListeQuestions"
+                prefWidth="150" text="Voir les questions" />
+
+         <!-- Titre en dehors du cadre blanc -->
+         <Label layoutX="280.0" layoutY="87.0" text="Ajouter une question" textAlignment="CENTER" style="-fx-font-size: 24px; -fx-font-weight: bold;">
+
+         </Label>
+
+            <!-- Cadre blanc contenant le formulaire -->
+         <VBox alignment="CENTER" layoutX="156.0" layoutY="149.0" prefHeight="209.0" prefWidth="489.0" spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #ccc; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+
+                <!-- Question Text -->
+             <TextField fx:id="questionTextField" prefWidth="300" promptText="Entrez la question" />
+
+                <!-- Answer Type -->
+             <ComboBox fx:id="answerTypeComboBox" prefWidth="300" promptText="Entrez le type de réponse">
+                 <items>
+                     <FXCollections fx:factory="observableArrayList">
+                         <String fx:value="Yes" />
+                         <String fx:value="No" />
+                         <String fx:value="Sometimes" />
+                     </FXCollections>
+                 </items>
+             </ComboBox>
+
+                <!-- Points -->
+             <TextField fx:id="pointsTextField" prefWidth="300" promptText="Entrez les points" />
+
+                <!-- Message Label -->
+             <Label fx:id="statusLabel" alignment="CENTER" text="" textFill="red" />
+
+            </VBox>
+    </children>
+</AnchorPane>

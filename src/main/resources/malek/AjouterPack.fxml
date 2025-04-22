@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.malek.AjouterPackController"
+            prefHeight="600.0" prefWidth="700.0"
+            stylesheets="@/style.css"
+            styleClass="root">
+
+    <children>
+        <VBox fx:id="formContainer" spacing="10" alignment="CENTER_LEFT" layoutX="50" layoutY="30" styleClass="formContainer">
+
+            <Label text="Ajouter un pack" styleClass="title" />
+
+            <VBox spacing="5">
+                <Label text="Nom du pack" styleClass="field-label"/>
+                <TextField fx:id="TFNomPack" styleClass="text-field"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Description" styleClass="field-label"/>
+                <TextField fx:id="TFDescription" styleClass="text-field"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Prix" styleClass="field-label"/>
+                <TextField fx:id="TFPrix" styleClass="text-field"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Durée (en jours)" styleClass="field-label"/>
+                <TextField fx:id="TFDuree" styleClass="text-field"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Photo" styleClass="field-label"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="TFPhoto" styleClass="text-field"/>
+                    <Button fx:id="btnUploadPhoto" text="Parcourir" onAction="#handleUploadPhoto" styleClass="button"/>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Code de réduction" styleClass="field-label"/>
+                <TextField fx:id="TFDiscountCode" styleClass="text-field"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Est utilisé (true/false)" styleClass="field-label"/>
+                <TextField fx:id="TFIsUsed" styleClass="text-field"/>
+            </VBox>
+
+            <HBox spacing="20" alignment="CENTER" styleClass="button-container">
+                <Button fx:id="btnAjouter" text="Ajouter" onAction="#handleAjouter" styleClass="button"/>
+                <Button fx:id="btnAnnuler" text="Annuler" onAction="#handleAnnuler" styleClass="button cancel-button"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>

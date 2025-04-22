@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx/21.0.2"
+      fx:controller="Controllers.fatma.ModifierCategorieController"
+      stylesheets="styleProduit.css"
+      prefWidth="1366" prefHeight="720"
+      spacing="0"
+      style="-fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);">
+
+    <!-- Sidebar à gauche -->
+    <fx:include source="../Sidebar.fxml" />
+
+    <!-- Contenu principal -->
+    <VBox alignment="CENTER" spacing="20" style="-fx-padding: 30;">
+        <Label text="Modifier une Catégorie"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2b6f3e;" />
+
+        <Label text="Nom Catégorie :" />
+        <TextField fx:id="nomCategorieField" prefWidth="300.0" />
+
+        <HBox spacing="15" alignment="CENTER">
+            <Button fx:id="retourButton"
+                    text="Retour"
+                    onAction="#handleRetour"
+                    styleClass="button" />
+            <Button text="Modifier"
+                    onAction="#modifierCategorie"
+                    styleClass="btn-ajouter" />
+        </HBox>
+    </VBox>
+
+</HBox>

@@ -1,0 +1,134 @@
+.root {
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);
+}
+
+#formContainer {
+    -fx-background-color: white;
+    -fx-padding: 40;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 15, 0, 0, 5);
+    -fx-max-width: 800px;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #2d3436;
+    -fx-font-weight: bold;
+}
+
+.text-field, .password-field, .combo-box, .text-area {
+    -fx-pref-width: 150px;
+    -fx-background-radius: 10;
+    -fx-border-color: #2ecc71;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.2;
+    -fx-padding: 5 10;
+}
+
+.button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-padding: 8 20;
+}
+
+.button:hover {
+    -fx-background-color: #27ae60;
+}
+
+@font-face {
+    font-family: "InnerbloomFont";
+    src: url("fonts/CormorantUpright-Bold.ttf"); /* ajuste le chemin si besoin */
+}
+
+.title-bar {
+    -fx-background-color: #A5D6A7;  /* Vert pastel doux */
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.3, 0, 3);
+}
+
+.title-bar .title {
+    -fx-font-family: "InnerbloomFont";
+    -fx-font-size: 28px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+
+
+
+.logo {
+    -fx-effect: dropshadow(gaussian, rgba(0,100,0,0.5), 10, 0.3, 0, 2);
+}
+
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.1, 0, 4);
+    -fx-background-radius: 10;
+}
+.card {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0.5, 0, 0);
+    -fx-cursor: hand;
+}
+
+.card:hover .card-overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-padding: 10;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-visible: true;
+}
+/* Style de la grille */
+.grid-pane {
+    -fx-padding: 20;
+    -fx-background-color: #f8f8f8;
+}
+
+/* Style des cartes */
+.card {
+    -fx-background-color: white;
+    -fx-border-radius: 8px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-padding: 15;
+}
+
+/* Image des cartes */
+.card img {
+    -fx-fit-width: 180px;
+    -fx-fit-height: 120px;
+    -fx-preserve-ratio: true;
+}
+.table-button {
+    -fx-background-color: #81C784;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-padding: 4 12;
+}
+
+.table-button:hover {
+    -fx-background-color: #66BB6A;
+}
+
+.table-button.delete {
+    -fx-background-color: #e57373;
+}
+
+.table-button.delete:hover {
+    -fx-background-color: #ef5350;
+}
+.label {
+    -fx-text-fill: grey;
+}
+#totalComLabel {
+    -fx-text-fill: grey;
+}

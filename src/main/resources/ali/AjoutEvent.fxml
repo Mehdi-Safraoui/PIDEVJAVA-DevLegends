@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.ali.AjoutEvent"
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="@/style.css">
+
+    <children>
+        <Label layoutX="50.0" layoutY="30.0" text="Titre de l'événement :" />
+        <TextField fx:id="titreField" layoutX="220.0" layoutY="25.0" prefWidth="300.0" />
+
+        <Label layoutX="50.0" layoutY="80.0" text="Date de l'événement :" />
+        <DatePicker fx:id="datePicker" layoutX="220.0" layoutY="75.0" prefWidth="300.0" />
+
+        <Label layoutX="50.0" layoutY="130.0" text="Lieu :" />
+        <TextField fx:id="lieuField" layoutX="220.0" layoutY="125.0" prefWidth="300.0" />
+
+        <Label layoutX="50.0" layoutY="180.0" text="Statut :" />
+        <TextField fx:id="statutField" layoutX="220.0" layoutY="175.0" prefWidth="300.0" />
+
+        <Label layoutX="50.0" layoutY="230.0" text="ID Formation :" />
+        <TextField fx:id="formationIdField" layoutX="220.0" layoutY="225.0" prefWidth="300.0" />
+
+        <Button text="Ajouter Événement" layoutX="220.0" layoutY="290.0" prefWidth="300.0"
+                onAction="#ajouterEvenement" />
+        <Button text="Modifier un événement" layoutX="220.0" layoutY="340.0" prefWidth="145.0"
+                onAction="#allerModifierPage" />
+
+        <Button text="Supprimer un événement" layoutX="375.0" layoutY="340.0" prefWidth="145.0"
+                onAction="#supprimerEvenementPopup" />
+
+    </children>
+</AnchorPane>

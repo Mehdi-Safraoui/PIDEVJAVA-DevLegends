@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.salsabil.ModifierUserController"
+            prefWidth="600" prefHeight="650">
+
+    <VBox spacing="10" padding="20" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+
+        <Label text="Modifier Profil Utilisateur" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+        <GridPane hgap="10" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Nom :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="TFNom" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Prénom :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="TFPrenom" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Email :" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="TFEmail" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Âge :" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="TFAge" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Rôle :" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="TFRole" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Spécialité :" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="TFSpecialite" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="Téléphone :" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="TFNumTel" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <Label text="Adresse :" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="TFAdresse" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+            <Label text="Image Profil :" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+            <HBox spacing="5" GridPane.rowIndex="8" GridPane.columnIndex="1">
+                <TextField fx:id="TFImage" editable="false" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnUploadImage" text="Parcourir" onAction="#handleUploadImage"/>
+            </HBox>
+        </GridPane>
+
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="Enregistrer" onAction="#handleEnregistrer" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+            <Button text="Annuler" onAction="#handleAnnuler" style="-fx-background-color: #f44336; -fx-text-fill: white;" />
+        </HBox>
+
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.malek.ModifierCentreController"
+            prefHeight="600.0" prefWidth="700.0"
+            stylesheets="@/style.css"
+            styleClass="root">
+
+    <children>
+        <VBox fx:id="formContainer" spacing="10" alignment="CENTER_LEFT" layoutX="50" layoutY="30" styleClass="formContainer">
+
+            <Label text="Modifier un centre" styleClass="title" />
+
+            <!-- Affichage du centre actuel -->
+            <VBox spacing="5">
+                <Label text="Centre actuel" styleClass="field-label"/>
+                <Label fx:id="labelNomCentre" styleClass="subtitle"/>
+            </VBox>
+
+            <!-- Champ Nom -->
+            <VBox spacing="5">
+                <Label text="Nouveau nom" styleClass="field-label"/>
+                <TextField fx:id="TFNom" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Adresse -->
+            <VBox spacing="5">
+                <Label text="Adresse" styleClass="field-label"/>
+                <TextField fx:id="TFAdresse" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Téléphone -->
+            <VBox spacing="5">
+                <Label text="Téléphone (8 chiffres)" styleClass="field-label"/>
+                <TextField fx:id="TFTelephone" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Email -->
+            <VBox spacing="5">
+                <Label text="Email" styleClass="field-label"/>
+                <TextField fx:id="TFEmail" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Spécialité -->
+            <VBox spacing="5">
+                <Label text="Spécialité" styleClass="field-label"/>
+                <TextField fx:id="TFSpecialite" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Capacité -->
+            <VBox spacing="5">
+                <Label text="Capacité" styleClass="field-label"/>
+                <TextField fx:id="TFCapacite" styleClass="text-field"/>
+            </VBox>
+
+            <!-- Champ Photo -->
+            <VBox spacing="5">
+                <Label text="Photo" styleClass="field-label"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="TFPhoto" styleClass="text-field"/>
+                    <Button fx:id="btnUploadPhoto" text="Parcourir" onAction="#handleUploadPhoto" styleClass="button"/>
+                </HBox>
+            </VBox>
+
+            <!-- Boutons -->
+            <HBox spacing="20" alignment="CENTER" styleClass="button-container">
+                <Button fx:id="btnEnregistrer" text="Enregistrer" onAction="#handleEnregistrer" styleClass="button"/>
+                <Button fx:id="btnAnnuler" text="Annuler" onAction="#handleAnnuler" styleClass="button cancel-button"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>

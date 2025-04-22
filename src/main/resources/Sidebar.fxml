@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<?import java.net.URL?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.SidebarController"
+      styleClass="sidebar" spacing="15" alignment="TOP_LEFT" prefWidth="250">
+    <stylesheets>
+        <URL value="@SidebarStyle.css" />
+    </stylesheets>
+
+    <Label text="INNERBLOOM" styleClass="sidebar-title"/>
+
+    <!-- Profile Button -->
+    <Button fx:id="btnMonProfil" styleClass="sidebar-button" onAction="#handleMonProfil" maxWidth="Infinity">
+        <graphic>
+            <SVGPath content="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"
+                     styleClass="sidebar-icon"/>
+        </graphic>
+        <text>Mon Profil</text>
+    </Button>
+
+    <!-- Consultations Section -->
+    <TitledPane text="Consultations" styleClass="titled-pane" expanded="false">
+        <graphic>
+            <SVGPath content="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                     styleClass="titled-pane-icon"/>
+        </graphic>
+        <VBox styleClass="titled-pane-content" spacing="5">
+            <Button styleClass="nested-button" onAction="#goToArticles" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Articles de conseil</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToConsultations" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M18 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-6 6H8V7h4v2zm2 4H8v-2h6v2z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Consultations</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToQuestion" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Questions</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToReponse" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Réponses</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToListArticles" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Voir les Articles</text>
+            </Button>
+        </VBox>
+    </TitledPane>
+
+    <!-- Centres et Contrats Section -->
+    <TitledPane text="Centres et Contrats" styleClass="titled-pane" expanded="false">
+        <graphic>
+            <SVGPath content="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                     styleClass="titled-pane-icon"/>
+        </graphic>
+        <VBox styleClass="titled-pane-content" spacing="5">
+            <Button styleClass="nested-button" onAction="#goToCentre" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Centres</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToPack" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM10 4h4v2h-4V4zm10 15H4v-2h16v2zm0-5H4V8h4v2h2V8h4v2h2V8h4v6z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Packs</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToAddContrat" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Signer Contrat</text>
+            </Button>
+            <Button styleClass="nested-button"  onAction="#goToContrat" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Mes Contrats</text>
+            </Button>
+        </VBox>
+    </TitledPane>
+
+    <!-- Achat Section -->
+    <TitledPane text="Achat" styleClass="titled-pane" expanded="false">
+        <graphic>
+            <SVGPath content="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                     styleClass="titled-pane-icon"/>
+        </graphic>
+        <VBox styleClass="titled-pane-content" spacing="5">
+            <Button styleClass="nested-button" maxWidth="Infinity" onAction="#goToAjouterProduit">
+                <graphic>
+                    <SVGPath content="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Ajouter Produit</text>
+            </Button>
+            <Button styleClass="nested-button" maxWidth="Infinity" onAction="#goToAjouterCategorie">
+                <graphic>
+                    <SVGPath content="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Ajouter Catégorie</text>
+            </Button>
+            <Button styleClass="nested-button" maxWidth="Infinity" onAction="#goToProduit">
+                <graphic>
+                    <SVGPath content="M13 12h7v1.5h-7zm0-2.5h7V11h-7zm0 5h7V16h-7zM21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15h-9V6h9v13z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Afficher Produits</text>
+            </Button>
+            <Button styleClass="nested-button" maxWidth="Infinity" onAction="#goToAfficherCategorie">
+                <graphic>
+                    <SVGPath content="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Afficher Catégories</text>
+            </Button>
+            <Button styleClass="nested-button" maxWidth="Infinity" onAction="#goToCommande">
+                <graphic>
+                    <SVGPath content="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Afficher Commandes</text>
+            </Button>
+        </VBox>
+    </TitledPane>
+
+
+    <!-- Événement et Formation Section -->
+    <TitledPane text="Événement et Formation" styleClass="titled-pane" expanded="false">
+        <graphic>
+            <SVGPath content="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                     styleClass="titled-pane-icon"/>
+        </graphic>
+        <VBox styleClass="titled-pane-content" spacing="5">
+            <Button styleClass="nested-button" onAction="#goToEvent" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Événements</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToFormation" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Formations</text>
+            </Button>
+        </VBox>
+    </TitledPane>
+
+    <!-- Réclamations et Avis Section -->
+    <TitledPane text="Réclamations et Avis" styleClass="titled-pane" expanded="false">
+        <graphic>
+            <SVGPath content="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"
+                     styleClass="titled-pane-icon"/>
+        </graphic>
+        <VBox styleClass="titled-pane-content" spacing="5">
+            <Button styleClass="nested-button" onAction="#goToReclamations" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Réclamations</text>
+            </Button>
+            <Button styleClass="nested-button" onAction="#goToAvis" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Avis</text>
+            </Button>
+
+            <Button styleClass="nested-button" onAction="#goToAddAvis" maxWidth="Infinity">
+                <graphic>
+                    <SVGPath content="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                             styleClass="nested-icon"/>
+                </graphic>
+                <text>Ajouter Avis</text>
+            </Button>
+        </VBox>
+    </TitledPane>
+
+    <!-- Login Button -->
+    <Button onAction="#handleLogout" styleClass="sidebar-button login-button" maxWidth="Infinity">
+        <graphic>
+            <SVGPath content="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"
+                     styleClass="sidebar-icon"/>
+        </graphic>
+        <text>Se déconnecter</text>
+    </Button>
+</VBox>

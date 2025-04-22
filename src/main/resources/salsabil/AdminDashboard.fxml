@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.salsabil.AdminDashboardController"
+            prefWidth="900.0" prefHeight="600.0" stylesheets="@/style.css">
+
+    <VBox spacing="20.0" alignment="TOP_CENTER" prefWidth="900">
+
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <ImageView fx:id="roleIcon" fitHeight="40.0" fitWidth="40.0" preserveRatio="true"/>
+            <Label text="Tableau de bord Admin" styleClass="title"/>
+            <Label fx:id="dashboardTitle" text="" styleClass="subtitle"/>
+        </HBox>
+
+        <!-- Section Statistiques -->
+        <!--
+        <HBox spacing="20.0" alignment="CENTER">
+            <VBox styleClass="stat-card" alignment="CENTER" spacing="10.0">
+                <Label text="Utilisateurs" styleClass="stat-title"/>
+                <Label fx:id="lblTotalUsers" text="120" styleClass="stat-value"/>
+            </VBox>
+
+            <VBox styleClass="stat-card" alignment="CENTER" spacing="10.0">
+                <Label text="Médecins" styleClass="stat-title"/>
+                <Label fx:id="lblTotalDoctors" text="35" styleClass="stat-value"/>
+            </VBox>
+
+            <VBox styleClass="stat-card" alignment="CENTER" spacing="10.0">
+                <Label text="Patients" styleClass="stat-title"/>
+                <Label fx:id="lblTotalPatients" text="85" styleClass="stat-value"/>
+            </VBox>
+        </HBox>
+        -->
+
+        <!-- Actions -->
+        <HBox spacing="20.0" alignment="CENTER">
+            <Button fx:id="btnAfficherProfil" text="Afficher Profil" styleClass="button" onAction="#handleAfficherProfil"/>
+            <Button fx:id="showUsersButton" onAction="#handleShowUsers" styleClass="button" text="Afficher les utilisateurs" />
+            <Button text="Déconnexion" styleClass="danger-button" onAction="#handleLogout"/>
+        </HBox>
+    </VBox>
+</AnchorPane>
