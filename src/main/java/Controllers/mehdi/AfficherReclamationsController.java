@@ -1,39 +1,27 @@
 package Controllers.mehdi;
 
 import Entities.mehdi.Reclamation;
+import Services.mehdi.EmailService;
 import Services.mehdi.ReclamationService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-
-import java.io.IOException;
+import java.util.Optional;
 
 public class AfficherReclamationsController {
 
-    @FXML
-    private TableView<Reclamation> tableReclamations;
-    @FXML
-    private TableColumn<Reclamation, Integer> colId;
-    @FXML
-    private TableColumn<Reclamation, String> colSujet;
-    @FXML
-    private TableColumn<Reclamation, String> colContenu;
-    @FXML
-    private TableColumn<Reclamation, String> colDate;
-    @FXML
-    private TableColumn<Reclamation, String> colEmail;
-    @FXML
-    private TableColumn<Reclamation, String> colStatut;
-    @FXML
-    private TableColumn<Reclamation, Void> colActions;
+    @FXML private TableView<Reclamation> tableReclamations;
+    @FXML private TableColumn<Reclamation, Integer> colId;
+    @FXML private TableColumn<Reclamation, String> colSujet;
+    @FXML private TableColumn<Reclamation, String> colContenu;
+    @FXML private TableColumn<Reclamation, String> colDate;
+    @FXML private TableColumn<Reclamation, String> colEmail;
+    @FXML private TableColumn<Reclamation, String> colStatut;
+    @FXML private TableColumn<Reclamation, Void> colActions;
 
     private final ReclamationService service = new ReclamationService();
     private ObservableList<Reclamation> reclamationsList;
@@ -41,8 +29,6 @@ public class AfficherReclamationsController {
     @FXML
     public void initialize() {
         loadData();
-        this.getClass().getResource("/AvisRecStyle.css").toExternalForm();
-
     }
 
     private void loadData() {
@@ -55,15 +41,12 @@ public class AfficherReclamationsController {
         colEmail.setCellValueFactory(new PropertyValueFactory<>("emailRec"));
         colStatut.setCellValueFactory(new PropertyValueFactory<>("statutRec"));
 
-        // Ajouter boutons
         addActionsButtons();
-
         tableReclamations.setItems(reclamationsList);
     }
 
     private void addActionsButtons() {
         colActions.setCellFactory(param -> new TableCell<>() {
-//            private final Button btnModifier = new Button("Modifier");
             private final Button btnTraiter = new Button("Traiter");
             private final Button btnSupprimer = new Button("Supprimer");
             private final HBox hbox = new HBox(10, btnTraiter, btnSupprimer);
@@ -71,54 +54,64 @@ public class AfficherReclamationsController {
             {
                 hbox.setStyle("-fx-alignment: center;");
                 btnTraiter.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
-//                btnModifier.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
                 btnSupprimer.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
 
-//                btnModifier.setOnAction(event -> {
-//                    Reclamation rec = getTableView().getItems().get(getIndex());
-//                    try {
-//                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/ModifierReclamation.fxml"));
-//                        Parent root = loader.load();
-//
-//                        ModifierReclamationController controller = loader.getController();
-//                        controller.setReclamation(rec); // on lui envoie l’objet à modifier
-//
-//                        Stage stage = new Stage();
-//                        stage.setTitle("Modifier Réclamation");
-//                        stage.setScene(new Scene(root));
-//                        stage.showAndWait();
-//
-//                        loadData(); // rafraîchir la liste après modification
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                });
+                btnTraiter.setOnAction(event -> handleTraiterAction());
+                btnSupprimer.setOnAction(event -> handleSupprimerAction());
+            }
 
-                btnTraiter.setOnAction(event -> {
-                    Reclamation rec = getTableView().getItems().get(getIndex());
+            private void handleTraiterAction() {
+                Reclamation rec = getTableView().getItems().get(getIndex());
 
-                    if ("Traitée".equalsIgnoreCase(rec.getStatutRec())) {
-                        return;
+                if ("Traitée".equalsIgnoreCase(rec.getStatutRec())) {
+                    return;
+                }
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmer le traitement");
+                alert.setHeaderText("Traiter la réclamation #" + rec.getId());
+                alert.setContentText("Êtes-vous sûr de traiter cette réclamation ?");
+
+                alert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        try {
+                            rec.setStatutRec("Traitée");
+                            service.update(rec);
+                            getTableView().refresh();
+
+                            EmailService.sendReclamationProcessedEmail(
+                                    rec.getEmailRec(),
+                                    "Client",
+                                    rec.getId()
+                            );
+
+                            showAlert(Alert.AlertType.INFORMATION,
+                                    "Succès",
+                                    "Réclamation traitée",
+                                    "L'utilisateur a été notifié par email.");
+                        } catch (Exception e) {
+                            showAlert(Alert.AlertType.ERROR,
+                                    "Erreur",
+                                    "Problème d'envoi d'email",
+                                    "La réclamation a été traitée mais l'email n'a pas pu être envoyé: " + e.getMessage());
+                        }
                     }
-
-                    rec.setStatutRec("Traitée");
-                    service.update(rec);
-                    // MAJ localement pour éviter de recharger toute la table
-                    getTableView().getItems().set(getIndex(), rec);
-
-                    // Mise à jour immédiate du bouton
-                    btnTraiter.setDisable(true);
-                    btnTraiter.setText("Déjà traitée");
-
-                    System.out.println("✅ Réclamation traitée : " + rec.getId());
                 });
+            }
 
+            private void handleSupprimerAction() {
+                Reclamation rec = getTableView().getItems().get(getIndex());
 
-                btnSupprimer.setOnAction(event -> {
-                    Reclamation rec = getTableView().getItems().get(getIndex());
-                    service.deleteById(rec.getId());
-                    loadData();
-                    System.out.println("🗑️ Supprimé: " + rec);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation de suppression");
+                alert.setHeaderText("Supprimer la réclamation #" + rec.getId());
+                alert.setContentText("Êtes-vous sûr de vouloir supprimer cette réclamation ?\nSujet: " + rec.getSujetRec());
+
+                alert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        service.deleteById(rec.getId());
+                        reclamationsList.remove(rec);
+                    }
                 });
             }
 
@@ -132,20 +125,18 @@ public class AfficherReclamationsController {
                 }
 
                 Reclamation rec = getTableView().getItems().get(getIndex());
-
-                // Actualiser l'état du bouton "Traiter"
-                if ("Traitée".equalsIgnoreCase(rec.getStatutRec())) {
-                    btnTraiter.setText("Déjà traitée");
-                    btnTraiter.setDisable(true);
-                } else {
-                    btnTraiter.setText("Traiter");
-                    btnTraiter.setDisable(false);
-                }
-
+                btnTraiter.setDisable("Traitée".equalsIgnoreCase(rec.getStatutRec()));
+                btnTraiter.setText("Traitée".equalsIgnoreCase(rec.getStatutRec()) ? "Déjà traitée" : "Traiter");
                 setGraphic(hbox);
             }
         });
     }
 
-
+    private void showAlert(Alert.AlertType type, String title, String header, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 }

@@ -109,13 +109,11 @@ public class AfficherAvisController {
     private void addActionsButtons() {
         colActions.setCellFactory(param -> new TableCell<>() {
             //            private final Button btnModifier = new Button("Modifier");
-            private final Button btnTraiter = new Button("Traiter");
             private final Button btnSupprimer = new Button("Supprimer");
-            private final HBox hbox = new HBox(10, btnTraiter, btnSupprimer);
+            private final HBox hbox = new HBox(10, btnSupprimer);
 
             {
 //                btnModifier.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
-                btnTraiter.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
                 btnSupprimer.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
                 hbox.setStyle("-fx-alignment: center;");
 
@@ -142,21 +140,6 @@ public class AfficherAvisController {
 //                    }
 //                });
 
-                btnTraiter.setOnAction(event -> {
-                    Avis avis = getTableView().getItems().get(getIndex());
-
-                    if ("Traitée".equalsIgnoreCase(avis.getStatutAvis())) return;
-
-                    avis.setStatutAvis("Traitée");
-                    service.update(avis); // Mets à jour en BDD
-                    getTableView().getItems().set(getIndex(), avis); // Mise à jour locale
-
-                    btnTraiter.setDisable(true);
-                    btnTraiter.setText("Déjà traité");
-
-                    System.out.println("✅ Avis traité : " + avis.getId());
-                });
-
                 btnSupprimer.setOnAction(event -> {
                     Avis avis = getTableView().getItems().get(getIndex());
 
@@ -177,23 +160,7 @@ public class AfficherAvisController {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-
-                if (empty || getIndex() >= getTableView().getItems().size()) {
-                    setGraphic(null);
-                    return;
-                }
-
-                Avis avis = getTableView().getItems().get(getIndex());
-
-                if ("Traitée".equalsIgnoreCase(avis.getStatutAvis())) {
-                    btnTraiter.setText("Déjà traité");
-                    btnTraiter.setDisable(true);
-                } else {
-                    btnTraiter.setText("Traiter");
-                    btnTraiter.setDisable(false);
-                }
-
-                setGraphic(hbox);
+                setGraphic(empty ? null : hbox);
             }
         });
     }

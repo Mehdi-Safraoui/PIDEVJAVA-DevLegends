@@ -9,8 +9,7 @@
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/mehdi/AfficherAvisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/mehdi/AfficherAvisController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/mehdi/AfficherReclamationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/mehdi/AfficherReclamationsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/mehdi/Reclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/mehdi/Reclamation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mehdi/AfficherReclamations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mehdi/AfficherReclamations.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/mehdi/Avis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/mehdi/Avis.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +29,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="user" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
