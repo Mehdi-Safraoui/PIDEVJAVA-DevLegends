@@ -95,6 +95,14 @@
 .profile-image-view {
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.2, 0, 2);
 }
+
+.link-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #27ae60;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
 #goToLoginButton {
     -fx-background-color: transparent;
     -fx-text-fill: #27ae60;
@@ -108,4 +116,16 @@
 }
 .text-error {
     -fx-text-fill: #ca2626;
+}
+#forgotPasswordButton {
+    -fx-background-color: transparent;
+    -fx-underline: true;
+    -fx-text-fill: #28a745;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+}
+
+#forgotPasswordButton:hover {
+    -fx-text-fill: #245e0b;
 }

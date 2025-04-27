@@ -199,6 +199,8 @@ public class SidebarController {
     @FXML
     private void handleLogout(ActionEvent event) {
         try {
+            Session.clear();
+
             // Fermer la fenêtre actuelle
             ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
 

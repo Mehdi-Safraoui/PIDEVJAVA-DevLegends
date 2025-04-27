@@ -45,7 +45,7 @@ public class AvatarUtils {
 
         // Sauvegarder l'image
         String fileName = "avatar_face_" + hash + ".png";
-        String outputPath = "C:\\Users\\khoub\\OneDrive\\Bureau\\projet\\src\\main\\resources\\images\\avatars\\" + fileName;
+        String outputPath = "src/main/resources/images/avatars/" + fileName;
         try {
             ImageIO.write(image, "png", new File(outputPath));
             return outputPath;

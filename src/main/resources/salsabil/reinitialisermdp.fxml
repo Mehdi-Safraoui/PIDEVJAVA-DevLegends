@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.salsabil.ReinitialiserMdpController">
+
+    <!-- En-tête -->
+    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="header-box">
+        <Label styleClass="title" text="Réinitialiser Mot de Passe" style="-fx-font-size: 18px; -fx-font-weight: bold;">
+            <padding>
+                <Insets left="20.0" top="20.0" />
+            </padding>
+        </Label>
+    </HBox>
+
+    <StackPane alignment="CENTER" prefHeight="500.0" prefWidth="800.0">
+        <!-- Conteneur principal avec ombre et coins arrondis -->
+        <VBox fx:id="formContainerProfil" alignment="CENTER" maxHeight="400.0" maxWidth="500.0" minHeight="400.0" minWidth="500.0" prefHeight="400.0" prefWidth="500.0" spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 20px; -fx-border-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);">
+
+            <Label text="Code de vérification" style="-fx-font-size: 14px;" />
+            <TextField fx:id="codeField" promptText="Entrez le code" maxWidth="250.0"/>
+
+            <Button fx:id="sendCodeButton" text="Envoyer Code" style="-fx-background-color: #28a745; -fx-text-fill: white;" maxWidth="250.0"/>
+
+            <Label text="Nouveau Mot de Passe" style="-fx-font-size: 14px;" />
+            <PasswordField fx:id="newPasswordField" promptText="Entrez votre nouveau mot de passe" maxWidth="250.0"/>
+
+            <Label text="Confirmer Mot de Passe" style="-fx-font-size: 14px;" />
+            <PasswordField fx:id="confirmPasswordField" promptText="Confirmez votre nouveau mot de passe" maxWidth="250.0"/>
+
+            <Button fx:id="validateButton" text="Valider" style="-fx-background-color: #28a745; -fx-text-fill: white;" maxWidth="250.0"/>
+
+        </VBox>
+    </StackPane>
+
+</AnchorPane>
