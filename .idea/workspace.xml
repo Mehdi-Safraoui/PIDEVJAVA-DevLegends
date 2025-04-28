@@ -5,46 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e8515e2-fec0-4a82-a4e1-865c41c40ac0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/NavbarController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/AchatPackController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/PaymentPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utils/GeocodingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Navbar.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/NavbarStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/malek/paymentPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/salsabil/ProfilUser.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/SidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/SidebarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherCentreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherCentreFrontController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherCentreFrontController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherContratController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherContratController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherContratFrontController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherContratFrontController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherPackFrontController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/AfficherPackFrontController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/malek/AjouterCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/AjouterCentreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/malek/AjouterContratController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/AjouterContratController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/malek/ModifierCentreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/malek/ModifierCentreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/salsabil/AfficherUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/salsabil/AfficherUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/salsabil/AjouterUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/salsabil/AjouterUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/salsabil/ProfilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/salsabil/ProfilController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/CentreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/CentreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/ContratService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/ContratService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/PackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/PackService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/salsabil/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/salsabil/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/MainFXm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/MainFXm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sidebar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/malek/AfficherCentre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/malek/AfficherCentre.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/malek/AfficherCentreFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/malek/AfficherCentreFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/malek/AfficherContrat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/malek/AfficherContrat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/malek/AfficherContratFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/malek/AfficherContratFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/malek/AfficherPackFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/malek/AfficherPackFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/malek/AjouterCentre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/malek/AjouterCentre.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/malek/AjouterContrat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/malek/AjouterContrat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/malek/ModifierCentre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/malek/ModifierCentre.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/salsabil/AjouterUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/salsabil/AjouterUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/salsabil/Profil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/salsabil/Profil.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +169,7 @@
       <workItem from="1745708385277" duration="1110000" />
       <workItem from="1745757322750" duration="15964000" />
       <workItem from="1745834720944" duration="1800000" />
-      <workItem from="1745836545349" duration="665000" />
+      <workItem from="1745836545349" duration="1327000" />
     </task>
     <servers />
   </component>
