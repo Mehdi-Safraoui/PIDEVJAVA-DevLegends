@@ -6,6 +6,7 @@ import Interfaces.InterfaceCRUD;
 import Utils.MyDB;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
@@ -30,12 +31,85 @@ public class UserService implements InterfaceCRUD<User> {
         }
         return false;
     }
+    public void bannirUtilisateur(int userId, LocalDateTime bannedUntil) {
+        String sql = "UPDATE user SET banned_until = ?, statut_compte = false WHERE id = ?";
+        try (Connection conn = MyDB.getInstance().getCon();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setTimestamp(1, Timestamp.valueOf(bannedUntil));
+            stmt.setInt(2, userId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void liftBan(int userId) {
+        String sql = "UPDATE user SET banned_until = NULL WHERE id = " + userId;
+        try (Statement stmt = con.createStatement()) {
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la levée du bannissement : " + e.getMessage());
+        }
+    }
+    public void desactiverCompte(int userId) {
+        String req = "UPDATE user SET statut_compte = false WHERE id = ?";
+        try {
+            PreparedStatement pst = con.prepareStatement(req);
+            pst.setInt(1, userId);
+            pst.executeUpdate();
+            System.out.println("✅ Compte désactivé avec succès !");
+        } catch (SQLException e) {
+            System.out.println("❌ Erreur lors de la désactivation du compte : " + e.getMessage());
+        }
+    }
+    public String getMotDePasseParId(int id) {
+        String query = "SELECT password FROM user WHERE id = " + id;
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getString("password");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean updateMotDePasse(int id, String nouveauHash) {
+        String query = "UPDATE user SET password = ? WHERE id = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, nouveauHash);
+            pstmt.setInt(2, id);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean updatePassword(String userEmail, String newPassword) {
+        String sql = "UPDATE user SET password = ? WHERE user_email = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            pstmt.setString(1, hashedPassword);
+            pstmt.setString(2, userEmail);
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("✅ Mot de passe mis à jour avec succès !");
+                return true;
+            } else {
+                System.out.println("❌ Aucun utilisateur trouvé avec cet email.");
+            }
+        } catch (SQLException e) {
+            System.out.println("❌ Erreur lors de la mise à jour du mot de passe : " + e.getMessage());
+        }
+        return false;
+    }
 
     @Override
     public void add(User user) {
-        String req = "INSERT INTO user (first_name, last_name, user_email, password, user_role, user_age, doc_specialty, num_tel, address, statut_compte, user_picture) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String req = "INSERT INTO user (first_name, last_name, user_email, password, user_role, user_age, doc_specialty, num_tel, address, statut_compte, user_picture, roles) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement pst = con.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
@@ -53,6 +127,23 @@ public class UserService implements InterfaceCRUD<User> {
             pst.setString(9, user.getAddress());
             pst.setBoolean(10, user.isStatut_compte());
             pst.setString(11, user.getUser_picture());
+            String role = user.getUser_role().toLowerCase();
+            String rolesJson;
+            switch (role) {
+                case "medecin":
+                    rolesJson = "[\"ROLE_USER\", \"ROLE_MEDECIN\"]";
+                    break;
+                case "patient":
+                    rolesJson = "[\"ROLE_USER\", \"ROLE_PATIENT\"]";
+                    break;
+                case "admin":
+                    rolesJson = "[\"ROLE_ADMIN\"]";
+                    break;
+                default:
+                    rolesJson = "[\"ROLE_USER\"]";
+            }
+            user.setRoles(rolesJson);
+            pst.setString(12, rolesJson);
 
             pst.executeUpdate();
 
@@ -124,7 +215,62 @@ public class UserService implements InterfaceCRUD<User> {
             }
         }
     }
-/*
+    public User findByEmail(String email) {
+        String req = "SELECT * FROM user WHERE user_email = ?";
+        try {
+            PreparedStatement pst = con.prepareStatement(req);
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getString("user_email"),
+                        rs.getString("password"),
+                        rs.getString("user_role"),
+                        rs.getInt("user_age"),
+                        rs.getString("user_picture"),
+                        rs.getString("doc_specialty"),
+                        rs.getString("roles"),
+                        rs.getBoolean("statut_compte"),
+                        rs.getString("num_tel"),
+                        rs.getString("discount_code"),
+                        rs.getBoolean("is_discount_used"),
+                        rs.getString("reset_code"),
+                        rs.getTimestamp("banned_until") != null ? rs.getTimestamp("banned_until").toLocalDateTime() : null,
+                        rs.getDouble("latitude"),
+                        rs.getDouble("longitude"),
+                        rs.getString("address")
+                );
+            }
+
+        } catch (SQLException e) {
+            System.out.println("❌ Erreur lors de la recherche de l'utilisateur : " + e.getMessage());
+        }
+        return null;
+    }
+    public User findNumtelByEmail(String email) {
+        User user = null;
+        try {
+            String req = "SELECT * FROM user WHERE user_email = '" + email + "'";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setNum_tel(rs.getString("num_tel"));
+                user.setUser_email(rs.getString("user_email"));
+                // Et d'autres champs si besoin
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return user;
+    }
+
+    /*
     @Override
     public void update(User user) {
         String req = "UPDATE user SET first_name=?, last_name=?, user_email=?, password=?, user_role=?, user_age=?, doc_specialty=?, num_tel=?, address=?, user_picture=?, statut_compte=? WHERE id=?";

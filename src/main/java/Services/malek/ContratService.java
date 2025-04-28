@@ -2,7 +2,7 @@ package Services.malek;
 
 import Entities.malek.Contrat;
 import Interfaces.InterfaceCRUD;
-import Utiles.MyDB;
+import Utils.MyDB;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -107,4 +107,34 @@ public class ContratService implements InterfaceCRUD<Contrat> {
 
         return contrats;
     }
+
+
+    public List<Contrat> findByUserId(int userId) {
+        String req = "SELECT * FROM contrat WHERE user_id = ?";
+        List<Contrat> contrats = new ArrayList<>();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(req);
+            pst.setInt(1, userId);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Contrat c = new Contrat();
+                c.setId(rs.getInt("id"));
+                c.setCentreId(rs.getInt("centre_id"));
+                c.setDatdebCont(rs.getDate("datdeb_cont"));
+                c.setDatfinCont(rs.getDate("datfin_cont"));
+                c.setModpaimentCont(rs.getString("modpaiment_cont"));
+                c.setRenouvAutoCont(rs.getBoolean("renouv_auto_cont"));
+                c.setUserId(rs.getInt("user_id"));
+
+                contrats.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println("❌ Erreur lors de la récupération des contrats utilisateur : " + e.getMessage());
+        }
+
+        return contrats;
+    }
+
 }
