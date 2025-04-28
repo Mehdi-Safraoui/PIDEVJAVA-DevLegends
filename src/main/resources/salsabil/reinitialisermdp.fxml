@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.salsabil.ReinitialiserMdpController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.salsabil.ReinitialiserMdpController">
 
     <!-- En-tête -->
     <HBox alignment="CENTER_LEFT" spacing="10" styleClass="header-box">

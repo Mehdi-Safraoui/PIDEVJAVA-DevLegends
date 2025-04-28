@@ -253,19 +253,6 @@ public class AjouterUserController implements Initializable {
     }
 
     @FXML
-    private void handleShowUsers() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/AfficherUsers.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Liste des utilisateurs");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
     private void handleGoToLogin(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Login.fxml"));

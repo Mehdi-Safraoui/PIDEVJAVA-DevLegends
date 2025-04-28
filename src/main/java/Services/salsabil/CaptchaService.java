@@ -15,6 +15,9 @@ public class CaptchaService {
         questions.add(new CaptchaQuestion("Combien de jours dans une semaine ?", "7"));
         questions.add(new CaptchaQuestion("Quel est le mois après janvier ?", "Février"));
         questions.add(new CaptchaQuestion("Quel est l'animal qui miaule ?", "Chat"));
+        questions.add(new CaptchaQuestion("Combien font 7 + 5 ?", "12"));
+        questions.add(new CaptchaQuestion("Combien de lettres dans le mot \"chat\" ?", "4"));
+        questions.add(new CaptchaQuestion("Combien de saisons y a-t-il dans une année ?", "4"));
     }
 
     // Méthode pour obtenir une question aléatoire

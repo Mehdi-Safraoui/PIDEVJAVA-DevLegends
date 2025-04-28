@@ -73,9 +73,12 @@
 
                 <!-- Boutons d'action -->
                 <HBox alignment="CENTER" spacing="25" styleClass="button-container">
-                    <Button fx:id="btnModifier" onAction="#handleModifier" styleClass="button" text="Modifier le profil" />
                     <Button fx:id="btnDesactiver" onAction="#handleDesactiverCompte" styleClass="button" text="Désactiver le compte" />
                     <Button fx:id="btnChangerMotDePasse" onAction="#handleChangerMotDePasse" styleClass="button" text="Changer le mot de passe" />
+                    <Button fx:id="showUsersButton" onAction="#handleShowUsers" styleClass="button" text="Afficher les utilisateurs" />
+                </HBox>
+                <HBox alignment="CENTER" spacing="25" styleClass="button-container">
+                    <Button fx:id="btnModifier" onAction="#handleModifier" styleClass="button" text="Modifier le profil" />
                     <Button fx:id="btnRetour" onAction="#handleRetour" styleClass="button" text="Retour" />
                 </HBox>
             </VBox>

@@ -84,7 +84,19 @@ public class ProfilController {
             System.out.println("❌ Erreur lors du chargement de la fenêtre de changement de mot de passe : " + e.getMessage());
         }
     }
-
+    @FXML
+    private void handleShowUsers() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/AfficherUsers.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Liste des utilisateurs");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void handleRetour() {
