@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="517.0" prefWidth="837.0"
+            xmlns="http://javafx.com/javafx/21.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.maya.ListConsultationBack"
+            stylesheets="@/style.css">
+
+    <children>
+
+        <!-- Titre -->
+        <Text layoutX="280.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Consultations">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+
+        <!-- Zone de tri en haut -->
+        <ComboBox fx:id="comboTri" layoutX="120.0" layoutY="50.0" prefWidth="150.0" />
+        <CheckBox fx:id="checkDesc" layoutX="280.0" layoutY="50.0" text="Tri décroissant" />
+        <Button layoutX="400.0" layoutY="50.0" mnemonicParsing="false" onAction="#trierConsultations" text="Trier" />
+
+        <TextField fx:id="searchField" layoutX="600.0" layoutY="50.0" promptText="Rechercher..." prefWidth="200.0"/>
+
+        <!-- Tableau -->
+        <TableView fx:id="tableConsultations" layoutX="47.0" layoutY="90.0" prefHeight="335.0" prefWidth="765.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="90.0" text="ID" />
+                <TableColumn fx:id="colNom" prefWidth="90.0" text="Nom" />
+                <TableColumn fx:id="colPrenom" prefWidth="90.0" text="Prénom" />
+                <TableColumn fx:id="colAge" prefWidth="50.0" text="Âge" />
+                <TableColumn fx:id="colDate" prefWidth="130.0" text="Date Consultation" />
+                <TableColumn fx:id="colLien" prefWidth="140.0" text="Profession" />
+                <TableColumn fx:id="colNotes" prefWidth="160.0" text="Raison(s) de la consultation thérapeutique" />
+                <TableColumn fx:id="colModifier" prefWidth="90.0" text="Modifier" />
+                <TableColumn fx:id="colSupprimer" prefWidth="90.0" text="Supprimer" />
+            </columns>
+        </TableView>
+
+        <!-- Bouton de retour en bas -->
+        <Button layoutX="25.0" layoutY="450.0" mnemonicParsing="false" onAction="#retourAjouter" text="Retour" />
+
+    </children>
+</AnchorPane>

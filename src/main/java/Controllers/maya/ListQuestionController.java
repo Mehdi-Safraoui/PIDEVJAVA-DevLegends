@@ -1,9 +1,13 @@
 package Controllers.maya;
 
+import Entities.maya.Consultation;
 import Entities.maya.Question;
 import Services.maya.QuestionService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,6 +47,16 @@ public class ListQuestionController implements Initializable {
     @FXML
     private Label statusLabel;
 
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private ComboBox<String> comboTri;
+
+    @FXML
+    private CheckBox checkDesc;
+
+
     private final QuestionService questionService = new QuestionService();
 
     @Override
@@ -51,6 +65,8 @@ public class ListQuestionController implements Initializable {
         questionTextColumn.setCellValueFactory(new PropertyValueFactory<>("questionText"));
         answerTypeColumn.setCellValueFactory(new PropertyValueFactory<>("answerType"));
         pointsColumn.setCellValueFactory(new PropertyValueFactory<>("points"));
+        comboTri.setItems(FXCollections.observableArrayList("ID", "Texte", "Type de réponse", "Points"));
+        comboTri.getSelectionModel().select("ID");
 
         // Cell factory pour la colonne Actions
         actionsColumn.setCellFactory(new Callback<TableColumn<Question, Void>, TableCell<Question, Void>>() {
@@ -90,7 +106,7 @@ public class ListQuestionController implements Initializable {
         });
 
         // Charger les questions dans la table
-        loadQuestions();
+        loadData();
     }
 
     private void loadQuestions() {
@@ -148,9 +164,75 @@ public class ListQuestionController implements Initializable {
             statusLabel.setText("Veuillez sélectionner une question à modifier.");
         }
     }
+
     public void refreshTable() {
         // Recharger les questions
         loadQuestions(); // Vous avez déjà cette méthode qui charge les questions
     }
 
+    @FXML
+    void trierQuestion(ActionEvent event) {
+        String critere = comboTri.getValue();
+        boolean triDescendant = checkDesc.isSelected();
+
+        ObservableList<Question> originalList = questionTable.getItems();
+        ObservableList<Question> sortedList = FXCollections.observableArrayList(originalList);
+
+        switch (critere) {
+            case "ID":
+                sortedList.sort((q1, q2) -> triDescendant ?
+                        Integer.compare(q2.getId(), q1.getId()) :
+                        Integer.compare(q1.getId(), q2.getId()));
+                break;
+            case "Texte":
+                sortedList.sort((q1, q2) -> triDescendant ?
+                        q2.getQuestionText().compareToIgnoreCase(q1.getQuestionText()) :
+                        q1.getQuestionText().compareToIgnoreCase(q2.getQuestionText()));
+                break;
+            case "Type de réponse":
+                sortedList.sort((q1, q2) -> triDescendant ?
+                        q2.getAnswerType().compareToIgnoreCase(q1.getAnswerType()) :
+                        q1.getAnswerType().compareToIgnoreCase(q2.getAnswerType()));
+                break;
+            case "Points":
+                sortedList.sort((q1, q2) -> triDescendant ?
+                        Integer.compare(q2.getPoints(), q1.getPoints()) :
+                        Integer.compare(q1.getPoints(), q2.getPoints()));
+                break;
+        }
+
+        questionTable.setItems(sortedList);
+    }
+
+
+    private void loadData() {
+        List<Question> questions = questionService.findAll(); // récupère toutes les questions
+        ObservableList<Question> observableList = FXCollections.observableArrayList(questions);
+
+        FilteredList<Question> filteredData = new FilteredList<>(observableList, b -> true);
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(question -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (question.getQuestionText().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (question.getAnswerType().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(question.getPoints()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        SortedList<Question> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(questionTable.comparatorProperty());
+
+        questionTable.setItems(sortedData);
+    }
 }

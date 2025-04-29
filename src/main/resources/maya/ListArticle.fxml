@@ -5,10 +5,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane stylesheets="@/style.css" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.maya.ListArticleController">
-    <ScrollPane prefHeight="517.0" prefWidth="837.0" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
-        <GridPane fx:id="container" hgap="20" vgap="20" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
-            <!-- Dynamically added Article Cards will go here -->
-        </GridPane>
-    </ScrollPane>
+    <!-- Container principal -->
+    <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+
+        <!-- Section de recherche et de tri -->
+        <HBox spacing="10">
+            <!-- Champ de recherche -->
+            <TextField fx:id="searchField" promptText="Rechercher un article" HBox.hgrow="ALWAYS" />
+
+            <!-- Liste déroulante pour trier les articles -->
+            <ComboBox fx:id="comboTri" prefWidth="150" HBox.hgrow="NEVER">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Titre" />
+                        <String fx:value="Catégorie" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Case à cocher pour l'ordre décroissant -->
+            <CheckBox fx:id="checkDesc" text="Ordre décroissant" />
+        </HBox>
+
+        <!-- ScrollPane pour afficher la liste des articles -->
+        <ScrollPane prefHeight="517.0" prefWidth="837.0" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+            <GridPane fx:id="container" hgap="20" vgap="20" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+                <!-- Les cartes des articles ajoutées dynamiquement apparaîtront ici -->
+            </GridPane>
+        </ScrollPane>
+    </VBox>
 </AnchorPane>

@@ -1,10 +1,12 @@
 package Services.maya;
 
+import Entities.maya.Question;
 import Entities.maya.Reponse;
 import Interfaces.InterfaceCRUD;
 import Utils.MyDB;
 
 import java.sql.*;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -156,5 +158,84 @@ public class ReponseService implements InterfaceCRUD<Reponse> {
 
         return reponses;
     }
+
+        public static List<Reponse> getReponsesByQuestionId(int questionId) {
+            List<Reponse> reponses = new ArrayList<>();
+
+            try (Connection conn = MyDB.getInstance().getCon()) {
+                String query = "SELECT * FROM reponse WHERE question_id = ?";
+                PreparedStatement pst = conn.prepareStatement(query);
+                pst.setInt(1, questionId);
+
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    Reponse r = new Reponse();
+                    r.setId(rs.getInt("id"));
+                    r.setAnswerText(rs.getString("answerText"));
+                    r.setQuestionId(rs.getInt("question_id"));
+                    r.setScore(rs.getInt("score"));
+                    r.setQuestionText(rs.getString("questionText")); // si tu stockes ça
+                    reponses.add(r);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return reponses;
+        }
+    public List<Question> getQuestionsWithReponses() {
+        List<Question> questions = new ArrayList<>();
+        Connection connection = MyDB.getInstance().getCon();
+
+        try {
+            String query = "SELECT q.id AS q_id, q.question_Text, r.id AS r_id, r.answer_Text, r.score " +
+                    "FROM question q " +
+                    "JOIN reponse r ON q.id = r.question_Id " +
+                    "ORDER BY RAND()";
+
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            Map<Integer, Question> questionMap = new LinkedHashMap<>();
+
+            while (rs.next()) {
+                int qId = rs.getInt("q_id");
+
+                Question question = questionMap.computeIfAbsent(qId, id -> {
+                    Question q = new Question();
+                    q.setId(id);
+                    try {
+                        q.setQuestionText(rs.getString("question_Text"));
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    q.setReponses(new ArrayList<>());
+                    return q;
+                });
+
+                Reponse reponse = new Reponse();
+                reponse.setId(rs.getInt("r_id"));
+                reponse.setAnswerText(rs.getString("answer_Text"));
+                reponse.setScore(rs.getInt("score"));
+                reponse.setQuestionId(qId);
+
+                question.getReponses().add(reponse);
+            }
+
+            questions.addAll(questionMap.values());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return questions.subList(0, Math.min(10, questions.size()));
+    }
+
+//    // Nouvelle méthode pour récupérer les réponses d'un quiz
+//    public List<Reponse> getReponsesByQuizId(int quizId) {
+//        // Appelle la méthode existante de l'instance actuelle de ReponseService
+//        return this.getReponsesByQuizId(quizId);
+//    }
 
 }

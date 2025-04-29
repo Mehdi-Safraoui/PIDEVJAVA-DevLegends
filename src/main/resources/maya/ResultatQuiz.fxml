@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<VBox stylesheets="@/style.css" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.maya.ResultatQuizController"
+      alignment="CENTER" spacing="20">
+
+    <!-- Ici on déclare la padding correctement -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label fx:id="etatMentalLabel"
+           style="-fx-font-size:18px; -fx-font-weight:bold;"/>
+    <ImageView fx:id="imageViewEtatMental"
+               fitHeight="300" fitWidth="250" preserveRatio="true"/>
+    <Label fx:id="scoreLabel" style="-fx-font-size:16px;"/>
+    <HBox spacing="10">
+        <Button text="Retour à l'accueil" onAction="#handleRetourAccueil"/>
+        <Button text="Recommencer le quiz" onAction="#handleRecommencerQuiz"/>
+        <Button text="Exporter PDF" onAction="#handleExporterPDF" />
+        <Button text="Générer Playlist" onAction="#handleGeneratePlaylist" />
+    </HBox>
+</VBox>

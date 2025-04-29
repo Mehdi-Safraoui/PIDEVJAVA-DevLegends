@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.maya.QuizController"
+            fitToWidth="true"
+            style="-fx-background: #f0f4f8;">
+
+    <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <!-- Titre du quiz -->
+        <Label text="🧠 Évaluez votre état mental"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" />
+
+        <!-- Barre de progression stylée -->
+        <ProgressBar fx:id="progressBar" prefWidth="400"
+                     style="-fx-accent: #4CAF50; -fx-background-radius: 10;"/>
+
+        <!-- Timer -->
+        <Label fx:id="timerLabel" text="Temps restant : 60s"
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+
+        <!-- Conteneur des questions -->
+        <VBox fx:id="quizContainer" spacing="15" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+            <!-- Les questions seront ajoutées dynamiquement ici -->
+        </VBox>
+
+        <!-- Bouton stylé -->
+        <Button text="Soumettre" onAction="#handleSubmit" fx:id="submitButton"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 20; -fx-padding: 10 20;"
+        />
+
+        <!-- Résultat -->
+        <Label fx:id="resultLabel"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2E7D32;"/>
+
+    </VBox>
+</ScrollPane>

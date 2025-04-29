@@ -2,7 +2,7 @@ package Services.malek;
 
 import Entities.malek.Centre;
 import Interfaces.InterfaceCRUD;
-import Utiles.MyDB;
+import Utils.MyDB;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,0 +1,22 @@
+version: "3.1"
+
+rules:
+  - rule: Saluer l'utilisateur
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Répondre au remerciement
+    steps:
+      - intent: thank_you
+      - action: utter_thank_you
+
+  - rule: Dire au revoir
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Recommander un exercice
+    steps:
+      - intent: ask_for_exercise
+      - action: action_recommend_exercise

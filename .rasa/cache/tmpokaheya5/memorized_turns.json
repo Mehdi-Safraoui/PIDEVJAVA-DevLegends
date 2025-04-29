@@ -1,0 +1,17 @@
+{
+  "lookup": {
+    "eJyLrq6NBQAEOAGx": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3BChdnB1flJqTWJEIUlZbGwsA8w4fQw==": "action_give_relaxation_tip",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3BChdnB1flJqTWJEIUlZLnGHpmWWpSLriSzILCJscCwAP6kIz": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3BChdnB1fnJOaWhCfkZpTUFsbCwDyfx8t": "utter_talk_about_sleep",
+    "eJyFjEEKwCAMBL/iA/oCv1JKsCVQMY1iYi/i3xuwd2877OzufWyul4ovhEtjZu/6DMDhQe9+oCiKbG4TrOZENlSrJYEQYoEbqYzFWVPFChooQThz0zldvx4fAYBAbg==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhoCi/LDMlNT4tNTUlKTE5u7Y2FgAyUR/r": "utter_thank_you_for_praise",
+    "eJyNjFEKhDAMBa/SA3iCXmVZQlafbNBNS5oKUry7Bfdf/2ZgmFc7htCyYSMeXZLG0C4g5R9i+MsqxaG9rQXWG9GuHkO2tMkEmoHpw+Ny3OyqO4z8y7rQnirNySgbS8GT9/sEGehDpw==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohLzU1JT43vySzLBGkrrY2FgASuB+z": "utter_need_motivation",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohLzU1JT43vySzLBGkrpaAaaUlJalF8eiaCJsaCwBQpEEh": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohLzU1Jb4oNSexIhGsriSzoLY2FgCULSFM": "utter_relaxation_tip_stretching",
+    "eJyNjVEKgCAQRK/iATqBV4kQqaEWbJN1jUC8e1J99VN/8+DNTF9qZ0oU7M6PShtbU+7g2K+w5oFAScHNzQnSHOKGag0DkxMEf/jLU4r1YzGrQl4dl1Sg40I8//wYTjq/SIs=": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhoCgxszg1Pim/pLY2FgB5QR2W": "utter_thank_you_for_praise",
+    "eJyFjNEJgDAMBVfJAE7QVURClIhFTUuaClK6u4X6rX/v4N6NpQ5QovKFtJgP4qD0gUInO3jh8MlYmpsTa3O8NDQHUcknxjlY/QllM1a0jWTHO2Rcg2J/f1enBwjDPv0=": "action_listen"
+  }
+}

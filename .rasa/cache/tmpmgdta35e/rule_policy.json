@@ -1,0 +1,20 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"praise_bot\"}}]": "action_praise_bot",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"praise_bot\"}}, {\"prev_action\": {\"action_name\": \"action_praise_bot\"}, \"user\": {\"intent\": \"praise_bot\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"need_motivation\"}}]": "action_provide_motivation",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"need_motivation\"}}, {\"prev_action\": {\"action_name\": \"action_provide_motivation\"}, \"user\": {\"intent\": \"need_motivation\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"need_relaxation_tip\"}}]": "action_give_relaxation_tip",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"need_relaxation_tip\"}}, {\"prev_action\": {\"action_name\": \"action_give_relaxation_tip\"}, \"user\": {\"intent\": \"need_relaxation_tip\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "predicting default action with intent restart",
+      "predicting default action with intent back",
+      "predicting default action with intent session_start"
+    ]
+  }
+}

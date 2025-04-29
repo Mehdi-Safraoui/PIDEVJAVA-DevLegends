@@ -23,6 +23,12 @@ public class Reponse {
         this.score = score;
     }
 
+    // Constructeur avec texte et score
+    public Reponse(String answerText, int score) {
+        this.answerText = answerText;
+        this.score = score;
+    }
+
     public Reponse(String answerText, int questionId, int score, String questionText) {
         this.answerText = answerText;
         this.questionId = questionId;
@@ -35,6 +41,7 @@ public class Reponse {
         this.questionId = questionId;
         this.score = score;
     }
+
 
     // Getters and Setters
     public int getId() {
