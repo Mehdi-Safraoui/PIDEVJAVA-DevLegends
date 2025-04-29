@@ -150,3 +150,12 @@
     -fx-text-fill: #6c757d;
     -fx-font-size: 14px;
 }
+
+.card-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #2d3436;
+}
+
+.card-label.bold {
+    -fx-font-weight: bold;
+}
