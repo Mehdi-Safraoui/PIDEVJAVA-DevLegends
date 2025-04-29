@@ -187,14 +187,14 @@
                     <SVGPath content="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"
                              styleClass="nested-icon"/>
                 </graphic>
-                <text>Réclamations</text>
+                <text>Liste des Réclamations</text>
             </Button>
             <Button styleClass="nested-button" onAction="#goToAvis" maxWidth="Infinity">
                 <graphic>
                     <SVGPath content="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
                              styleClass="nested-icon"/>
                 </graphic>
-                <text>Avis</text>
+                <text>Liste des Avis</text>
             </Button>
 
             <Button styleClass="nested-button" onAction="#goToAddAvis" maxWidth="Infinity">

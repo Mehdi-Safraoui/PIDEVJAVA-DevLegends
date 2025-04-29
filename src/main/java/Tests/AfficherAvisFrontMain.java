@@ -6,10 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AfficherAvisMain extends Application {
+public class AfficherAvisFrontMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/AfficherAvis.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/AfficherAvisFront.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 1366, 720);
 

@@ -17,7 +17,7 @@ public class Reclamation {
         this.contenuRec = contenuRec;
         this.dateRec = dateRec;
         this.emailRec = emailRec;
-        this.statutRec = "Pas traitée";
+        this.statutRec = statutRec;
     }
 
     public int getId() {
