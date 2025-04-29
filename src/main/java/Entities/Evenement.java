@@ -55,8 +55,8 @@ public class Evenement {
         this.titreEvent = titreEvent;
     }
 
-    public Date getDateEvent() {
-        return dateEvent;
+    public java.sql.Date getDateEvent() {
+        return (java.sql.Date) dateEvent;
     }
 
     public void setDateEvent(Date dateEvent) {

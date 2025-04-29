@@ -6,8 +6,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="Controllers.ModifierEvenement"
-            prefHeight="400.0" prefWidth="600.0"
-            stylesheets="style.css">>
+            prefHeight="400.0" prefWidth="600.0">
 
     <children>
         <Label layoutX="50.0" layoutY="30.0" text="ID de l'événement :" />
@@ -25,10 +24,7 @@
         <Label layoutX="50.0" layoutY="230.0" text="Nouveau statut :" />
         <TextField fx:id="statutField" layoutX="220.0" layoutY="225.0" prefWidth="300.0" />
 
-        <Label layoutX="50.0" layoutY="280.0" text="Nouvel ID Formation :" />
-        <TextField fx:id="formationIdField" layoutX="220.0" layoutY="275.0" prefWidth="300.0" />
-
-        <Button text="Modifier" layoutX="220.0" layoutY="330.0" prefWidth="300.0"
+        <Button text="Modifier" layoutX="220.0" layoutY="300.0" prefWidth="300.0"
                 onAction="#modifierEvenement" />
     </children>
 </AnchorPane>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ListeEvenement" stylesheets="style.css">
+    <VBox spacing="10.0" alignment="CENTER" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+
+        <!-- Barre de recherche et filtres -->
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="searchField" promptText="Rechercher par titre ou lieu"/>
+            <DatePicker fx:id="dateDebutPicker" promptText="Sélectionner une date"/>
+            <Button text="Filtrer" onAction="#filtrerEvenements"/>
+            <ComboBox fx:id="sortComboBox" promptText="Trier par..." onAction="#trierEvenements"/>
+            <Button text="Réinitialiser" onAction="#reinitialiserFiltres"/>
+        </HBox>
+
+        <!-- Boutons principaux -->
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Ajouter un événement" onAction="#allerAjoutPage"/>
+        </HBox>
+
+        <!-- Table des événements -->
+        <TableView fx:id="tableEvenements" prefHeight="400.0" prefWidth="800.0">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colTitre" text="Titre" prefWidth="120"/>
+                <TableColumn fx:id="colDate" text="Date" prefWidth="120"/>
+                <TableColumn fx:id="colLieu" text="Lieu" prefWidth="120"/>
+                <TableColumn fx:id="colStatut" text="Statut" prefWidth="100"/>
+                <TableColumn fx:id="colFormationId" text="Formation ID" prefWidth="100"/>
+                <TableColumn fx:id="colActions" text="Actions" prefWidth="190"/>
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>

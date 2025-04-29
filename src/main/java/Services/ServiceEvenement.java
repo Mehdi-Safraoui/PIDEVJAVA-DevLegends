@@ -167,4 +167,23 @@ public class ServiceEvenement implements InterfaceCRUD<Evenement> {
             return false;
         }
     }
+
+    public void create(Evenement evenement) {
+        String query = "INSERT INTO evenement (titre, date, lieu, statut, formation_id) VALUES (?, ?, ?, ?, ?)";
+        Connection connection = null;
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, evenement.getTitreEvent());
+            statement.setDate(2, evenement.getDateEvent());
+            statement.setString(3, evenement.getLieuEvent());
+            statement.setString(4, evenement.getStatutEvent());
+            statement.setInt(5, evenement.getFormationId());
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Événement ajouté avec succès !");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

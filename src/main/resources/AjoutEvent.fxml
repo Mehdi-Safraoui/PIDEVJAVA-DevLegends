@@ -27,11 +27,14 @@
 
         <Button text="Ajouter Événement" layoutX="220.0" layoutY="290.0" prefWidth="300.0"
                 onAction="#ajouterEvenement" />
-        <Button text="Modifier un événement" layoutX="220.0" layoutY="340.0" prefWidth="145.0"
-                onAction="#allerModifierPage" />
 
-        <Button text="Supprimer un événement" layoutX="375.0" layoutY="340.0" prefWidth="145.0"
-                onAction="#supprimerEvenementPopup" />
+        <Button text="Voir la liste des événements"
+                layoutX="220.0" layoutY="340.0" prefWidth="300.0"
+                onAction="#redirigerVersListeEvenements" />
+
+
+
+
 
     </children>
 </AnchorPane>
