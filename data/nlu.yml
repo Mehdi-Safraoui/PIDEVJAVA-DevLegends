@@ -1,0 +1,67 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - Bonjour
+      - Salut
+      - Coucou
+      - Hey
+      - Hello
+
+  - intent: goodbye
+    examples: |
+      - Au revoir
+      - À bientôt
+      - Bye
+      - Ciao
+      - À plus tard
+
+  - intent: mood_great
+    examples: |
+      - Je me sens super bien
+      - Je suis heureux
+      - Je suis de bonne humeur
+      - Ça va super
+
+  - intent: mood_sad
+    examples: |
+      - Je me sens triste
+      - J'ai un coup de blues
+      - Pas très bien aujourd'hui
+      - Je suis déprimé
+
+  - intent: stress
+    examples: |
+      - Je suis stressé
+      - J'ai beaucoup de stress
+      - Je ressens de la pression
+      - Trop de boulot me stresse
+
+  - intent: anxious
+    examples: |
+      - Je suis anxieux
+      - J'ai des angoisses
+      - Je ressens de l'anxiété
+      - Je suis nerveux
+
+  - intent: ask_for_advice
+    examples: |
+      - Peux-tu me donner un conseil ?
+      - Que devrais-je faire pour me détendre ?
+      - As-tu des conseils pour aller mieux ?
+      - Je veux des astuces pour me relaxer
+
+  - intent: ask_for_exercise
+    examples: |
+      - Peux-tu me proposer un exercice de méditation ?
+      - Quel exercice pourrais-je faire ?
+      - Donne-moi un exercice de relaxation
+      - Je veux méditer, tu as un exercice ?
+
+  - intent: thank_you
+    examples: |
+      - Merci beaucoup
+      - Merci
+      - Merci infiniment
+      - C'est gentil merci

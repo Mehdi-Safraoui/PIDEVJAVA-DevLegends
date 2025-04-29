@@ -53,7 +53,8 @@ public class UserDashboardController {
         // Code pour afficher les infos du profil de l'utilisateur courant
         // Par exemple : ouvrir une nouvelle fenêtre ou basculer vers une autre scène
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Profil.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/ProfilUser.fxml"));
             Parent root = loader.load();
 
             // Optionnel : passer l'utilisateur courant au contrôleur AfficherProfilController

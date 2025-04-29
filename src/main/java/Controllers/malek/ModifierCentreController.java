@@ -1,23 +1,25 @@
 package Controllers.malek;
 
+import Components.malek.PhoneNumberField;
 import Entities.malek.Centre;
 import Services.malek.CentreService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.Node;
 import javafx.stage.FileChooser;
+
+import java.io.File;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import java.io.File;
 
 public class ModifierCentreController {
 
     @FXML private Label labelNomCentre;
     @FXML private TextField TFNom;
     @FXML private TextField TFAdresse;
-    @FXML private TextField TFTelephone;
+    @FXML private PhoneNumberField TFTelephone;
     @FXML private TextField TFEmail;
     @FXML private TextField TFSpecialite;
     @FXML private TextField TFCapacite;
@@ -30,14 +32,11 @@ public class ModifierCentreController {
 
     @FXML
     public void initialize() {
-        // Ajouter un écouteur de texte sur le champ téléphone pour valider en temps réel
-        TFTelephone.textProperty().addListener((obs, oldText, newText) -> {
-            if (!newText.startsWith("+216")) {
-                TFTelephone.setText("+216");
-            } else if (newText.length() > 12) { // +216 + 8 chiffres = 12 caractères max
-                TFTelephone.setText(oldText);
-            } else if (!newText.matches("\\+216\\d*")) {
-                TFTelephone.setText(oldText); // Annule toute entrée non-numérique après +216
+        TFTelephone.setDefaultCountry("TN");
+
+        TFTelephone.getPhoneNumberField().textProperty().addListener((obs, oldText, newText) -> {
+            if (newText != null && !newText.matches("\\d*")) {
+                TFTelephone.getPhoneNumberField().setText(newText.replaceAll("[^\\d]", ""));
             }
         });
     }
@@ -51,7 +50,7 @@ public class ModifierCentreController {
         labelNomCentre.setText(centreAModifier.getNomCentre());
         TFNom.setText(centreAModifier.getNomCentre());
         TFAdresse.setText(centreAModifier.getAdresseCentre());
-        TFTelephone.setText(centreAModifier.getTelCentre());
+        TFTelephone.setPhoneNumber(centreAModifier.getTelCentre());
         TFEmail.setText(centreAModifier.getEmailCentre());
         TFSpecialite.setText(centreAModifier.getSpecialiteCentre());
         TFCapacite.setText(String.valueOf(centreAModifier.getCapaciteCentre()));
@@ -105,7 +104,7 @@ public class ModifierCentreController {
     private void updateCentreFromForm() {
         centreAModifier.setNomCentre(TFNom.getText());
         centreAModifier.setAdresseCentre(TFAdresse.getText());
-        centreAModifier.setTelCentre(TFTelephone.getText());
+        centreAModifier.setTelCentre(TFTelephone.getPhoneNumber());
         centreAModifier.setEmailCentre(TFEmail.getText());
         centreAModifier.setSpecialiteCentre(TFSpecialite.getText());
         centreAModifier.setCapaciteCentre(Integer.parseInt(TFCapacite.getText()));
@@ -116,43 +115,37 @@ public class ModifierCentreController {
         StringBuilder errors = new StringBuilder();
         boolean isValid = true;
 
-        // Validation du nom du centre
         if (TFNom.getText().trim().length() < 6) {
             errors.append("- Le nom du centre doit contenir au moins 6 caractères\n");
             TFNom.setStyle("-fx-border-color: red;");
             isValid = false;
         }
 
-        // Validation de l'adresse
         if (TFAdresse.getText().trim().isEmpty()) {
             errors.append("- Adresse est obligatoire\n");
             TFAdresse.setStyle("-fx-border-color: red;");
             isValid = false;
         }
 
-        // Validation du téléphone (identique à AjouterCentreController)
-        String phone = TFTelephone.getText();
-        if (!phone.matches("^\\+216\\d{8}$")) {
-            errors.append("- Le numéro doit commencer par +216 et contenir 8 chiffres\n");
+        String phone = TFTelephone.getPhoneNumber();
+        if (!isValidPhoneNumber(phone)) {
+            errors.append("- Numéro de téléphone invalide\n");
             TFTelephone.setStyle("-fx-border-color: red;");
             isValid = false;
         }
 
-        // Validation de l'email
         if (!TFEmail.getText().trim().isEmpty() && !isValidEmail(TFEmail.getText())) {
             errors.append("- Format email invalide\n");
             TFEmail.setStyle("-fx-border-color: red;");
             isValid = false;
         }
 
-        // Validation de la spécialité
         if (TFSpecialite.getText().trim().isEmpty()) {
             errors.append("- Spécialité est obligatoire\n");
             TFSpecialite.setStyle("-fx-border-color: red;");
             isValid = false;
         }
 
-        // Validation de la capacité
         if (TFCapacite.getText().trim().isEmpty()) {
             errors.append("- Capacité est obligatoire\n");
             TFCapacite.setStyle("-fx-border-color: red;");
@@ -177,6 +170,15 @@ public class ModifierCentreController {
         }
 
         return isValid;
+    }
+
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        try {
+            return TFTelephone.getPhoneNumberUtil().isValidNumber(
+                    TFTelephone.getPhoneNumberUtil().parse(phoneNumber, null));
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     private boolean isValidEmail(String email) {

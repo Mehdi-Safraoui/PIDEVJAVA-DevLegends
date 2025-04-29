@@ -180,7 +180,7 @@ public class ArticleConseilService implements InterfaceCRUD<ArticleConseil> {
 
     public List<ArticleConseil> recuperer() {
         List<ArticleConseil> articles = new ArrayList<>();
-        String req = "SELECT * FROM article_conseil";
+        String req = "SELECT * FROM articles_conseils";
 
         try {
             Statement st = con.createStatement();
@@ -227,7 +227,7 @@ public class ArticleConseilService implements InterfaceCRUD<ArticleConseil> {
     }
 
     public boolean isTitreUnique(String titre) {
-        String sql = "SELECT COUNT(*) FROM articleconseil WHERE titre_article = ?";
+        String sql = "SELECT COUNT(*) FROM articles_conseils WHERE titre_article = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, titre);
             ResultSet rs = stmt.executeQuery();

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.malek.PaymentPageController"
+            prefWidth="400" prefHeight="650"
+            stylesheets="@/style.css">
+
+    <VBox layoutX="50" layoutY="20" spacing="15" prefWidth="300">
+
+        <!-- Titre de la page -->
+        <Label text="Pay Invoice"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #555;"
+               alignment="CENTER"/>
+
+        <!-- Choix du mode de paiement -->
+        <ComboBox fx:id="paymentMethodComboBox" prefWidth="200"/>
+
+        <!-- Nom du pack -->
+        <Label fx:id="nomPackLabel" text="Nom du Pack"
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #444;" />
+
+        <!-- Logos des cartes (sera affiché/masqué dynamiquement) -->
+        <HBox fx:id="cardLogosBox" spacing="10" alignment="CENTER">
+            <ImageView fitWidth="40" fitHeight="25">
+                <Image url="@/images/visa.png"/>
+            </ImageView>
+            <ImageView fitWidth="40" fitHeight="25">
+                <Image url="@/images/mastercard.png"/>
+            </ImageView>
+            <ImageView fitWidth="40" fitHeight="25">
+                <Image url="@/images/amex.png"/>
+            </ImageView>
+            <ImageView fitWidth="40" fitHeight="25">
+                <Image url="@/images/discover.png"/>
+            </ImageView>
+        </HBox>
+
+        <!-- Montant -->
+        <Label text="Montant à payer" style="-fx-text-fill: #888;" />
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label fx:id="paymentAmountLabel" text="500.00 TND"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Button text="Modifier" style="-fx-background-radius: 4px; -fx-background-color: #eee;" />
+        </HBox>
+
+        <!-- Infos de paiement Carte Bancaire -->
+        <VBox fx:id="creditCardForm">
+            <TextField fx:id="cardHolderField" promptText="Nom sur la carte"/>
+            <TextField fx:id="cardNumberField" promptText="Numéro de carte"/>
+            <HBox spacing="10">
+                <TextField fx:id="cardExpiryField" promptText="MM / AA" prefWidth="120"/>
+                <TextField fx:id="cardCVCField" promptText="Code sécurité" prefWidth="120"/>
+            </HBox>
+            <TextField fx:id="cardZipField" promptText="Code postal"/>
+        </VBox>
+
+        <!-- Infos de paiement PayPal -->
+        <!-- Modifiez la partie PayPal dans votre FXML -->
+        <VBox fx:id="paypalForm" spacing="10">
+            <Label text="Vous serez redirigé vers PayPal" style="-fx-font-style: italic;"/>
+            <ImageView fitWidth="100" fitHeight="40">
+                <Image url="@/images/paypal.jpeg"/>
+            </ImageView>
+            <Label text="Email associé à votre compte PayPal:" style="-fx-text-fill: #555;"/>
+            <TextField fx:id="paypalEmailField" promptText="votre@email.com"/>
+        </VBox>
+
+        <!-- Bouton Payer -->
+        <Button fx:id="payButton" text="🔒 Payer"
+                style="-fx-background-color: #38cfd9; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5px;"
+                onAction="#onPayClicked" prefHeight="40"/>
+    </VBox>
+</AnchorPane>

@@ -3,20 +3,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
 
 <AnchorPane stylesheets="@/style.css" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.maya.ListReponseController">
-    <children>
+    <padding>
+        <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+    </padding>
 
-        <HBox alignment="CENTER" layoutX="0.0" layoutY="25.0" prefWidth="678.0">
-            <Label layoutX="14.0" layoutY="20.0" text="Liste des Réponses" style="-fx-font-size: 24px; -fx-font-weight: bold;">
+    <children>
+        <!-- Titre centré -->
+        <HBox alignment="CENTER" prefWidth="800.0" spacing="10.0">
+            <Label text="Liste des Réponses" style="-fx-font-size: 24px; -fx-font-weight: bold;">
                 <font>
                     <Font name="Arial" size="24"/>
                 </font>
             </Label>
         </HBox>
 
-        <!-- TableView avec fx:id cohérents avec le contrôleur -->
-        <TableView fx:id="reponseTableView" layoutX="14.0" layoutY="64.0" prefHeight="400.0" prefWidth="600.0">
+        <!-- Zone de tri et recherche -->
+        <HBox layoutY="50.0" spacing="10.0" alignment="CENTER_LEFT">
+            <ComboBox fx:id="comboTri" promptText="Trier par..." prefWidth="150.0" />
+            <CheckBox fx:id="checkDesc" text="Tri décroissant" />
+            <Button onAction="#trierReponse" text="Trier" />
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchField" promptText="Rechercher..." prefWidth="200.0" />
+        </HBox>
+
+        <!-- TableView des réponses -->
+        <TableView fx:id="reponseTableView" layoutY="100.0" prefHeight="400.0" prefWidth="780.0">
             <columns>
                 <TableColumn fx:id="idCol" text="ID" prefWidth="75.0"/>
                 <TableColumn fx:id="textCol" text="Réponse" prefWidth="200.0"/>
@@ -27,7 +41,7 @@
             </columns>
         </TableView>
 
-        <Label fx:id="statusLabel" layoutX="14.0" layoutY="475.0" prefWidth="600.0" text=""/>
-
+        <!-- Zone de statut -->
+        <Label fx:id="statusLabel" layoutY="510.0" prefWidth="780.0" text="" />
     </children>
 </AnchorPane>

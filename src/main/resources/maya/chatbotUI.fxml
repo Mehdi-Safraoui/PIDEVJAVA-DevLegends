@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.maya.ChatbotController">
+    <TextArea fx:id="conversationArea" prefHeight="300" prefWidth="300" editable="false" wrapText="true"/>
+    <TextField fx:id="userInput" promptText="Écris ton message..."/>
+    <Button fx:id="sendButton" text="Envoyer"/>
+</VBox>

@@ -1,6 +1,7 @@
 package Controllers.maya;
 
 import Entities.maya.ArticleConseil;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -11,6 +12,9 @@ import javafx.stage.Stage;
 import java.io.InputStream;
 
 public class DetailsView {
+
+    @FXML
+    private ImageView imageView;
 
     public static void display(ArticleConseil article) {
         Stage window = new Stage();
@@ -39,5 +43,12 @@ public class DetailsView {
         Scene scene = new Scene(layout, 420, 550);
         window.setScene(scene);
         window.show();
+    }
+    @FXML
+    private void handleRetour() {
+        // Code pour revenir à la liste des articles
+        // Exemple : Retourner à la scène précédente
+        Stage stage = (Stage) imageView.getScene().getWindow();
+        stage.close();  // Vous pouvez choisir une autre façon de revenir à la liste si nécessaire
     }
 }

@@ -1,0 +1,23 @@
+.user-message {
+    -fx-background-color: #cce5ff;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-alignment: center-right;
+    -fx-max-width: 300;
+}
+
+.bot-message {
+    -fx-background-color: #d4edda;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-alignment: center-left;
+    -fx-max-width: 300;
+}
+
+.text-flow {
+    -fx-padding: 5;
+}
+
+.hyperlink {
+    -fx-text-fill: #007bff;
+}

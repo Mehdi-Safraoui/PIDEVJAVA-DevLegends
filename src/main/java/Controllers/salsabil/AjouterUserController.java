@@ -4,6 +4,7 @@ import Entities.salsabil.User;
 import Services.salsabil.UserService;
 //import javafx.animation.FadeTransition;
 import Utils.AvatarUtils;
+import Utils.MailUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,9 +21,16 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 //import javafx.util.Duration;
 
+import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
 public class AjouterUserController implements Initializable {
@@ -79,7 +87,6 @@ public class AjouterUserController implements Initializable {
                 phoneField.setText(oldText); // Annule toute entrée non-numérique après +216
             }
         });
-
         submitButton.setOnAction(event -> handleSubmit());
         clearForm();
     }
@@ -139,7 +146,6 @@ public class AjouterUserController implements Initializable {
             return;
         }
 
-
         int age;
         try {
             age = Integer.parseInt(ageText);
@@ -179,24 +185,29 @@ public class AjouterUserController implements Initializable {
         }
 
         userService.add(user);
+        // Envoi de l'email de bienvenue
+        String subject = "Bienvenue sur notre plateforme InnerBloom !";
+        String message = "Bonjour " + user.getFirst_name() + ",\n\nMerci pour votre inscription sur notre plateforme InnerBloom.";
+        MailUtil.envoyerMail(user.getUser_email(), subject, message);
 
-        // Charger Profil.fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Profil.fxml"));
-        Parent profilRoot = null;
+        // Afficher une alerte de confirmation
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Inscription réussie");
+        alert.setHeaderText(null);
+        alert.setContentText("Inscription réussie. Vous pouvez maintenant vous connecter.");
+        alert.showAndWait(); // Attendre que l'utilisateur ferme la boîte de dialogue
+
+// Rediriger vers la page de connexion
         try {
-            profilRoot = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Login.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) submitButton.getScene().getWindow();
+            currentStage.setScene(new Scene(root));
+            currentStage.setTitle("Connexion");
+            currentStage.show();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
-        // Passer l'utilisateur au contrôleur
-        ProfilController profilController = loader.getController();
-        profilController.setUser(user);
-
-        // Remplacer la scène dans la même fenêtre
-        Stage currentStage = (Stage) submitButton.getScene().getWindow();
-        currentStage.setScene(new Scene(profilRoot));
-        currentStage.setTitle("Profil de l'utilisateur");
 
     }
 
@@ -242,14 +253,17 @@ public class AjouterUserController implements Initializable {
     }
 
     @FXML
-    private void handleShowUsers() {
+    private void handleGoToLogin(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/AfficherUsers.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Login.fxml"));
             Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Liste des utilisateurs");
+
+            // Obtenir la scène actuelle et y afficher la nouvelle
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setTitle("Connexion");
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

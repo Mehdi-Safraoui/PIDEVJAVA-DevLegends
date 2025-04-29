@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e8515e2-fec0-4a82-a4e1-865c41c40ac0" name="Changes" comment="" />
+
+    <list default="true" id="7e8515e2-fec0-4a82-a4e1-865c41c40ac0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/NavbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/NavbarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Navbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Navbar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mehdi/AfficherAvisFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mehdi/AfficherAvisFront.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mehdi/AjouterAvis.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mehdi/AjouterAvis.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mehdi/AjouterReclamation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mehdi/AjouterReclamation.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,18 +27,43 @@
         <option value="JavaFXApplication" />
         <option value="package-info" />
         <option value="CSS File" />
+        <option value="JavaFXApplication" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Centres-Contrat-Pack" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mehdi-Safraoui&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Mehdi-Safraoui/PIDEVJAVA-DevLegends.git&quot;,
+    &quot;accountId&quot;: &quot;44780387-f644-4c71-a4e5-0f30cd441932&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2uIyibGZgsALKSUmLeTMQCEYKor" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,14 +92,69 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ApiQuizGenerator.executor": "Run",
+    "Application.HuggingFaceAPI.executor": "Run",
+    "Application.MainFX.executor": "Run",
+    "Application.MainFXConsultation.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.TestBD.executor": "Run",
+    "Maven.testpidev [javafx:run].executor": "Run",
+    "Maven.testpidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Consultation-Branch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/A59/PIDEVJAVA-DevLegends",
+    "list.type.of.created.stylesheet": "CSS",
+    "git-widget-placeholder": "main-0.2",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/fatma/IdeaProjects/testpidev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Controller" />
     </key>
   </component>
   <component name="RunManager" selected="Maven.testpidev [javafx:run]">
+    <configuration name="ApiQuizGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Services.maya.ApiQuizGenerator" />
+      <module name="testpidev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Services.maya.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HuggingFaceAPI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Controllers.maya.HuggingFaceAPI" />
+      <module name="testpidev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Controllers.maya.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Tests.MainFX" />
       <module name="malek" />
@@ -124,6 +214,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Maven.testpidev [javafx:run]" />
+        <item itemvalue="Application.HuggingFaceAPI" />
+        <item itemvalue="Application.ApiQuizGenerator" />
         <item itemvalue="Application.MainFX" />
         <item itemvalue="Application.MainFXConsultation" />
       </list>
@@ -152,16 +244,56 @@
       <workItem from="1744791398941" duration="4125000" />
       <workItem from="1744905365976" duration="5630000" />
       <workItem from="1744968829476" duration="1029000" />
+      <workItem from="1744969880194" duration="3152000" />
+      <workItem from="1745079646848" duration="736000" />
+      <workItem from="1745080399541" duration="17001000" />
+      <workItem from="1745153556560" duration="7558000" />
+      <workItem from="1745230558824" duration="10484000" />
+      <workItem from="1745261095364" duration="1912000" />
+      <workItem from="1745397216210" duration="362000" />
+      <workItem from="1745530697881" duration="268000" />
+      <workItem from="1745577135711" duration="3924000" />
+      <workItem from="1745599967961" duration="5960000" />
+      <workItem from="1745693107223" duration="3948000" />
+      <workItem from="1745708385277" duration="1110000" />
+      <workItem from="1745757322750" duration="15964000" />
+      <workItem from="1745834720944" duration="1800000" />
+      <workItem from="1745836545349" duration="1909000" />
       <workItem from="1744969880194" duration="2850000" />
       <workItem from="1745623096506" duration="14920000" />
       <workItem from="1745768676965" duration="1275000" />
       <workItem from="1745770181106" duration="1637000" />
       <workItem from="1745771977818" duration="34463000" />
+      <workItem from="1745066092437" duration="265000" />
+      <workItem from="1745319003403" duration="37265000" />
+      <workItem from="1745398547673" duration="827000" />
+      <workItem from="1745695038726" duration="23876000" />
+      <workItem from="1745778947333" duration="51929000" />
+      <workItem from="1745931393661" duration="1945000" />
+      <workItem from="1745309798545" duration="8490000" />
+      <workItem from="1745346051136" duration="2172000" />
+      <workItem from="1745621477303" duration="768000" />
+      <workItem from="1745622296304" duration="5803000" />
+      <workItem from="1745663829343" duration="2504000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Entities/maya/Chatbot.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

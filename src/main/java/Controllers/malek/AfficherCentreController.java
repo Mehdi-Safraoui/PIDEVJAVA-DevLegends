@@ -4,51 +4,210 @@ import Entities.malek.Centre;
 import Services.malek.CentreService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
+import javafx.scene.web.WebView;
+import javafx.scene.web.WebEngine;
+import javafx.stage.Stage;
 
 public class AfficherCentreController {
 
     @FXML private FlowPane cardsContainer;
-    private final CentreService centreService = new CentreService();
     @FXML private ImageView logoImage;
+    @FXML private TextField searchField;
+    @FXML private ComboBox<String> sortComboBox;
+    @FXML private Button btnPrevPage;
+    @FXML private Button btnNextPage;
+    @FXML private Label pageLabel;
+
+    private final CentreService centreService = new CentreService();
+    private final int ITEMS_PER_PAGE = 3;
+    private int currentPage = 0;
+    private List<Centre> allCentres;
+    private List<Centre> filteredCentres;
 
     @FXML
     public void initialize() {
-        // Charger le logo
-        Image img = new Image(getClass().getResource("/images/logo.png").toExternalForm());
-        logoImage.setImage(img);
-        Circle clip = new Circle();
-        clip.setRadius(25);
-        clip.setCenterX(25);
-        clip.setCenterY(25);
-        logoImage.setClip(clip);
-
-        // Charger les centres
-        loadCentres();
+        setupLogo();
+        setupComboBox();
+        setupSearchField();
+        loadData();
+        setupEventHandlers();
     }
+    @FXML
+    private void openAjouterCentreWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AjouterCentre.fxml"));
+            Parent root = loader.load();
 
-    private void loadCentres() {
-        cardsContainer.getChildren().clear();
-        List<Centre> centres = centreService.find();
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter un nouveau centre");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
 
-        for (Centre centre : centres) {
-            cardsContainer.getChildren().add(createCentreCard(centre));
+            // Rafraîchir la liste après l'ajout
+            refreshData();
+        } catch (IOException e) {
+            showAlert("Erreur", "Impossible d'ouvrir la fenêtre d'ajout", Alert.AlertType.ERROR);
+            e.printStackTrace();
         }
     }
+    private static final String GOOGLE_MAPS_API_KEY = "AIzaSyBzBZ_pFBvC_qCOp4AaLPJXIwGoze0wyNo";
+
+    private void showMapForCentre(Centre centre) {
+        try {
+            Stage mapStage = new Stage();
+            WebView webView = new WebView();
+            WebEngine webEngine = webView.getEngine();
+
+            // Construction de l'URL Google Maps Embed
+            String encodedAddress = java.net.URLEncoder.encode(centre.getAdresseCentre(), "UTF-8");
+            String mapUrl = String.format(
+                    "https://www.google.com/maps/embed/v1/place?key=%s&q=%s",
+                    GOOGLE_MAPS_API_KEY,
+                    encodedAddress
+            );
+
+            // HTML intégrant la carte
+            String htmlContent = String.format("""
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        body { margin: 0; padding: 0; }
+                        #map { height: 100%%; width: 100%%; }
+                    </style>
+                </head>
+                <body>
+                    <iframe
+                        width="100%%"
+                        height="100%%"
+                        frameborder="0"
+                        style="border:0"
+                        src="%s"
+                        allowfullscreen>
+                    </iframe>
+                </body>
+                </html>
+                """, mapUrl);
+
+            webEngine.loadContent(htmlContent);
+
+            StackPane root = new StackPane(webView);
+            Scene scene = new Scene(root, 800, 600);
+
+            mapStage.setTitle("Localisation: " + centre.getNomCentre());
+            mapStage.setScene(scene);
+            mapStage.show();
+
+        } catch (Exception e) {
+            showAlert("Erreur", "Impossible d'afficher la carte: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    private void setupLogo() {
+        try {
+            Image img = new Image(getClass().getResource("/images/logo.png").toExternalForm());
+            logoImage.setImage(img);
+            logoImage.setClip(new javafx.scene.shape.Circle(25, 25, 25));
+        } catch (Exception e) {
+            System.err.println("Erreur de chargement du logo: " + e.getMessage());
+        }
+    }
+
+    private void setupComboBox() {
+        sortComboBox.getItems().addAll("Nom (A-Z)", "Nom (Z-A)");
+        sortComboBox.getSelectionModel().select(0);
+    }
+
+    private void setupSearchField() {
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> filterCentres(newValue));
+    }
+
+    private void loadData() {
+        allCentres = centreService.find();
+        filteredCentres = allCentres;
+        loadCentresPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    private void setupEventHandlers() {
+        sortComboBox.setOnAction(event -> handleSort());
+        btnNextPage.setOnAction(event -> handleNextPage());
+        btnPrevPage.setOnAction(event -> handlePreviousPage());
+    }
+
+    private void filterCentres(String query) {
+        filteredCentres = allCentres.stream()
+                .filter(centre -> centre.getNomCentre().toLowerCase().contains(query.toLowerCase()))
+                .collect(Collectors.toList());
+        currentPage = 0;
+        loadCentresPage(currentPage);
+        updatePaginationButtons();
+    }
+
+    private void handleSort() {
+        String selectedSort = sortComboBox.getValue();
+        if ("Nom (A-Z)".equals(selectedSort)) {
+            filteredCentres.sort((c1, c2) -> c1.getNomCentre().compareTo(c2.getNomCentre()));
+        } else {
+            filteredCentres.sort((c1, c2) -> c2.getNomCentre().compareTo(c1.getNomCentre()));
+        }
+        loadCentresPage(currentPage);
+    }
+
+    private void loadCentresPage(int pageIndex) {
+        cardsContainer.getChildren().clear();
+
+        int fromIndex = pageIndex * ITEMS_PER_PAGE;
+        int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, filteredCentres.size());
+        List<Centre> pageItems = filteredCentres.subList(fromIndex, toIndex);
+
+        pageItems.forEach(centre -> cardsContainer.getChildren().add(createCentreCard(centre)));
+
+        updatePageLabel();
+    }
+
+    private void updatePageLabel() {
+        int totalPages = (int) Math.ceil((double) filteredCentres.size() / ITEMS_PER_PAGE);
+        pageLabel.setText(String.format("Page %d / %d", currentPage + 1, totalPages));
+    }
+
+    private void updatePaginationButtons() {
+        btnPrevPage.setDisable(currentPage == 0);
+        btnNextPage.setDisable((currentPage + 1) * ITEMS_PER_PAGE >= filteredCentres.size());
+    }
+
+    private void handleNextPage() {
+        if ((currentPage + 1) * ITEMS_PER_PAGE < filteredCentres.size()) {
+            currentPage++;
+            loadCentresPage(currentPage);
+            updatePaginationButtons();
+        }
+    }
+
+    private void handlePreviousPage() {
+        if (currentPage > 0) {
+            currentPage--;
+            loadCentresPage(currentPage);
+            updatePaginationButtons();
+        }
+    }
+
+
 
     private VBox createCentreCard(Centre centre) {
         VBox card = new VBox(10);
@@ -58,7 +217,7 @@ public class AfficherCentreController {
         card.setPrefHeight(350);
 
         // Effet d'ombre
-        card.setEffect(new javafx.scene.effect.DropShadow(10, javafx.scene.paint.Color.gray(0.5)));
+        card.setEffect(new DropShadow(10, javafx.scene.paint.Color.gray(0.5)));
 
         // Image
         ImageView imageView = new ImageView();
@@ -96,18 +255,26 @@ public class AfficherCentreController {
         capacite.setStyle(labelStyle);
 
         // Boutons
-        HBox buttons = new HBox(10);
+        HBox buttons = new HBox(10); // DÉCLARATION DE LA VARIABLE buttons
         buttons.setAlignment(Pos.CENTER);
+
+        // Bouton "Voir sur la carte"
+        Button mapButton = new Button("Voir sur la carte");
+        mapButton.setStyle("-fx-background-color: #28a745; -fx-text-fill: white;");
+        mapButton.setOnAction(e -> showMapForCentre(centre));
+
+        // Boutons existants
         Button modifier = new Button("Modifier");
         Button supprimer = new Button("Supprimer");
 
-        modifier.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
+        modifier.setStyle("-fx-background-color: #28a745; -fx-text-fill: white;");
         supprimer.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
 
         modifier.setOnAction(e -> openModificationWindow(centre));
         supprimer.setOnAction(e -> deleteCentre(centre));
 
-        buttons.getChildren().addAll(modifier, supprimer);
+        // Ajouter tous les boutons à la HBox
+        buttons.getChildren().addAll(mapButton, modifier, supprimer);
 
         card.getChildren().addAll(
                 imageView,
@@ -124,50 +291,27 @@ public class AfficherCentreController {
         return card;
     }
 
-    @FXML
-    private void handleVoirContrats(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AfficherContrat.fxml"));
-            Parent root = loader.load();
 
-            Stage stage = (Stage) cardsContainer.getScene().getWindow();
-            stage.setTitle("Gestion des Contrats");
-            stage.setScene(new Scene(root, 900, 600));
-        } catch (IOException e) {
-            showAlert("Erreur", "Impossible de charger la scène des contrats", Alert.AlertType.ERROR);
-        }
+    private Label createLabel(String text, String styleClass) {
+        Label label = new Label(text);
+        label.getStyleClass().add(styleClass);
+        return label;
     }
 
-    @FXML
-    private void handleVoirPacks(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AfficherPack.fxml"));
-            Parent root = loader.load();
+    private HBox createActionButtons(Centre centre) {
+        HBox buttons = new HBox(10);
+        buttons.setAlignment(Pos.CENTER);
 
-            Stage stage = (Stage) cardsContainer.getScene().getWindow();
-            stage.setTitle("Gestion des Packs");
-            stage.setScene(new Scene(root, 900, 600));
-        } catch (IOException e) {
-            showAlert("Erreur", "Impossible de charger la scène des packs", Alert.AlertType.ERROR);
-        }
-    }
+        Button modifier = new Button("Modifier");
+        modifier.getStyleClass().add("btn-modifier");
+        modifier.setOnAction(e -> openModificationWindow(centre));
 
-    @FXML
-    private void handleAjouterCentre(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AjouterCentre.fxml"));
-            Parent root = loader.load();
+        Button supprimer = new Button("Supprimer");
+        supprimer.getStyleClass().add("btn-supprimer");
+        supprimer.setOnAction(e -> deleteCentre(centre));
 
-            Stage stage = new Stage();
-            stage.setTitle("Ajouter un nouveau centre");
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-
-            loadCentres(); // Rafraîchir après ajout
-        } catch (IOException e) {
-            showAlert("Erreur", "Impossible d'ouvrir la fenêtre d'ajout", Alert.AlertType.ERROR);
-        }
+        buttons.getChildren().addAll(modifier, supprimer);
+        return buttons;
     }
 
     private void openModificationWindow(Centre centre) {
@@ -184,7 +328,7 @@ public class AfficherCentreController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 
-            loadCentres(); // Rafraîchir après modification
+            refreshData();
         } catch (IOException e) {
             showAlert("Erreur", "Impossible d'ouvrir la fenêtre de modification", Alert.AlertType.ERROR);
         }
@@ -199,10 +343,20 @@ public class AfficherCentreController {
         confirm.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 centreService.delete(centre);
-                loadCentres();
+                refreshData();
                 showAlert("Succès", "Centre supprimé avec succès", Alert.AlertType.INFORMATION);
             }
         });
+    }
+
+    private void refreshData() {
+        allCentres = centreService.find();
+        filteredCentres = allCentres;
+        if (currentPage > 0 && currentPage * ITEMS_PER_PAGE >= filteredCentres.size()) {
+            currentPage--;
+        }
+        loadCentresPage(currentPage);
+        updatePaginationButtons();
     }
 
     private void showAlert(String title, String message, Alert.AlertType type) {

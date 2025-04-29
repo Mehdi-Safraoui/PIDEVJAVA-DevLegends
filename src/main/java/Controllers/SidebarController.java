@@ -1,6 +1,11 @@
 package Controllers;
 
 import Utils.NotificationManager;
+import Controllers.maya.ChatController;
+import javafx.application.HostServices;
+import Controllers.salsabil.ProfilController;
+import Entities.salsabil.User;
+import Utils.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +16,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
 public class SidebarController {
+
 
     @FXML
     private void goToReclamations(ActionEvent event) {
@@ -232,9 +242,39 @@ public class SidebarController {
     }
 
     @FXML
+    private void goToProfil(ActionEvent event) {
+        // Récupérer l'utilisateur actuel depuis la session
+        User currentUser = Session.getCurrentUser();
+
+        if (currentUser != null) {
+            try {
+                // Charger la vue du profil
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Profil.fxml"));
+                Parent root = loader.load();
+
+                // Passer l'utilisateur au contrôleur du profil
+                ProfilController profilController = loader.getController();
+                profilController.setUser(currentUser);
+
+                // Charger la scène du profil
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Mon Profil");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Aucun utilisateur connecté.");
+        }
+    }
+
+    @FXML
     private void goToArticles() {
         loadScene("/maya/AjouterArticle.fxml", "Articles de Conseil");
     }
+
+
 
     @FXML
     private void goToConsultations() {
@@ -288,6 +328,177 @@ public class SidebarController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void goToListConsultations(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/maya/ListConsultationBack.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Consultations");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+//    @FXML
+//    private void goToQuiz(ActionEvent event) {
+//        try {
+//            Parent root = FXMLLoader.load(getClass().getResource("/maya/Quiz.fxml"));
+//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            stage.setScene(new Scene(root));
+//            stage.setTitle("Quiz");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
+    @FXML
+    private Button quizButton;
+
+    @FXML
+    public void handleQuizSelection() {
+        // Ouvrir la page de sélection du quiz
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/maya/QuizSelectionPage.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) quizButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    private void goToListQuiz(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/maya/ListQuiz.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("List des Quiz");
+    private void handleLogout(ActionEvent event) {
+        try {
+            // Nettoyer la session
+            Session.clear();
+
+            // Fermer la fenêtre actuelle
+            ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+
+            // Charger l'écran de login
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Login.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Connexion");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private TextArea chatbotTextArea;
+
+    @FXML
+    private TextField chatbotInputField;
+
+    @FXML
+    private Button sendButton;
+
+    // Handler for sending the message
+    @FXML
+    public void sendMessage() {
+        String userInput = chatbotInputField.getText();
+        if (userInput != null && !userInput.isEmpty()) {
+            // Display user message in the TextArea
+            chatbotTextArea.appendText("Vous: " + userInput + "\n");
+
+            // Call the chatbot logic to get a response (this is where you plug in the chatbot functionality)
+            String chatbotResponse = getChatbotResponse(userInput);
+            chatbotTextArea.appendText("Chatbot: " + chatbotResponse + "\n");
+
+            // Clear the input field
+            chatbotInputField.clear();
+        }
+    }
+
+    // This function should integrate the logic for the chatbot response
+    private String getChatbotResponse(String input) {
+        // Placeholder for actual chatbot logic, e.g., integration with your existing chatbot model
+        return "C'est une bonne question! Je vais y réfléchir...";
+    }
+
+//    @FXML
+//    private void openChatbot() {
+//        try {
+//            // Charge le fichier FXML du chatbot
+//            Parent root = FXMLLoader.load(getClass().getResource("/maya/ChatbotView.fxml"));
+//
+//            Stage chatbotStage = new Stage();
+//            chatbotStage.setTitle("Chat avec RasaBot");
+//            chatbotStage.setScene(new Scene(root));
+//            chatbotStage.show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+//    @FXML
+//    private void openChatbot() {
+//        try {
+//            // Charger le fichier FXML du chatbot
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/maya/ChatbotView.fxml"));
+//            Parent root = loader.load();
+//
+//            // Récupérer le contrôleur de ChatbotView
+//            ChatController controller = loader.getController();
+//
+//            // Passer HostServices au contrôleur du chatbot
+//            controller.setHostServices(((Stage) sendButton.getScene().getWindow()).getScene().getWindow().getHostServices());
+//
+//            // Créer et afficher la fenêtre du chatbot
+//            Stage chatbotStage = new Stage();
+//            chatbotStage.setTitle("Chat avec RasaBot");
+//            chatbotStage.setScene(new Scene(root));
+//            chatbotStage.show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    private HostServices hostServices;
+
+    public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices;
+    }
+
+    @FXML
+    private void openChatbot() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/maya/ChatbotView.fxml"));
+            Parent root = loader.load();
+
+            // Récupérer le contrôleur de ChatbotView
+            ChatController controller = loader.getController();
+
+            // Passer le HostServices (déjà stocké dans SidebarController)
+            controller.setHostServices(hostServices);
+
+            // Créer et afficher la fenêtre du chatbot
+            Stage chatbotStage = new Stage();
+            chatbotStage.setTitle("Chat avec RasaBot");
+            chatbotStage.setScene(new Scene(root));
+            chatbotStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

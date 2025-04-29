@@ -4,6 +4,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
 
 <BorderPane xmlns="http://javafx.com/javafx/21.0.2"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -12,7 +16,6 @@
             prefWidth="1200" prefHeight="700"
             styleClass="main-pane">
 
-    <!-- Top section -->
     <top>
         <HBox alignment="CENTER_LEFT" spacing="10" styleClass="header-box">
             <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo"/>
@@ -20,15 +23,30 @@
         </HBox>
     </top>
 
-    <!-- Left sidebar -->
     <left>
         <fx:include source="../Sidebar.fxml"/>
     </left>
 
-    <!-- Main content -->
     <center>
         <VBox spacing="20" styleClass="content-box">
             <Label text="Nos contrats" styleClass="section-title"/>
+
+            <HBox spacing="15" alignment="CENTER">
+                <TextField fx:id="searchField" promptText="Rechercher par centre..."/>
+                <DatePicker fx:id="dateDebutPicker" promptText="Date début"/>
+                <DatePicker fx:id="dateFinPicker" promptText="Date fin"/>
+                <ComboBox fx:id="sortComboBox" promptText="Trier par">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Date début (récent)"/>
+                            <String fx:value="Date début (ancien)"/>
+                            <String fx:value="Date fin (récent)"/>
+                            <String fx:value="Date fin (ancien)"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button text="Effacer" onAction="#handleClearFilters" styleClass="btn-clear"/>
+            </HBox>
 
             <ScrollPane fitToWidth="true" styleClass="card-scroll">
                 <FlowPane fx:id="cardsContainer" hgap="20" vgap="20" styleClass="card-container">
@@ -40,15 +58,11 @@
         </VBox>
     </center>
 
-    <!-- Bottom buttons -->
     <bottom>
-        <HBox alignment="CENTER" styleClass="button-box" spacing="20">
-            <Button text="Ajouter Contrat" onAction="#handleAjouterContrat"
-                    styleClass="btn-green" prefWidth="200"/>
-            <Button text="Voir les Packs" onAction="#handleVoirPacks"
-                    styleClass="btn-blue" prefWidth="200"/>
-            <Button text="Voir les Centres" onAction="#handleVoirCentres"
-                    styleClass="btn-orange" prefWidth="200"/>
+        <HBox alignment="CENTER" spacing="10" styleClass="pagination-box">
+            <Button fx:id="btnPrecedent" text="◀ Précédent" onAction="#pagePrecedente"/>
+            <Label fx:id="pageLabel" text="Page 1"/>
+            <Button fx:id="btnSuivant" text="Suivant ▶" onAction="#pageSuivante"/>
         </HBox>
     </bottom>
 </BorderPane>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+
+
+<?import java.net.URL?>
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.NavbarController"
+      styleClass="navbar" spacing="15" alignment="CENTER_LEFT" prefHeight="70" prefWidth="1200">
+    <stylesheets>
+        <URL value="@NavbarStyle.css" />
+    </stylesheets>
+
+    <!-- Logo amélioré -->
+    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="logo-container">
+        <ImageView fx:id="logoImage" fitHeight="40" fitWidth="40" preserveRatio="true" styleClass="logo-img"/>
+        <Label text="INNERBLOOM" styleClass="navbar-logo">
+            <font>
+                <Font name="Arial" size="20"/>
+            </font>
+        </Label>
+    </HBox>
+
+    <!-- Espaceur -->
+    <Region HBox.hgrow="ALWAYS"/>
+
+
+
+    <!-- Boutons de navigation -->
+    <Button styleClass="navbar-button" onAction="#goToEventsFront">
+        <graphic>
+            <SVGPath content="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
+        </graphic>
+        <text>Événements</text>
+    </Button>
+
+    <Button styleClass="navbar-button" onAction="#goToFormationsFront">
+        <graphic>
+            <SVGPath content="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+        </graphic>
+        <text>Formations</text>
+    </Button>
+
+    <Button styleClass="navbar-button" onAction="#goToCentresFront">
+        <graphic>
+            <SVGPath content="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </graphic>
+        <text>Centres</text>
+    </Button>
+
+    <Button styleClass="navbar-button" onAction="#goToContratsFront">
+        <graphic>
+            <SVGPath content="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+        </graphic>
+        <text>Mes Contrats</text>
+    </Button>
+
+    <Button styleClass="navbar-button" onAction="#goToAddContrat">
+        <graphic>
+            <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+        </graphic>
+        <text>Signer Contrat</text>
+    </Button>
+
+    <Button styleClass="navbar-button" onAction="#goToPacksFront">
+        <graphic>
+            <SVGPath content="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM10 4h4v2h-4V4zm10 15H4v-2h16v2zm0-5H4V8h4v2h2V8h4v2h2V8h4v6z"/>
+        </graphic>
+        <text>Packs</text>
+    </Button>
+
+    <Button styleClass="navbar-button" onAction="#goToArticlesFront">
+        <graphic>
+            <SVGPath content="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+        </graphic>
+        <text>Articles</text>
+    </Button>
+
+    <Button styleClass="navbar-button" onAction="#goToAvisFront">
+        <graphic>
+            <SVGPath content="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+        </graphic>
+        <text>Avis</text>
+    </Button>
+
+    <Button styleClass="navbar-button" onAction="#goToReclamationFront">
+        <graphic>
+            <SVGPath content="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+        </graphic>
+        <text>Reclamations</text>
+    </Button>
+
+    <!-- Boutons de compte -->
+    <Button styleClass="navbar-account-button" onAction="#goToProfil">
+        <graphic>
+            <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+        </graphic>
+    </Button>
+
+    <Button styleClass="navbar-cart-button" onAction="#goToCart">
+        <graphic>
+            <SVGPath content="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+        </graphic>
+    </Button>
+
+    <Button onAction="#handleLogout" styleClass="navbar-button" maxWidth="Infinity">
+        <graphic>
+            <SVGPath content="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"
+                     styleClass="navbar-icon"/>
+        </graphic>
+    </Button>
+
+</HBox>

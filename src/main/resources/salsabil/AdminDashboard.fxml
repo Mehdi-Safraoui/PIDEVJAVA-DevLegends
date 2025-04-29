@@ -9,6 +9,9 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.salsabil.AdminDashboardController"
             prefWidth="900.0" prefHeight="600.0" stylesheets="@/style.css">
 
+    <fx:include source="../Sidebar.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"/>
+
+
     <VBox spacing="20.0" alignment="TOP_CENTER" prefWidth="900">
 
         <HBox spacing="10.0" alignment="CENTER_LEFT">
@@ -41,6 +44,7 @@
         <HBox spacing="20.0" alignment="CENTER">
             <Button fx:id="btnAfficherProfil" text="Afficher Profil" styleClass="button" onAction="#handleAfficherProfil"/>
             <Button fx:id="showUsersButton" onAction="#handleShowUsers" styleClass="button" text="Afficher les utilisateurs" />
+
             <Button text="Déconnexion" styleClass="danger-button" onAction="#handleLogout"/>
         </HBox>
     </VBox>

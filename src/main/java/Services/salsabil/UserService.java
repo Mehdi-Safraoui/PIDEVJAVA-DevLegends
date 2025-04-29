@@ -42,6 +42,7 @@ public class UserService implements InterfaceCRUD<User> {
             e.printStackTrace();
         }
     }
+
     public void liftBan(int userId) {
         String sql = "UPDATE user SET banned_until = NULL WHERE id = " + userId;
         try (Statement stmt = con.createStatement()) {
@@ -51,6 +52,60 @@ public class UserService implements InterfaceCRUD<User> {
         }
     }
 
+    public void desactiverCompte(int userId) {
+        String req = "UPDATE user SET statut_compte = false WHERE id = ?";
+        try {
+            PreparedStatement pst = con.prepareStatement(req);
+            pst.setInt(1, userId);
+            pst.executeUpdate();
+            System.out.println("✅ Compte désactivé avec succès !");
+        } catch (SQLException e) {
+            System.out.println("❌ Erreur lors de la désactivation du compte : " + e.getMessage());
+        }
+    }
+    public String getMotDePasseParId(int id) {
+        String query = "SELECT password FROM user WHERE id = " + id;
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getString("password");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean updateMotDePasse(int id, String nouveauHash) {
+        String query = "UPDATE user SET password = ? WHERE id = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, nouveauHash);
+            pstmt.setInt(2, id);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean updatePassword(String userEmail, String newPassword) {
+        String sql = "UPDATE user SET password = ? WHERE user_email = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            pstmt.setString(1, hashedPassword);
+            pstmt.setString(2, userEmail);
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("✅ Mot de passe mis à jour avec succès !");
+                return true;
+            } else {
+                System.out.println("❌ Aucun utilisateur trouvé avec cet email.");
+            }
+        } catch (SQLException e) {
+            System.out.println("❌ Erreur lors de la mise à jour du mot de passe : " + e.getMessage());
+        }
+        return false;
+    }
 
     @Override
     public void add(User user) {
@@ -196,6 +251,25 @@ public class UserService implements InterfaceCRUD<User> {
             System.out.println("❌ Erreur lors de la recherche de l'utilisateur : " + e.getMessage());
         }
         return null;
+    }
+
+    public User findNumtelByEmail(String email) {
+        User user = null;
+        try {
+            String req = "SELECT * FROM user WHERE user_email = '" + email + "'";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setNum_tel(rs.getString("num_tel"));
+                user.setUser_email(rs.getString("user_email"));
+                // Et d'autres champs si besoin
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return user;
     }
 
     /*

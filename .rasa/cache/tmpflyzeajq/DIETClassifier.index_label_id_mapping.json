@@ -1,0 +1,23 @@
+{
+  "0": "affirm",
+  "1": "ask_for_help",
+  "2": "ask_for_weather",
+  "3": "ask_relaxation",
+  "4": "bot_challenge",
+  "5": "deny",
+  "6": "express_loneliness",
+  "7": "express_stress",
+  "8": "goodbye",
+  "9": "greet",
+  "10": "mood_great",
+  "11": "mood_unhappy",
+  "12": "need_motivation",
+  "13": "need_relaxation_tip",
+  "14": "praise_bot",
+  "15": "propose_movie",
+  "16": "propose_music",
+  "17": "propose_yoga",
+  "18": "provide_feedback",
+  "19": "small_talk",
+  "20": "talk_about_sleep"
+}

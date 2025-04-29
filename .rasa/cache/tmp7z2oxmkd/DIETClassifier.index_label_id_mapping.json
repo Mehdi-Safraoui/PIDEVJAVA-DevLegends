@@ -1,0 +1,16 @@
+{
+  "0": "affirm",
+  "1": "ask_for_help",
+  "2": "ask_for_time",
+  "3": "ask_for_weather",
+  "4": "bot_challenge",
+  "5": "deny",
+  "6": "goodbye",
+  "7": "greet",
+  "8": "mood_great",
+  "9": "mood_unhappy",
+  "10": "propose_movie",
+  "11": "propose_music",
+  "12": "propose_yoga",
+  "13": "provide_feedback"
+}
