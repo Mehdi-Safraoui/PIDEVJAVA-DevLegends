@@ -20,7 +20,7 @@ public class Avis {
         this.noteAvis = noteAvis;
         this.dateAvis = dateAvis;
         this.emailAvis = emailAvis;
-        this.statutAvis = statutAvis;
+        this.statutAvis = "Non traitée";
     }
 
     // Getters et Setters

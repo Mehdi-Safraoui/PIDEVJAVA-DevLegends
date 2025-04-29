@@ -9,10 +9,18 @@ import javafx.stage.Stage;
 public class AfficherAvisMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherAvis.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/AfficherAvis.fxml"));
         Parent root = loader.load();
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root, 1366, 720);
+
+        // Optional: Set minimum window size
+        stage.setMinWidth(1024);
+        stage.setMinHeight(600);
+
+        stage.setScene(scene);
         stage.setTitle("Liste des Avis");
+        stage.centerOnScreen();
+
         stage.show();
     }
 

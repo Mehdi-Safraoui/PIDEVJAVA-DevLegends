@@ -11,6 +11,8 @@
             prefWidth="900" prefHeight="640"
             styleClass="main-pane">
 
+    <fx:include source="../Navbar.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"/>
+
     <children>
 
         <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="10.0" spacing="10.0">

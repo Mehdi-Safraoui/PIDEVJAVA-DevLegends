@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class AfficherReclamationsMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamations.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mehdi/AfficherReclamations.fxml"));
         Parent root = loader.load();
 
         // Create scene with specified dimensions

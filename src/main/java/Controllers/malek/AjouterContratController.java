@@ -1,14 +1,20 @@
 package Controllers.malek;
 
 import Entities.malek.Contrat;
+import Utils.Session;
+import Entities.salsabil.User;
 import Services.malek.CentreService;
 import Services.malek.ContratService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -78,23 +84,53 @@ public class AjouterContratController {
             contrat.setModpaimentCont(cbModePaiement.getValue());
             contrat.setRenouvAutoCont(cbRenouvAuto.isSelected());
 
+            // Récupérer l'ID de l'utilisateur connecté depuis la session
+            User currentUser = Session.getCurrentUser();
+            if (currentUser != null) {
+                contrat.setUserId(currentUser.getId());
+            } else {
+                showAlert("Erreur", "Aucun utilisateur connecté!", Alert.AlertType.ERROR);
+                return;
+            }
+
             // Ajout du contrat
             contratService.add(contrat);
 
             // Afficher un message de succès
             showAlert("Succès", "Contrat ajouté avec succès!", Alert.AlertType.INFORMATION);
 
-            // Fermer la fenêtre
-            closeWindow();
+            loadAccueilPage();
 
         } catch (Exception e) {
             showAlert("Erreur", "Erreur lors de l'ajout du contrat: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
+    // Méthode pour charger la page d'accueil
+    private void loadAccueilPage() {
+        try {
+            // Charger l'écran d'accueil (par exemple "LandingPage.fxml")
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AfficherContratFront.fxml"));
+            Parent root = loader.load();
+
+            // Obtenez la scène actuelle
+            Stage currentStage = (Stage) btnAnnuler.getScene().getWindow();
+
+            // Définir la nouvelle scène sur la même fenêtre (Stage)
+            Scene newScene = new Scene(root);
+            currentStage.setScene(newScene);
+            currentStage.setTitle("Page d'Accueil");
+
+            // Afficher la scène d'accueil
+            currentStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void handleAnnuler() {
-        closeWindow();
+        loadAccueilPage();
     }
 
     private boolean validateFields() {

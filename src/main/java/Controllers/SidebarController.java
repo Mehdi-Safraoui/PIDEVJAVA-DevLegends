@@ -2,6 +2,9 @@ package Controllers;
 
 import Controllers.maya.ChatController;
 import javafx.application.HostServices;
+import Controllers.salsabil.ProfilController;
+import Entities.salsabil.User;
+import Utils.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -212,9 +215,39 @@ public class SidebarController {
     }
 
     @FXML
+    private void goToProfil(ActionEvent event) {
+        // Récupérer l'utilisateur actuel depuis la session
+        User currentUser = Session.getCurrentUser();
+
+        if (currentUser != null) {
+            try {
+                // Charger la vue du profil
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Profil.fxml"));
+                Parent root = loader.load();
+
+                // Passer l'utilisateur au contrôleur du profil
+                ProfilController profilController = loader.getController();
+                profilController.setUser(currentUser);
+
+                // Charger la scène du profil
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Mon Profil");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Aucun utilisateur connecté.");
+        }
+    }
+
+    @FXML
     private void goToArticles() {
         loadScene("/maya/AjouterArticle.fxml", "Articles de Conseil");
     }
+
+
 
     @FXML
     private void goToConsultations() {
@@ -319,6 +352,23 @@ public class SidebarController {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("List des Quiz");
+    private void handleLogout(ActionEvent event) {
+        try {
+            // Nettoyer la session
+            Session.clear();
+
+            // Fermer la fenêtre actuelle
+            ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+
+            // Charger l'écran de login
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Login.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Connexion");
+            stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

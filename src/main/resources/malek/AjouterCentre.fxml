@@ -1,65 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import Components.malek.PhoneNumberField?>
+
 <?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/21.0.2"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controllers.malek.AjouterCentreController"
+      stylesheets="@/style.css"
+      spacing="15"
+      styleClass="dialog-pane"
+      prefWidth="450">
 
-<AnchorPane xmlns="http://javafx.com/javafx/21.0.2"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controllers.malek.AjouterCentreController"
-            prefHeight="600.0" prefWidth="700.0"
-            stylesheets="@/style.css"
-            styleClass="root">
+   <padding>
+      <Insets top="20" right="20" bottom="20" left="20"/>
+   </padding>
 
-   <children>
-      <VBox fx:id="formContainer" spacing="10" alignment="CENTER_LEFT" layoutX="50" layoutY="30" styleClass="formContainer">
+   <Label text="Ajouter un Centre" styleClass="dialog-title"/>
 
-         <Label text="Ajouter un nouveau centre" styleClass="title" />
+   <GridPane hgap="10" vgap="10">
+      <columnConstraints>
+         <ColumnConstraints prefWidth="100" halignment="RIGHT"/>
+         <ColumnConstraints prefWidth="300"/>
+      </columnConstraints>
 
-         <VBox spacing="5">
-            <Label text="Nom du centre" styleClass="field-label"/>
-            <TextField fx:id="TFNom" styleClass="text-field"/>
-         </VBox>
+      <Label text="Nom:" GridPane.rowIndex="0"/>
+      <TextField fx:id="TFNom" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-         <VBox spacing="5">
-            <Label text="Adresse" styleClass="field-label"/>
-            <TextField fx:id="TFAdresse" styleClass="text-field"/>
-         </VBox>
+      <Label text="Adresse:" GridPane.rowIndex="1"/>
+      <TextField fx:id="TFAdresse" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-         <VBox spacing="5">
-            <Label text="Téléphone (8 chiffres)" styleClass="field-label"/>
-            <TextField fx:id="TFTelephone" styleClass="text-field"/>
-         </VBox>
+      <Label text="Téléphone:" GridPane.rowIndex="2"/>
+      <PhoneNumberField fx:id="TFTelephone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-         <VBox spacing="5">
-            <Label text="Email" styleClass="field-label"/>
-            <TextField fx:id="TFEmail" styleClass="text-field"/>
-         </VBox>
+      <Label text="Email:" GridPane.rowIndex="3"/>
+      <TextField fx:id="TFEmail" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
-         <VBox spacing="5">
-            <Label text="Spécialité" styleClass="field-label"/>
-            <TextField fx:id="TFSpecialite" styleClass="text-field"/>
-         </VBox>
+      <Label text="Spécialité:" GridPane.rowIndex="4"/>
+      <TextField fx:id="TFSpecialite" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
 
-         <VBox spacing="5">
-            <Label text="Capacité" styleClass="field-label"/>
-            <TextField fx:id="TFCapacite" styleClass="text-field"/>
-         </VBox>
+      <Label text="Capacité:" GridPane.rowIndex="5"/>
+      <TextField fx:id="TFCapacite" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
 
-         <VBox spacing="5">
-            <Label text="Photo" styleClass="field-label"/>
-            <HBox spacing="10" alignment="CENTER_LEFT">
-               <TextField fx:id="TFPhoto" styleClass="text-field"/>
-               <Button fx:id="btnUploadPhoto" text="Parcourir" onAction="#handleUploadPhoto" styleClass="button"/>
-            </HBox>
-         </VBox>
+      <Label text="Photo:" GridPane.rowIndex="6"/>
+      <HBox spacing="10" GridPane.rowIndex="6" GridPane.columnIndex="1">
+         <TextField fx:id="TFPhoto" editable="false" prefWidth="220"/>
+         <Button fx:id="btnUploadPhoto" text="Parcourir" onAction="#handleUploadPhoto"/>
+      </HBox>
+   </GridPane>
 
-         <HBox spacing="20" alignment="CENTER" styleClass="button-container">
-            <Button fx:id="btnAjouter" text="Ajouter" onAction="#handleAjouter" styleClass="button"/>
-            <Button fx:id="btnAnnuler" text="Annuler" onAction="#handleAnnuler" styleClass="button"/>
-         </HBox>
-
-      </VBox>
-   </children>
-</AnchorPane>
+   <HBox spacing="10" alignment="CENTER_RIGHT">
+      <Button fx:id="btnAnnuler" text="Annuler" onAction="#handleAnnuler"/>
+      <Button fx:id="btnAjouter" text="Ajouter" onAction="#handleAjouter" styleClass="btn-primary"/>
+   </HBox>
+</VBox>

@@ -17,6 +17,7 @@
 .label {
     -fx-text-fill: #2d3436;
     -fx-font-weight: bold;
+    -fx-font-size: 14px;
 }
 
 .text-field, .password-field, .combo-box {
@@ -69,17 +70,37 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
 }
 
-.field-label {
-    -fx-font-weight: bold;
-    -fx-text-fill: #444;
-}
-
 .button-container {
     -fx-padding: 20 0 0 0;
 }
 
 .text-field {
     -fx-pref-width: 250px;
+}
+/* Ajouts/modifications pour le profil */
+.header-box {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 15 0;
+}
+
+.formContainerProfil {
+    -fx-background-color: white;
+    -fx-padding: 40px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 5);
+    -fx-max-width: 600px;
+}
+/* Conservez le reste de votre CSS existant */
+/* Style pour l'image de profil circulaire */
+.profile-image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.2, 0, 2);
+}
+
+.link-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #27ae60;
+    -fx-underline: true;
+    -fx-cursor: hand;
 }
 
 /* Style pour le titre */
@@ -118,5 +139,30 @@
 
 .close-button:hover {
     -fx-background-color: #c0392b;
+
+#goToLoginButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #27ae60;
+    -fx-underline: true;
+    -fx-font-size: 12px;
 }
 
+#goToLoginButton:hover {
+    -fx-text-fill: #245e0b;
+    -fx-cursor: hand;
+}
+.text-error {
+    -fx-text-fill: #ca2626;
+}
+#forgotPasswordButton {
+    -fx-background-color: transparent;
+    -fx-underline: true;
+    -fx-text-fill: #28a745;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+}
+
+#forgotPasswordButton:hover {
+    -fx-text-fill: #245e0b;
+}
