@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.collections.FXCollections?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21.0.2"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -12,7 +13,6 @@
             prefWidth="1200" prefHeight="700"
             styleClass="main-pane">
 
-    <!-- Top section with logo and title -->
     <top>
         <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="header-box">
             <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo"/>
@@ -20,18 +20,21 @@
         </HBox>
     </top>
 
-    <!-- Left section with sidebar -->
     <left>
         <fx:include source="../Sidebar.fxml"/>
     </left>
 
-    <!-- Center content -->
     <center>
         <VBox spacing="20" styleClass="content-box">
-            <!-- Section title -->
             <Label text="Nos centres" styleClass="section-title"/>
 
-            <!-- Cards in ScrollPane -->
+            <HBox spacing="15" alignment="CENTER">
+                <TextField fx:id="searchField" promptText="Rechercher un centre..."/>
+                <ComboBox fx:id="sortComboBox" prefWidth="150"/>
+                <Button text="Ajouter Centre" onAction="#openAjouterCentreWindow"
+                        styleClass="btn-green" prefWidth="200"/>
+            </HBox>
+
             <ScrollPane fitToWidth="true" styleClass="card-scroll">
                 <FlowPane fx:id="cardsContainer" hgap="30" vgap="30" alignment="CENTER" styleClass="card-container">
                     <padding>
@@ -42,15 +45,11 @@
         </VBox>
     </center>
 
-    <!-- Bottom buttons -->
     <bottom>
-        <HBox alignment="CENTER" styleClass="button-box" spacing="20">
-            <Button text="Ajouter Centre" onAction="#handleAjouterCentre"
-                    styleClass="btn-green" prefWidth="200"/>
-            <Button text="Voir les Packs" onAction="#handleVoirPacks"
-                    styleClass="btn-blue" prefWidth="200"/>
-            <Button text="Voir les Contrats" onAction="#handleVoirContrats"
-                    styleClass="btn-orange" prefWidth="200"/>
+        <HBox alignment="CENTER" spacing="10" styleClass="pagination-box">
+            <Button fx:id="btnPrevPage" text="◀ Précédent"/>
+            <Label fx:id="pageLabel" text="Page 1"/>
+            <Button fx:id="btnNextPage" text="Suivant ▶"/>
         </HBox>
     </bottom>
 </BorderPane>

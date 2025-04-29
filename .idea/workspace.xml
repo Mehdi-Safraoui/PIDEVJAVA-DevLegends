@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="7e8515e2-fec0-4a82-a4e1-865c41c40ac0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
@@ -22,8 +23,8 @@
         <option value="Interface" />
         <option value="JavaFXApplication" />
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -34,6 +35,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -58,6 +62,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainFX.executor": "Run",
+    "Application.MainFXConsultation.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.TestBD.executor": "Run",
+    "Maven.testpidev [javafx:run].executor": "Run",
+    "Maven.testpidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Centres-Contrat-Pack",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/fatma/IdeaProjects/testpidev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.MainFX.executor&quot;: &quot;Run&quot;,
@@ -82,7 +108,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Controller" />
@@ -176,6 +202,21 @@
       <workItem from="1744791398941" duration="4125000" />
       <workItem from="1744905365976" duration="5630000" />
       <workItem from="1744968829476" duration="1029000" />
+      <workItem from="1744969880194" duration="3152000" />
+      <workItem from="1745079646848" duration="736000" />
+      <workItem from="1745080399541" duration="17001000" />
+      <workItem from="1745153556560" duration="7558000" />
+      <workItem from="1745230558824" duration="10484000" />
+      <workItem from="1745261095364" duration="1912000" />
+      <workItem from="1745397216210" duration="362000" />
+      <workItem from="1745530697881" duration="268000" />
+      <workItem from="1745577135711" duration="3924000" />
+      <workItem from="1745599967961" duration="5960000" />
+      <workItem from="1745693107223" duration="3948000" />
+      <workItem from="1745708385277" duration="1110000" />
+      <workItem from="1745757322750" duration="15964000" />
+      <workItem from="1745834720944" duration="1800000" />
+      <workItem from="1745836545349" duration="1633000" />
       <workItem from="1744969880194" duration="2850000" />
       <workItem from="1745309798545" duration="8490000" />
       <workItem from="1745346051136" duration="2172000" />

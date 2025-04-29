@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.collections.FXCollections?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21.0.2"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -12,33 +13,48 @@
             prefWidth="900" prefHeight="640"
             styleClass="main-pane">
 
-    <children>
+    <fx:include source="../Navbar.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"/>
 
+    <children>
+        <!-- Header avec logo et titre -->
         <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="10.0" spacing="10.0">
             <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo"/>
             <Label styleClass="title" text="InnerBloom"/>
         </HBox>
 
+        <!-- Titre section -->
         <Label text="Nos centres"
                layoutX="20.0" layoutY="70.0"
                styleClass="section-title"/>
 
-        <ScrollPane layoutX="20" layoutY="110" prefWidth="860" prefHeight="480"
+        <!-- Barre de recherche et tri -->
+        <HBox layoutX="20" layoutY="100" spacing="15" alignment="CENTER_LEFT">
+            <TextField fx:id="searchField" promptText="Rechercher un centre..."
+                       styleClass="search-field" prefWidth="250"/>
+            <ComboBox fx:id="sortComboBox" prefWidth="150" styleClass="sort-combo"/>
+        </HBox>
+
+        <!-- Liste des centres -->
+        <ScrollPane layoutX="20" layoutY="140" prefWidth="860" prefHeight="400"
                     styleClass="card-scroll" hbarPolicy="NEVER" vbarPolicy="ALWAYS" fitToWidth="true">
             <FlowPane fx:id="cardsContainer"
                       prefWrapLength="270"
-            hgap="20" vgap="20"
-            alignment="TOP_LEFT"
-            styleClass="card-container">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-        </FlowPane>
-    </ScrollPane>
+                      hgap="20" vgap="20"
+                      alignment="TOP_LEFT"
+                      styleClass="card-container">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+            </FlowPane>
+        </ScrollPane>
 
-    <HBox alignment="CENTER" layoutY="570" prefWidth="900" spacing="20">
-        <Button fx:id="retourAccueilBtn" text="Retour à l'accueil" onAction="#handleRetourAccueil"
-                styleClass="btn-blue" prefWidth="200"/>
-    </HBox>
-</children>
-        </AnchorPane>
+        <!-- Pagination et bouton retour -->
+        <HBox alignment="CENTER" layoutY="550" prefWidth="900" spacing="20">
+            <Button fx:id="btnPrev" text="◀" onAction="#goToPreviousPage" styleClass="btn-blue" prefWidth="60"/>
+            <Label fx:id="pageLabel" text="Page 1 / X" styleClass="page-label"/>
+            <Button fx:id="btnNext" text="▶" onAction="#goToNextPage" styleClass="btn-blue" prefWidth="60"/>
+            <Button fx:id="retourAccueilBtn" text="Retour à l'accueil" onAction="#handleRetourAccueil"
+                    styleClass="btn-blue" prefWidth="200"/>
+        </HBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.salsabil.ProfilController" prefHeight="600.0" prefWidth="800.0" stylesheets="@/style.css">
+    <!-- Section Sidebar -->
+    <top>
+        <fx:include source="../Navbar.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" />
+    </top>
+
+    <!-- Section Profil (centre) -->
+    <center>
+        <StackPane alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
+            <VBox fx:id="formContainerProfil" alignment="CENTER" spacing="25" styleClass="formContainerProfil">
+                <!-- En-tête avec logo et titre -->
+                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="header-box">
+                    <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true" styleClass="logo" />
+                    <Label styleClass="title" text="InnerBloom" />
+                    <Separator orientation="VERTICAL" style="-fx-padding: 0 10px;" />
+                    <Label styleClass="title" text="Profil Utilisateur" />
+                </HBox>
+
+                <!-- Photo de profil circulaire avec masquage -->
+                <StackPane>
+                    <Circle radius="45" style="-fx-fill: white; -fx-stroke: #2ecc71; -fx-stroke-width: 3;">
+                        <effect>
+                            <DropShadow radius="5" color="rgba(0,0,0,0.2)" />
+                        </effect>
+                    </Circle>
+
+                    <StackPane>
+                        <Circle radius="42" fx:id="clipCircle" />
+                        <ImageView fx:id="profileImageView" fitHeight="84" fitWidth="84" preserveRatio="true">
+                            <clip>
+                                <Circle radius="42" centerX="42" centerY="42" />
+                            </clip>
+                        </ImageView>
+                    </StackPane>
+                </StackPane>
+
+                <!-- Informations utilisateur -->
+                <VBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 0 50px;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lblNom" styleClass="label" />
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lblPrenom" styleClass="label" />
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lblAge" styleClass="label" />
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lblRole" styleClass="label" />
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lblSpecialite" styleClass="label" />
+                    </HBox>
+                </VBox>
+
+                <!-- Boutons d'action -->
+                <HBox alignment="CENTER" spacing="25" styleClass="button-container">
+                    <Button fx:id="btnDesactiver" onAction="#handleDesactiverCompte" styleClass="button" text="Désactiver le compte" />
+                    <Button fx:id="btnChangerMotDePasse" onAction="#handleChangerMotDePasse" styleClass="button" text="Changer le mot de passe" />
+                </HBox>
+                <HBox alignment="CENTER" spacing="25" styleClass="button-container">
+                    <Button fx:id="btnModifier" onAction="#handleModifier" styleClass="button" text="Modifier le profil" />
+                    <Button fx:id="btnRetour" onAction="#handleRetour" styleClass="button" text="Retour" />
+                </HBox>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

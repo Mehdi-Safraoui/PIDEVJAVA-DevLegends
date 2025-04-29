@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class AfficherUsersController {
@@ -79,14 +80,20 @@ public class AfficherUsersController {
             @Override
             public TableCell<User, Void> call(final TableColumn<User, Void> param) {
                 return new TableCell<>() {
-                    private final Button btnModifier = new Button("✏️ Modifier");
-                    private final Button btnProfil = new Button("👁️ Voir Profil");
+                    private final Button btnModifier = new Button("✏");
+                    private final Button btnProfil = new Button("👁");
+                    private final Button btnBannir = new Button("⛔");
                     private final HBox buttonBox = new HBox(10); // Espace entre les boutons
 
                     {
                         btnModifier.setStyle("-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 8;");
                         btnProfil.setStyle("-fx-background-color: #2980b9; -fx-text-fill: white; -fx-background-radius: 8;");
+                        btnBannir.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 8;");
 
+                        btnBannir.setOnAction(event -> {
+                            User user = getTableView().getItems().get(getIndex());
+                            afficherPopupBannissement(user);
+                        });
                         btnModifier.setOnAction(event -> {
                             User user = getTableView().getItems().get(getIndex());
                             try {
@@ -123,7 +130,7 @@ public class AfficherUsersController {
                             }
                         });
 
-                        buttonBox.getChildren().addAll(btnModifier, btnProfil);
+                        buttonBox.getChildren().addAll(btnModifier, btnProfil, btnBannir);
                     }
 
                     @Override
@@ -141,5 +148,40 @@ public class AfficherUsersController {
 
         colAction.setCellFactory(cellFactory);
     }
+    private void afficherPopupBannissement(User user) {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Bannir Utilisateur");
+        dialog.setHeaderText("Bannir " + user.getFirst_name() + " " + user.getLast_name());
+
+        // Spinner pour durée en minutes
+        Spinner<Integer> spinner = new Spinner<>(1, 1440, 60); // min=1, max=1440 min, default=60
+        spinner.setEditable(true);
+
+        Label label = new Label("Durée du bannissement (en minutes) :");
+        HBox content = new HBox(10, label, spinner);
+        dialog.getDialogPane().setContent(content);
+
+        // Boutons OK / Annuler
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        dialog.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                int minutes = spinner.getValue();
+                LocalDateTime dateFinBannissement = LocalDateTime.now().plusMinutes(minutes);
+                user.setBanned_until(dateFinBannissement);
+
+                UserService userService = new UserService();
+                userService.bannirUtilisateur(user.getId(), dateFinBannissement);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Bannissement");
+                alert.setHeaderText(null);
+                alert.setContentText("Utilisateur banni jusqu’au " + dateFinBannissement);
+                alert.showAndWait();
+            }
+        });
+    }
+
+
 
 }

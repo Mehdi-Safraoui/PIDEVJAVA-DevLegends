@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.malek.AchatPackController"
+      stylesheets="@/style.css"
+      spacing="15" alignment="CENTER">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Label affichant le nom du pack -->
+    <Label fx:id="nomPackLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Image du pack -->
+    <ImageView fx:id="photoPackView" fitHeight="150" fitWidth="150" />
+
+    <!-- Description du pack -->
+    <Label fx:id="descriptPackLabel" wrapText="true" />
+
+    <!-- Prix du pack -->
+    <Label fx:id="prixPackLabel" />
+
+    <!-- Durée du pack (ajout de "jours" pour plus de clarté) -->
+    <Label fx:id="dureePackLabel" />
+
+    <!-- Affichage du code promo généré -->
+    <Label fx:id="discountCodeLabel" style="-fx-text-fill: green; -fx-font-weight: bold;" />
+
+    <!-- Bouton pour générer le code de réduction -->
+    <Button fx:id="generateCodeButton" text="Générer un code de réduction" onAction="#onGenerateCodeClicked" />
+
+    <!-- Champ pour saisir le code promo -->
+    <TextField fx:id="codeInputField" promptText="Entrez le code ici..." maxWidth="200"/>
+
+    <!-- Bouton pour appliquer le code de réduction -->
+    <Button fx:id="applyCodeButton" text="Appliquer le code" onAction="#onApplyCodeClicked" />
+
+    <!-- Bouton pour effectuer le paiement -->
+    <Button fx:id="payButton" text="Payer" onAction="#onPayButtonClicked" style="-fx-background-color: green; -fx-text-fill: white;" />
+
+</VBox>

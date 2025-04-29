@@ -2,6 +2,10 @@ package Controllers.malek;
 
 import Entities.malek.Contrat;
 import Entities.malek.Centre;
+import Utils.GeocodingService;
+import Entities.salsabil.User;
+import javafx.application.Platform;
+import Utils.Session;
 import Services.malek.CentreService;
 import Services.malek.ContratService;
 import javafx.fxml.FXML;
@@ -17,40 +21,183 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class AfficherContratController {
 
     @FXML private FlowPane cardsContainer;
+    @FXML private ImageView logoImage;
+    @FXML private Button btnSuivant;
+    @FXML private Button btnPrecedent;
+    @FXML private Label pageLabel;
+    @FXML private TextField searchField;
+    @FXML private ComboBox<String> sortComboBox;
+    @FXML private DatePicker dateDebutPicker;
+    @FXML private DatePicker dateFinPicker;
+
     private final ContratService contratService = new ContratService();
     private final CentreService centreService = new CentreService();
-    @FXML private ImageView logoImage;
     private final Map<Integer, Image> imageCache = new HashMap<>();
+
+    private final int contratsParPage = 3;
+    private int pageActuelle = 0;
+    private List<Contrat> tousLesContrats;
+    private List<Contrat> contratsFiltres;
 
     @FXML
     public void initialize() {
-        Image img = new Image(getClass().getResource("/images/logo.png").toExternalForm());
-        logoImage.setImage(img);
-        Circle clip = new Circle();
-        clip.setRadius(25);
-        clip.setCenterX(25);
-        clip.setCenterY(25);
-        logoImage.setClip(clip);
-        loadContrats();
+        setupLogo();
+        setupComboBox();
+        loadInitialData();
+        setupListeners();
     }
 
-    private void loadContrats() {
-        cardsContainer.getChildren().clear();
-        List<Contrat> contrats = contratService.find();
-
-        for (Contrat contrat : contrats) {
-            cardsContainer.getChildren().add(createContratCard(contrat));
+    private void setupLogo() {
+        try {
+            Image img = new Image(getClass().getResource("/images/logo.png").toExternalForm());
+            logoImage.setImage(img);
+            logoImage.setClip(new Circle(25, 25, 25));
+        } catch (Exception e) {
+            System.err.println("Erreur de chargement du logo: " + e.getMessage());
         }
+    }
+
+    private void setupComboBox() {
+        sortComboBox.setItems(FXCollections.observableArrayList(
+                "Date début (récent)",
+                "Date début (ancien)",
+                "Date fin (récent)",
+                "Date fin (ancien)"
+        ));
+    }
+
+    private void loadInitialData() {
+        int userId = Session.getCurrentUser().getId(); // Utilisateur connecté
+        tousLesContrats = contratService.findByUserId(userId); // Contrats de l'utilisateur
+        contratsFiltres = new ArrayList<>(tousLesContrats); // Prépare les contrats filtrés
+        afficherContratsParPage(pageActuelle); // Affiche page actuelle
+    }
+
+
+
+    private void setupListeners() {
+        searchField.textProperty().addListener((obs, oldVal, newVal) -> filtrerEtTrier());
+        dateDebutPicker.valueProperty().addListener((obs, oldVal, newVal) -> filtrerEtTrier());
+        dateFinPicker.valueProperty().addListener((obs, oldVal, newVal) -> filtrerEtTrier());
+        sortComboBox.valueProperty().addListener((obs, oldVal, newVal) -> filtrerEtTrier());
+    }
+
+    private void filtrerEtTrier() {
+        filtrerContrats();
+        trierContrats();
+        pageActuelle = 0;
+        afficherContratsParPage(pageActuelle);
+    }
+
+    private void filtrerContrats() {
+        String recherche = searchField.getText().toLowerCase();
+        LocalDate dateDebut = dateDebutPicker.getValue();
+        LocalDate dateFin = dateFinPicker.getValue();
+
+        contratsFiltres = tousLesContrats.stream()
+                .filter(contrat -> {
+                    // Filtre par nom de centre
+                    Centre centre = centreService.findById(contrat.getCentreId());
+                    String nomCentre = centre != null ? centre.getNomCentre().toLowerCase() : "";
+                    boolean matchRecherche = recherche.isEmpty() || nomCentre.contains(recherche);
+
+                    // Filtre par date
+                    boolean matchDateDebut = dateDebut == null ||
+                            (contrat.getDatdebCont() != null &&
+                                    convertToLocalDate(contrat.getDatdebCont()).isAfter(dateDebut.minusDays(1)));
+
+                    boolean matchDateFin = dateFin == null ||
+                            (contrat.getDatfinCont() != null &&
+                                    convertToLocalDate(contrat.getDatfinCont()).isBefore(dateFin.plusDays(1)));
+
+                    return matchRecherche && matchDateDebut && matchDateFin;
+                })
+                .collect(Collectors.toList());
+    }
+
+    private LocalDate convertToLocalDate(Date date) {
+        if (date == null) return null;
+        if (date instanceof java.sql.Date) {
+            return ((java.sql.Date) date).toLocalDate();
+        }
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    private void trierContrats() {
+        String critereTri = sortComboBox.getValue();
+        if (critereTri == null || contratsFiltres == null) return;
+
+        switch (critereTri) {
+            case "Date début (récent)":
+                contratsFiltres.sort((c1, c2) -> c2.getDatdebCont().compareTo(c1.getDatdebCont()));
+                break;
+            case "Date début (ancien)":
+                contratsFiltres.sort((c1, c2) -> c1.getDatdebCont().compareTo(c2.getDatdebCont()));
+                break;
+            case "Date fin (récent)":
+                contratsFiltres.sort((c1, c2) -> c2.getDatfinCont().compareTo(c1.getDatfinCont()));
+                break;
+            case "Date fin (ancien)":
+                contratsFiltres.sort((c1, c2) -> c1.getDatfinCont().compareTo(c2.getDatfinCont()));
+                break;
+        }
+    }
+
+    private void afficherContratsParPage(int page) {
+        cardsContainer.getChildren().clear();
+
+        int start = page * contratsParPage;
+        int end = Math.min(start + contratsParPage, contratsFiltres.size());
+
+        for (int i = start; i < end; i++) {
+            cardsContainer.getChildren().add(createContratCard(contratsFiltres.get(i)));
+        }
+
+        updatePaginationUI();
+    }
+
+    private void updatePaginationUI() {
+        int totalPages = Math.max(1, (int) Math.ceil((double) contratsFiltres.size() / contratsParPage));
+        pageLabel.setText("Page " + (pageActuelle + 1) + " / " + totalPages);
+        btnPrecedent.setDisable(pageActuelle == 0);
+        btnSuivant.setDisable((pageActuelle + 1) * contratsParPage >= contratsFiltres.size());
+    }
+
+    @FXML
+    private void pageSuivante() {
+        if ((pageActuelle + 1) * contratsParPage < contratsFiltres.size()) {
+            pageActuelle++;
+            afficherContratsParPage(pageActuelle);
+        }
+    }
+
+    @FXML
+    private void pagePrecedente() {
+        if (pageActuelle > 0) {
+            pageActuelle--;
+            afficherContratsParPage(pageActuelle);
+        }
+    }
+
+    @FXML
+    private void handleClearFilters() {
+        searchField.clear();
+        dateDebutPicker.setValue(null);
+        dateFinPicker.setValue(null);
+        sortComboBox.getSelectionModel().clearSelection();
+        filtrerEtTrier();
     }
 
     private VBox createContratCard(Contrat contrat) {
@@ -58,13 +205,10 @@ public class AfficherContratController {
         card.setStyle("-fx-background-color: #f9f9f9; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-padding: 15;");
         card.setMaxWidth(250);
         card.setPrefWidth(250);
-        card.setPrefHeight(350); // Augmenté pour accommoder l'image plus grande
+        card.setPrefHeight(380); // Augmenté pour la distance
 
-        // Effet d'ombre pour le style carte
-        card.setEffect(new javafx.scene.effect.DropShadow(10, javafx.scene.paint.Color.GRAY));
-
-        // Récupérer le centre associé
         Centre centre = centreService.findById(contrat.getCentreId());
+        User user = Session.getCurrentUser();
 
         // Image du centre
         ImageView centreImageView = new ImageView();
@@ -72,7 +216,6 @@ public class AfficherContratController {
         centreImageView.setFitHeight(120);
         centreImageView.setPreserveRatio(true);
         centreImageView.setSmooth(true);
-        centreImageView.getStyleClass().add("centre-image");
 
         if (centre != null) {
             Image centreImage = imageCache.computeIfAbsent(centre.getId(), id -> {
@@ -90,38 +233,24 @@ public class AfficherContratController {
             centreImageView.setImage(new Image(getClass().getResourceAsStream("/default_centre.png")));
         }
 
-        // Titre
+        // Titre et informations
         Label title = new Label("Contrat #" + contrat.getId());
         title.setStyle("-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2E7D32;");
 
-        // Centre associé
         String nomCentre = centre != null ? centre.getNomCentre() : "Centre inconnu";
         Label centreLabel = new Label(nomCentre);
         centreLabel.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
 
-        // Dates
         Label dateDebut = new Label("Début: " + formatDate(contrat.getDatdebCont()));
         Label dateFin = new Label("Fin: " + formatDate(contrat.getDatfinCont()));
-
-        // Mode de paiement
         Label paiementLabel = new Label("Paiement: " + contrat.getModpaimentCont());
 
-        // Renouvellement automatique
         Label renouvLabel = new Label("Renouvellement: " + (contrat.isRenouvAutoCont() ? "Auto" : "Manuel"));
         renouvLabel.setStyle(contrat.isRenouvAutoCont() ? "-fx-text-fill: #388E3C;" : "-fx-text-fill: #D32F2F;");
 
-        // Boutons d'action
-        HBox buttonsBox = new HBox(10);
-        Button editBtn = new Button("Modifier");
-        Button deleteBtn = new Button("Supprimer");
-
-        editBtn.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
-        deleteBtn.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
-
-        editBtn.setOnAction(e -> openModificationWindow(contrat));
-        deleteBtn.setOnAction(e -> deleteContrat(contrat));
-
-        buttonsBox.getChildren().addAll(editBtn, deleteBtn);
+        // Label de distance
+        Label distanceLabel = new Label("Calcul en cours...");
+        distanceLabel.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #5D4037;");
 
         // Ajout des éléments à la carte
         card.getChildren().addAll(
@@ -133,13 +262,46 @@ public class AfficherContratController {
                 dateFin,
                 paiementLabel,
                 renouvLabel,
-                buttonsBox
+                distanceLabel
         );
+
+        // Calcul asynchrone de la distance
+        calculateAndDisplayDistance(user, centre, distanceLabel);
 
         return card;
     }
 
-    // ... (les autres méthodes restent inchangées)
+
+    private void calculateAndDisplayDistance(User user, Centre centre, Label distanceLabel) {
+        new Thread(() -> {
+            try {
+                if (user == null || centre == null || user.getAddress() == null || centre.getAdresseCentre() == null) {
+                    Platform.runLater(() -> distanceLabel.setText("Distance: N/A"));
+                    return;
+                }
+
+                double[] userCoords = GeocodingService.getCoordinates(user.getAddress());
+                double[] centreCoords = GeocodingService.getCoordinates(centre.getAdresseCentre());
+
+                if (userCoords != null && centreCoords != null) {
+                    double distance = GeocodingService.calculateDistance(
+                            userCoords[0], userCoords[1],
+                            centreCoords[0], centreCoords[1]
+                    );
+
+                    Platform.runLater(() ->
+                            distanceLabel.setText(String.format("Distance: %.2f km", distance))
+                    );
+                } else {
+                    Platform.runLater(() -> distanceLabel.setText("Distance: N/A"));
+                }
+            } catch (Exception e) {
+                Platform.runLater(() -> distanceLabel.setText("Distance: Erreur"));
+                System.err.println("Erreur calcul distance: " + e.getMessage());
+            }
+        }).start();
+    }
+
     private String formatDate(Date date) {
         if (date == null) return "Non spécifié";
         return new SimpleDateFormat("dd/MM/yyyy").format(date);
@@ -159,7 +321,7 @@ public class AfficherContratController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 
-            loadContrats(); // Rafraîchir l'affichage
+            reloadData();
         } catch (IOException e) {
             showAlert("Erreur", "Impossible d'ouvrir l'éditeur", Alert.AlertType.ERROR);
         }
@@ -174,56 +336,15 @@ public class AfficherContratController {
         confirm.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 contratService.delete(contrat);
-                loadContrats();
+                reloadData();
                 showAlert("Succès", "Contrat supprimé", Alert.AlertType.INFORMATION);
             }
         });
     }
 
-    @FXML
-    private void handleAjouterContrat(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AjouterContrat.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("Nouveau Contrat");
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-
-            loadContrats();
-        } catch (IOException e) {
-            showAlert("Erreur", "Impossible d'ouvrir le formulaire", Alert.AlertType.ERROR);
-        }
-    }
-
-    @FXML
-    private void handleVoirCentres(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AfficherCentre.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) cardsContainer.getScene().getWindow();
-            stage.setTitle("Gestion des Centres");
-            stage.setScene(new Scene(root, 900, 600));
-        } catch (IOException e) {
-            showAlert("Erreur", "Impossible de charger les centres", Alert.AlertType.ERROR);
-        }
-    }
-
-    @FXML
-    private void handleVoirPacks(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AfficherPack.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) cardsContainer.getScene().getWindow();
-            stage.setTitle("Gestion des Packs");
-            stage.setScene(new Scene(root, 900, 600));
-        } catch (IOException e) {
-            showAlert("Erreur", "Impossible de charger les packs", Alert.AlertType.ERROR);
-        }
+    private void reloadData() {
+        tousLesContrats = contratService.find();
+        filtrerEtTrier();
     }
 
     private void showAlert(String title, String message, Alert.AlertType type) {

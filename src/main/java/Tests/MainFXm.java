@@ -18,15 +18,15 @@ public class MainFXm extends Application {
         this.primaryStage = primaryStage;
 
         // Charger la scène des centres
-        Parent centreRoot = FXMLLoader.load(getClass().getResource("/AfficherCentre.fxml"));
+        Parent centreRoot = FXMLLoader.load(getClass().getResource("/malek/AfficherPackFront.fxml"));
         centreScene = new Scene(centreRoot, 900, 650);
 
         // Charger la scène des packs
-        Parent packRoot = FXMLLoader.load(getClass().getResource("/AfficherPack.fxml"));
+        Parent packRoot = FXMLLoader.load(getClass().getResource("/malek/AfficherPackFront.fxml"));
         packScene = new Scene(packRoot, 900, 650);
 
         // Charger la scène des contrats
-        Parent contratRoot = FXMLLoader.load(getClass().getResource("/AfficherContrat.fxml"));
+        Parent contratRoot = FXMLLoader.load(getClass().getResource("/malek/AfficherContratFront.fxml"));
         contratScene = new Scene(contratRoot, 900, 650);
 
         // Configuration de la fenêtre principale

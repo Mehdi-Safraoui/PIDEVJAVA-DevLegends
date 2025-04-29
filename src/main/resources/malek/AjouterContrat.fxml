@@ -25,7 +25,7 @@
         <!-- Image centrée avec taille responsive -->
         <ImageView fx:id="imageView" fitWidth="400" fitHeight="150" preserveRatio="true">
             <image>
-                <Image url="@/contrat.jpeg"/>
+                <Image url="@/images/contrat.jpeg"/>
             </image>
         </ImageView>
 

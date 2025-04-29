@@ -36,6 +36,26 @@ public class AfficherPackFrontController {
         loadPacks();
     }
 
+    @FXML
+    void onAcheterClicked(Pack selectedPack) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AchatPack.fxml"));
+            Parent root = loader.load();
+
+            AchatPackController controller = loader.getController();
+            controller.setPack(selectedPack);
+
+            Stage stage = new Stage();
+            stage.setTitle("Achat du Pack");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private void loadPacks() {
         cardsContainer.getChildren().clear();
         List<Pack> packs = packService.find();
@@ -51,10 +71,10 @@ public class AfficherPackFrontController {
                 "-fx-border-color: #e0e0e0; " +
                 "-fx-border-radius: 10; " +
                 "-fx-padding: 15;");
-        card.setPrefSize(250, 280); // Taille fixe pour 3 par ligne
+        card.setPrefSize(250, 320);
         card.setEffect(new javafx.scene.effect.DropShadow(10, javafx.scene.paint.Color.rgb(0, 0, 0, 0.1)));
 
-        // Image (optionnelle)
+        // Image
         ImageView imageView = new ImageView();
         try {
             if (pack.getPhotoPack() != null && !pack.getPhotoPack().isEmpty()) {
@@ -80,14 +100,37 @@ public class AfficherPackFrontController {
         Label prix = new Label("Prix: " + pack.getPrixPack() + " DT");
         prix.setStyle("-fx-font-size: 14px; -fx-text-fill: #00796B;");
 
-        card.getChildren().addAll(imageView, nom, description, prix);
+        // Purchase button
+        Button acheterBtn = new Button("Acheter");
+        acheterBtn.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+        acheterBtn.setOnAction(event -> handleAcheterPack(pack));
+
+        card.getChildren().addAll(imageView, nom, description, prix, acheterBtn);
         return card;
+    }
+
+    private void handleAcheterPack(Pack pack) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/malek/AchatPack.fxml"));
+            Parent root = loader.load();
+
+            AchatPackController controller = loader.getController();
+            controller.setPack(pack);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 600, 500));
+            stage.setTitle("Achat du pack: " + pack.getNomPack());
+            stage.show();
+        } catch (IOException e) {
+            showAlert("Erreur", "Impossible d'ouvrir la page d'achat", Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void handleRetourAccueil() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/malek/AccueilFront.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/malek/AfficherPackFront.fxml"));
             Stage stage = (Stage) retourAccueilBtn.getScene().getWindow();
             stage.setScene(new Scene(root, 900, 640));
         } catch (IOException e) {
