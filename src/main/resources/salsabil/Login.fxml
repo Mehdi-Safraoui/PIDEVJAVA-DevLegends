@@ -22,6 +22,7 @@
   </HBox>
     <StackPane alignment="CENTER" prefHeight="500.0" prefWidth="800.0">
     <!-- Conteneur principal avec ombre et coins arrondis -->
+
     <VBox fx:id="formContainerProfil" alignment="CENTER" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" spacing="15" styleClass="formContainerProfil">
         <Label text="Email" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <TextField fx:id="emailField" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
@@ -29,6 +30,7 @@
         <!-- Mot de passe -->
         <Label text="Mot de passe" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <PasswordField fx:id="passwordField" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+
 
         <Label fx:id="captchaQuestionLabel" text="Question CAPTCHA" />
         <TextField fx:id="captchaAnswerField" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" promptText="Répondez à la question" />

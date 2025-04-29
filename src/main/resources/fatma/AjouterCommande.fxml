@@ -6,15 +6,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane stylesheets="styleProduit.css" prefHeight="450.0" prefWidth="600.0"
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane stylesheets="/fatma/styleProduit.css" prefHeight="450.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Controllers.fatma.AjouterCommandeController">
     <children>
-        <!-- Titre -->
         <Label text="Ajouter la Commande" styleClass="titre-label"
                layoutY="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" alignment="CENTER" />
 
-        <!-- Formulaire -->
         <Label layoutX="50.0" layoutY="80.0" text="Nom Client:" />
         <TextField fx:id="nomClientField" layoutX="200.0" layoutY="75.0" prefWidth="200.0" />
 
@@ -24,19 +23,23 @@
         <Label layoutX="50.0" layoutY="180.0" text="Date Commande:" />
         <DatePicker fx:id="dateCommandeField" layoutX="200.0" layoutY="175.0" prefWidth="200.0" />
 
-        <Label layoutX="50.0" layoutY="230.0" text="Adresse:" />
-        <TextField fx:id="adresseField" layoutX="200.0" layoutY="225.0" prefWidth="200.0" />
+        <Label layoutX="50.0" layoutY="230.0" text="Adresse (Gouvernorat):" />
+        <ComboBox fx:id="adresseComboBox" layoutX="200.0" layoutY="225.0" prefWidth="200.0" />
+
 
         <Label layoutX="50.0" layoutY="280.0" text="Total Commande:" />
         <Label fx:id="totalComLabel" layoutX="200.0" layoutY="280.0" prefWidth="200.0"
                style="-fx-background-color: lightgray; -fx-border-color: gray; -fx-padding: 5;" />
 
         <Label layoutX="50.0" layoutY="330.0" text="Pays:" />
-        <TextField fx:id="paysField" layoutX="200.0" layoutY="325.0" prefWidth="200.0" />
+        <Label fx:id="paysLabel" layoutX="200.0" layoutY="325.0" prefWidth="200.0"
+               style="-fx-background-color: lightgray; -fx-border-color: gray; -fx-padding: 5;"
+               text="Tunisie" />
+
 
         <Label layoutX="50.0" layoutY="380.0" text="Numéro de Téléphone:" />
         <TextField fx:id="numTelephoneField" layoutX="200.0" layoutY="375.0" prefWidth="200.0" />
 
-        <Button layoutX="200.0" layoutY="425.0" onAction="#AjouterCommande" text="Ajouter Commande" />
+        <Button layoutX="200.0" layoutY="425.0" onAction="#AjouterCommande" text="valider paiement" />
     </children>
 </AnchorPane>

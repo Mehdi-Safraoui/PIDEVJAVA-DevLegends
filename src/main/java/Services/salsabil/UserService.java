@@ -51,6 +51,7 @@ public class UserService implements InterfaceCRUD<User> {
             System.out.println("Erreur lors de la levée du bannissement : " + e.getMessage());
         }
     }
+
     public void desactiverCompte(int userId) {
         String req = "UPDATE user SET statut_compte = false WHERE id = ?";
         try {
@@ -251,6 +252,7 @@ public class UserService implements InterfaceCRUD<User> {
         }
         return null;
     }
+
     public User findNumtelByEmail(String email) {
         User user = null;
         try {

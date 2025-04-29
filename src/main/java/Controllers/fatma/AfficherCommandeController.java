@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 public class AfficherCommandeController implements Initializable {
 
     @FXML private TableView<Commande> commandeTable;
-
     @FXML private TableColumn<Commande, Integer> idColumn;
     @FXML private TableColumn<Commande, String> nomClientColumn;
     @FXML private TableColumn<Commande, String> adresseEmailColumn;
@@ -26,6 +25,7 @@ public class AfficherCommandeController implements Initializable {
     @FXML private TableColumn<Commande, String> paysColumn;
     @FXML private TableColumn<Commande, Integer> numTelephoneColumn;
     @FXML private TableColumn<Commande, Void> actionColumn;
+    @FXML private TextField searchField;
 
     private final CommandeService commandeService = new CommandeService();
 
@@ -40,7 +40,6 @@ public class AfficherCommandeController implements Initializable {
         paysColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("pays"));
         numTelephoneColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("numTelephone"));
 
-        // Actions bouton suppression
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Supprimer");
 
@@ -59,6 +58,15 @@ public class AfficherCommandeController implements Initializable {
         });
 
         loadCommandes();
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.isEmpty()) {
+                loadCommandes();
+            } else {
+                List<Commande> commandes = commandeService.findByNomClient(newValue);
+                commandeTable.getItems().setAll(commandes);
+            }
+        });
     }
 
     private void loadCommandes() {
@@ -71,11 +79,10 @@ public class AfficherCommandeController implements Initializable {
         alert.setTitle("Suppression de commande");
         alert.setHeaderText("Supprimer la commande de : " + commande.getNomClient());
         alert.setContentText("Es-tu sûr de vouloir supprimer cette commande ?");
-
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             commandeService.delete(commande);
-            loadCommandes();  // Rafraîchir la liste après suppression
+            loadCommandes();
         }
     }
 }

@@ -1,5 +1,14 @@
 package Controllers.salsabil;
 
+import Entities.salsabil.User;
+import Services.salsabil.UserService;
+import Utils.Session;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import org.mindrot.jbcrypt.BCrypt;
+import java.io.IOException;
 import Entities.malek.Contrat;
 import Entities.salsabil.User;
 import Services.malek.CentreService;
@@ -35,6 +44,8 @@ public class LoginController {
     @FXML private TextField emailField;
     @FXML private PasswordField passwordField;
     @FXML private Label errorLabel;
+
+    private UserService userService = new UserService();
     @FXML private Label captchaQuestionLabel; // Ajout de la question CAPTCHA
     @FXML private TextField captchaAnswerField; // Champ pour la réponse CAPTCHA
     @FXML private Label captchaErrorLabel; // Étiquette d'erreur pour CAPTCHA
@@ -65,6 +76,7 @@ public class LoginController {
             return;
         }
 
+
         // Vérifier la réponse du CAPTCHA
         if (!captchaService.checkAnswer(currentCaptchaQuestion, captchaAnswer)) {
             captchaErrorLabel.setText("Réponse CAPTCHA incorrecte.");
@@ -80,6 +92,17 @@ public class LoginController {
             // Vérification du bannissement
             if (user.getBanned_until() != null) {
                 if (user.getBanned_until().isAfter(java.time.LocalDateTime.now())) {
+                    errorLabel.setText("Vous êtes banni jusqu’au : " + user.getBanned_until().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
+                    return;
+                } else {
+                    // Le bannissement est expiré : on le lève
+                    user.setBanned_until(null);
+                    userService.liftBan(user.getId());  // Méthode à créer pour mettre à jour en base
+                }
+            }
+
+            Session.setCurrentUser(user);
+
                     errorLabel.setText("Vous êtes banni jusqu’au : " +
                             user.getBanned_until().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
                     return;
@@ -113,6 +136,7 @@ public class LoginController {
 
     private void loadProfile(User user) {
         try {
+
             FXMLLoader loader;
 
             if ("admin".equalsIgnoreCase(user.getUser_role())) {
@@ -142,6 +166,7 @@ public class LoginController {
             e.printStackTrace();
         }
     }
+
 
 
     @FXML
@@ -254,6 +279,7 @@ public class LoginController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     private void verifierContratsExpires(User user) {
         ContratService contratService = new ContratService();
         List<Contrat> contrats = contratService.findByUserId(user.getId());

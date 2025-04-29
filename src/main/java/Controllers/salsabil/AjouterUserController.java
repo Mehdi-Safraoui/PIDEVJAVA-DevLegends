@@ -268,4 +268,22 @@ public class AjouterUserController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void handleGoToLogin(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Login.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir la scène actuelle et y afficher la nouvelle
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Connexion");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

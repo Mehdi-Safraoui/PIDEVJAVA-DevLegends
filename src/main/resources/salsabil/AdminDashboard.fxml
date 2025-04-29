@@ -44,7 +44,7 @@
         <HBox spacing="20.0" alignment="CENTER">
             <Button fx:id="btnAfficherProfil" text="Afficher Profil" styleClass="button" onAction="#handleAfficherProfil"/>
             <Button fx:id="showUsersButton" onAction="#handleShowUsers" styleClass="button" text="Afficher les utilisateurs" />
-            <Button fx:id="btnModifier" text="Modifier Profil" styleClass="button" onAction="#handleEditProfile"/>
+
             <Button text="Déconnexion" styleClass="danger-button" onAction="#handleLogout"/>
         </HBox>
     </VBox>

@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx/23.0.1"
       fx:controller="Controllers.fatma.ProduitAdminController"
-      stylesheets="styleProduit.css"
+      stylesheets="/fatma/styleProduit.css"
       prefWidth="1366" prefHeight="720"
       spacing="0"
       style="-fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);">
 
-    <!-- Sidebar à gauche -->
     <fx:include source="../Sidebar.fxml" />
 
-    <!-- Contenu principal -->
     <VBox alignment="TOP_CENTER" spacing="15" style="-fx-padding: 20;">
         <Label text="Listes des Produits"
                style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2b6f3e;" />
+
+        <ComboBox fx:id="categorieComboBox"
+                  promptText="Filtrer par catégorie"
+                  prefWidth="200"
+                  style="-fx-font-size: 14px;"/>
 
         <TableView fx:id="produitTable"
                    prefHeight="600"

@@ -1,5 +1,6 @@
 package Controllers;
 
+import Utils.NotificationManager;
 import Controllers.maya.ChatController;
 import javafx.application.HostServices;
 import Controllers.salsabil.ProfilController;
@@ -11,6 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -80,6 +85,17 @@ public class SidebarController {
         }
     }
     @FXML
+    private void goToAjouterCommande(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fatma/AjouterCommande.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Ajouter des Commandes");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
     private void goToAjouterProduit(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fatma/AjouterProduit.fxml"));
@@ -110,6 +126,17 @@ public class SidebarController {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Liste des Catégories");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void goToProduitFront(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fatma/ProduitFront.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Produits");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -471,6 +498,7 @@ public class SidebarController {
             e.printStackTrace();
         }
     }
+
 
 
 

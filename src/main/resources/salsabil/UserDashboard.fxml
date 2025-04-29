@@ -9,7 +9,9 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.salsabil.UserDashboardController"
             prefWidth="900.0" prefHeight="600.0" stylesheets="@/style.css">
 
+
     <fx:include source="../Navbar.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"/>
+
 
     <VBox spacing="20" alignment="TOP_CENTER" prefWidth="900">
 
