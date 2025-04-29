@@ -33,17 +33,18 @@ public class ModifierProduitController implements Initializable {
     private ComboBox<String> statutProduitCombo;
     @FXML
     private ComboBox<String> categorieProduitCombo;
-
-    private Map<String, Categorie> categorieMap = new HashMap<>();
-    private Produit produitAModifier;
     @FXML
     private Button retourButton;
 
+    private Map<String, Categorie> categorieMap = new HashMap<>();
+    private Produit produitAModifier;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.getClass().getResource("/styleProduit.css").toExternalForm();
+        this.getClass().getResource("/fatma/styleProduit.css").toExternalForm();
         statutProduitCombo.setItems(FXCollections.observableArrayList("Disponible", "Indisponible"));
 
+        // Chargement des catégories
         CategorieService categorieService = new CategorieService();
         List<Categorie> categories = categorieService.find();
 
@@ -71,45 +72,51 @@ public class ModifierProduitController implements Initializable {
     @FXML
     public void ModifierProduit(ActionEvent actionEvent) {
         try {
-            String nom = nomProduitField.getText();
-            int prix = Integer.parseInt(prixProduitField.getText());
-            int quantite = Integer.parseInt(quantiteProduitField.getText());
+            String nom = nomProduitField.getText().trim();
+            String prixText = prixProduitField.getText().trim();
+            String quantiteText = quantiteProduitField.getText().trim();
             String statut = statutProduitCombo.getValue();
             String categorieNom = categorieProduitCombo.getValue();
 
-            if (statut == null || categorieNom == null) {
-                showAlert("Erreur", "Veuillez sélectionner un statut et une catégorie !");
+            if (nom.isEmpty() || prixText.isEmpty() || quantiteText.isEmpty() || statut == null || categorieNom == null) {
+                showAlert("Erreur", "Tous les champs doivent être remplis !");
                 return;
+            }
+
+            int prix = Integer.parseInt(prixText);
+            int quantite = Integer.parseInt(quantiteText);
+
+            // Mise à jour automatique du statut en fonction de la quantité
+            if (quantite == 0) {
+                statut = "Indisponible";
+            } else {
+                statut = "Disponible";
             }
 
             Categorie categorie = categorieMap.get(categorieNom);
 
+            // Mise à jour du produit
             produitAModifier.setNomProduit(nom);
             produitAModifier.setPrixProduit(prix);
             produitAModifier.setQuantite(quantite);
             produitAModifier.setStatutProduit(statut);
             produitAModifier.setCategorie(categorie);
 
+            // Mise à jour dans la base de données
             ProduitService service = new ProduitService();
             service.update(produitAModifier);
 
-            // Afficher une alerte
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Succès");
-            alert.setHeaderText(null);
-            alert.setContentText("Produit modifié avec succès !");
-            alert.showAndWait();
+            showAlert("Succès", "Produit modifié avec succès !");
 
-            // Fermer la fenêtre après validation
+            // Fermeture de la fenêtre après validation
             ((Stage) nomProduitField.getScene().getWindow()).close();
 
         } catch (NumberFormatException e) {
-            showAlert("Erreur", "Prix et quantité doivent être des nombres !");
+            showAlert("Erreur", "Le prix et la quantité doivent être des nombres !");
         } catch (Exception e) {
             showAlert("Erreur", "Une erreur est survenue : " + e.getMessage());
         }
     }
-
 
     private void showAlert(String titre, String contenu) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -118,6 +125,7 @@ public class ModifierProduitController implements Initializable {
         alert.setContentText(contenu);
         alert.showAndWait();
     }
+
     @FXML
     private void handleRetour() {
         try {

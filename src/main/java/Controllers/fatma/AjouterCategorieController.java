@@ -15,7 +15,7 @@ public class AjouterCategorieController {
 
     @FXML
     private void ajouterCategorie() {
-        this.getClass().getResource("/styleProduit.css").toExternalForm();
+        this.getClass().getResource("/fatma/styleProduit.css").toExternalForm();
         String nom = nomCategorieField.getText();
 
         if (nom == null || nom.trim().isEmpty()) {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox stylesheets="/fatma/styleProduit.css" spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.fatma.FactureController"
+      style="-fx-padding: 20; -fx-background-color: white;">
+    <Label fx:id="labelTitre" text="Facture" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    <Label fx:id="labelNomClient" />
+    <Label fx:id="labelEmail" />
+    <Label fx:id="labelAdresse" />
+    <Label fx:id="labelTotal" />
+    <Label fx:id="labelDate" />
+    <Button text="Télécharger en PDF" onAction="#telechargerPDF" />
+</VBox>
+

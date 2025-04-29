@@ -1,5 +1,7 @@
 package Entities.fatma;
 
+import Entities.salsabil.User;
+
 public class Produit {
     private int id;
     private String nomProduit;
@@ -7,6 +9,7 @@ public class Produit {
     private int quantite;
     private String statutProduit;
     private Categorie categorie;
+    private User user;
 
     public Produit() {}
 
@@ -40,6 +43,10 @@ public class Produit {
     public void setStatutProduit(String statutProduit) { this.statutProduit = statutProduit; }
     public Categorie getCategorie() { return categorie; }
     public void setCategorie(Categorie categorie) { this.categorie = categorie; }
+    public User getUser() {return user;}
+
+    public void setUser(User user) {this.user = user;}
+
 
     @Override
     public String toString() {

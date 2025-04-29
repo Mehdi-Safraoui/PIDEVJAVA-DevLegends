@@ -11,7 +11,7 @@ public class MainFX extends Application
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/AjouterUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Login.fxml"));
 
         Parent root = loader.load();
         Scene scene = new Scene(root);

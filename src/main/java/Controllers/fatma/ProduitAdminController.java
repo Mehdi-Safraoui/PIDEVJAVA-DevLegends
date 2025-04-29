@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,35 +24,73 @@ public class ProduitAdminController implements Initializable {
 
     @FXML
     private TableView<Produit> produitTable;
-
     @FXML
     private TableColumn<Produit, String> nomProduitColumn;
-
     @FXML
     private TableColumn<Produit, Integer> prixProduitColumn;
-
     @FXML
     private TableColumn<Produit, Integer> quantiteColumn;
-
     @FXML
     private TableColumn<Produit, String> statutProduitColumn;
-
     @FXML
     private TableColumn<Produit, Void> actionColumn;
+    @FXML
+    private ComboBox<String> categorieComboBox;
 
-    private ProduitService produitService = new ProduitService();
+    private final ProduitService produitService = new ProduitService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Initialisation des colonnes de la table
         nomProduitColumn.setCellValueFactory(new PropertyValueFactory<>("nomProduit"));
         prixProduitColumn.setCellValueFactory(new PropertyValueFactory<>("prixProduit"));
         quantiteColumn.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         statutProduitColumn.setCellValueFactory(new PropertyValueFactory<>("statutProduit"));
 
-        // Initialisation de la colonne d'actions avec des boutons Modifier et Supprimer
-        actionColumn.setCellFactory(param -> new TableCell<Produit, Void>() {
+        statutProduitColumn.setCellFactory(param -> new TableCell<Produit, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    setTextFill(item.equalsIgnoreCase("Indisponible") ? Color.RED :
+                            item.equalsIgnoreCase("Disponible") ? Color.GREEN : Color.BLACK);
+                }
+            }
+        });
 
+        quantiteColumn.setCellFactory(col -> new TableCell<Produit, Integer>() {
+            private final TextField textField = new TextField();
+
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setGraphic(textField);
+                    textField.setText(item.toString());
+                    textField.setOnAction(e -> {
+                        try {
+                            int newQuantity = Integer.parseInt(textField.getText());
+                            Produit produit = getTableView().getItems().get(getIndex());
+                            produit.setQuantite(newQuantity);
+                            produit.setStatutProduit(newQuantity == 0 ? "Indisponible" : "Disponible");
+                            produitService.update(produit);
+                            produitTable.refresh();
+                        } catch (NumberFormatException ex) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR, "Quantité invalide !");
+                            alert.showAndWait();
+                        }
+                    });
+                }
+            }
+        });
+
+        actionColumn.setCellFactory(param -> new TableCell<Produit, Void>() {
             private final Button modifyButton = new Button("Modifier");
             private final Button deleteButton = new Button("Supprimer");
             private final HBox hbox = new HBox(10, modifyButton, deleteButton);
@@ -74,21 +113,32 @@ public class ProduitAdminController implements Initializable {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(hbox);
-                }
+                setGraphic(empty ? null : hbox);
             }
         });
 
+        setupCategorieComboBox();
         loadProduits();
+    }
 
+    private void setupCategorieComboBox() {
+        categorieComboBox.getItems().clear();
+        categorieComboBox.getItems().add("Tous");
+        categorieComboBox.getItems().addAll(produitService.findAllCategories());
+        categorieComboBox.getSelectionModel().selectFirst();
+
+        categorieComboBox.setOnAction(event -> filterByCategorie());
+    }
+
+    private void filterByCategorie() {
+        String selectedCategorie = categorieComboBox.getValue();
+        List<Produit> produits = "Tous".equals(selectedCategorie) ?
+                produitService.find() : produitService.findByCategorie(selectedCategorie);
+        produitTable.getItems().setAll(produits);
     }
 
     private void loadProduits() {
-        List<Produit> produits = produitService.find();
-        produitTable.getItems().setAll(produits); // Remplir la table avec les produits
+        produitTable.getItems().setAll(produitService.find());
     }
 
     private void handleModify(Produit produit) {
@@ -106,7 +156,7 @@ public class ProduitAdminController implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.showAndWait();
 
-                loadProduits(); // Recharge la liste des produits après modification
+                loadProduits();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -121,8 +171,8 @@ public class ProduitAdminController implements Initializable {
             alert.setContentText("Es-tu sûr de vouloir supprimer ce produit ?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                produitService.delete(produit);  // Supprimer dans la base de données
-                loadProduits();  // Rafraîchir la liste des produits
+                produitService.delete(produit);
+                loadProduits();
             }
         }
     }

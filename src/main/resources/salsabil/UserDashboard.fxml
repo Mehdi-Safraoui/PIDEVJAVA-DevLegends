@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.salsabil.UserDashboardController"
+            prefWidth="900.0" prefHeight="600.0" stylesheets="@/style.css">
+    <VBox spacing="20" alignment="TOP_CENTER" prefWidth="900">
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <ImageView fx:id="roleIcon" fitHeight="40" fitWidth="40" preserveRatio="true"/>
+            <Label text="Tableau de bord Utilisateur" styleClass="title"/>
+            <Label fx:id="dashboardTitle" text="" styleClass="subtitle"/>
+        </HBox>
+
+        <!-- Informations de l'utilisateur
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Nom: John Doe" styleClass="section-title"/>
+            <Label text="Âge: 30" styleClass="section-title"/>
+            <Label text="Rôle: Patient" styleClass="section-title"/>
+        </VBox>
+-->
+        <!-- Actions -->
+        <HBox spacing="20" alignment="CENTER">
+            <Button fx:id="btnAfficherProfil" text="Afficher Profil" styleClass="button" onAction="#handleAfficherProfil"/>
+            <Button fx:id="btnModifier" text="Modifier Profil" styleClass="button" onAction="#handleEditProfile"/>
+            <Button text="Déconnexion" styleClass="danger-button" onAction="#handleLogout"/>
+        </HBox>
+
+
+    </VBox>
+
+</AnchorPane>

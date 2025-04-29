@@ -6,7 +6,7 @@
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx/21.0.2"
       fx:controller="Controllers.fatma.ModifierCategorieController"
-      stylesheets="styleProduit.css"
+      stylesheets="/fatma/styleProduit.css"
       prefWidth="1366" prefHeight="720"
       spacing="0"
       style="-fx-background-color: linear-gradient(to bottom, #ecf0f1, #a8e6cf);">

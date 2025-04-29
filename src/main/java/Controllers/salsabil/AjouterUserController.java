@@ -3,9 +3,12 @@ package Controllers.salsabil;
 import Entities.salsabil.User;
 import Services.salsabil.UserService;
 //import javafx.animation.FadeTransition;
+import Utils.AvatarUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -49,6 +52,7 @@ public class AjouterUserController implements Initializable {
 //        fadeIn.setFromValue(0);
 //        fadeIn.setToValue(1);
 //        fadeIn.play();
+
         Image img = new Image(getClass().getResource("/images/logo.png").toExternalForm());
         logoImage.setImage(img);
         Circle clip = new Circle();
@@ -162,11 +166,17 @@ public class AjouterUserController implements Initializable {
             return;
         }
 
+
         User user = new User(
                 firstName, lastName, email, password,
                 role, age, specialty, phone, address, picture
         );
         user.setStatut_compte(true);
+        // Si aucune image sélectionnée, générer un avatar automatiquement
+        if (user.getUser_picture() == null || user.getUser_picture().isEmpty()) {
+            String avatarPath = AvatarUtils.genererAvatar(user.getUser_email());
+            user.setUser_picture(avatarPath);
+        }
 
         userService.add(user);
 
@@ -244,5 +254,22 @@ public class AjouterUserController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void handleGoToLogin(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/salsabil/Login.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir la scène actuelle et y afficher la nouvelle
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Connexion");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

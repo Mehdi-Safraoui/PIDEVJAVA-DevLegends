@@ -1,6 +1,7 @@
 package Entities.fatma;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Commande {
@@ -12,11 +13,17 @@ public class Commande {
     private double total_com;
     private String pays;
     private int num_telephone;
+    private String paymentId;
 
+
+    private int userId;  // FK vers User
+
+    // Relation OneToMany pour lier plusieurs produits à une commande
+    private List<Produit> produits;
 
     public Commande() {}
 
-    public Commande(String nom_client, String adresse_email, Date date_commande, String adresse, double total_com, String pays, int num_telephone ) {
+    public Commande(String nom_client, String adresse_email, Date date_commande, String adresse, double total_com, String pays, int num_telephone) {
         this.nom_client = nom_client;
         this.adresse_email = adresse_email;
         this.date_commande = date_commande;
@@ -24,7 +31,6 @@ public class Commande {
         this.total_com = total_com;
         this.pays = pays;
         this.num_telephone = num_telephone;
-
     }
 
     public Commande(int id, String nom_client, String adresse_email, Date date_commande, String adresse, double total_com, String pays, int num_telephone) {
@@ -36,12 +42,25 @@ public class Commande {
         this.total_com = total_com;
         this.pays = pays;
         this.num_telephone = num_telephone;
-
     }
 
-
+    // Calculer le total de la commande à partir des produits
+    public double calculerTotal() {
+        double total = 0.0;
+        for (Produit produit : produits) {
+            total += produit.getPrixProduit() * produit.getQuantite();
+        }
+        return total;
+    }
 
     // Getters et Setters
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
+    }
 
     public int getId() {
         return id;
@@ -107,6 +126,22 @@ public class Commande {
         this.num_telephone = numTelephone;
     }
 
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
+    }
+
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
 
     @Override
@@ -120,7 +155,6 @@ public class Commande {
                 ", total_com=" + total_com +
                 ", pays='" + pays + '\'' +
                 ", num_telephone=" + num_telephone +
-
                 '}';
     }
 
@@ -135,7 +169,7 @@ public class Commande {
                 Objects.equals(adresse_email, commande.adresse_email) &&
                 Objects.equals(date_commande, commande.date_commande) &&
                 Objects.equals(adresse, commande.adresse) &&
-                Objects.equals(pays, commande.pays );
+                Objects.equals(pays, commande.pays);
     }
 
     @Override

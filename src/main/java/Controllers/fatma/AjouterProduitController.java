@@ -30,7 +30,7 @@ public class AjouterProduitController {
 
     @FXML
     public void initialize() {
-        this.getClass().getResource("/styleProduit.css").toExternalForm();
+        this.getClass().getResource("/fatma/styleProduit.css").toExternalForm();
         // Remplir statut (désactivé car automatique)
         statutComboBox.setItems(FXCollections.observableArrayList("Disponible", "Indisponible"));
         statutComboBox.setDisable(true);

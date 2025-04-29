@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommandeService implements InterfaceCRUD<Commande> {
+
     Connection con;
 
     public CommandeService() {
@@ -17,42 +18,42 @@ public class CommandeService implements InterfaceCRUD<Commande> {
 
     @Override
     public void add(Commande c) {
-        String req = "INSERT INTO `commande` (`nom_client`, `adresse_email`, `date_commande`, `adresse`, `total_com`, `pays`, `num_telephone`, `payment_id`) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String req = "INSERT INTO `commande` (`user_id`, `nom_client`, `adresse_email`, `date_commande`, `adresse`, `total_com`, `pays`, `num_telephone`, `payment_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(req);
-            ps.setString(1, c.getNomClient());
-            ps.setString(2, c.getAdresseEmail());
-            ps.setDate(3, c.getDateCommande());
-            ps.setString(4, c.getAdresse());
-            ps.setDouble(5, c.getTotalCom());
-            ps.setString(6, c.getPays());
-            ps.setInt(7, c.getNumTelephone());
-
-            // Si tu n'as pas de paymentId pour l'instant, on met NULL
-            ps.setString(8, null);
-
+            ps.setInt(1, c.getUserId()); // 👈 Utilisateur lié
+            ps.setString(2, c.getNomClient());
+            ps.setString(3, c.getAdresseEmail());
+            ps.setDate(4, c.getDateCommande());
+            ps.setString(5, c.getAdresse());
+            ps.setDouble(6, c.getTotalCom());
+            ps.setString(7, c.getPays());
+            ps.setInt(8, c.getNumTelephone());
+            ps.setString(9, c.getPaymentId());
             ps.executeUpdate();
             System.out.println("✅ Commande ajoutée avec succès !");
+
         } catch (SQLException e) {
             System.out.println("❌ Erreur ajout commande : " + e.getMessage());
         }
     }
 
+
     @Override
     public void update(Commande c) {
-        String req = "UPDATE `commande` SET `nom_client`=?, `adresse_email`=?, `date_commande`=?, `adresse`=?, `total_com`=?, `pays`=?, `num_telephone`=? WHERE `id`=?";
+        String req = "UPDATE `commande` SET `user_id`=?, `nom_client`=?, `adresse_email`=?, `date_commande`=?, `adresse`=?, `total_com`=?, `pays`=?, `num_telephone`=?, `payment_id`=? WHERE `id`=?";
         try {
             PreparedStatement ps = con.prepareStatement(req);
-            ps.setString(1, c.getNomClient());
-            ps.setString(2, c.getAdresseEmail());
-            ps.setDate(3, c.getDateCommande());
-            ps.setString(4, c.getAdresse());
-            ps.setDouble(5, c.getTotalCom());
-            ps.setString(6, c.getPays());
-            ps.setInt(7, c.getNumTelephone());
-            ps.setInt(8, c.getId());
-
+            ps.setInt(1, c.getUserId());
+            ps.setString(2, c.getNomClient());
+            ps.setString(3, c.getAdresseEmail());
+            ps.setDate(4, c.getDateCommande());
+            ps.setString(5, c.getAdresse());
+            ps.setDouble(6, c.getTotalCom());
+            ps.setString(7, c.getPays());
+            ps.setInt(8, c.getNumTelephone());
+            ps.setString(9, c.getPaymentId());
+            ps.setInt(10, c.getId());
             ps.executeUpdate();
             System.out.println("✅ Commande mise à jour avec succès !");
         } catch (SQLException e) {
@@ -83,6 +84,7 @@ public class CommandeService implements InterfaceCRUD<Commande> {
             while (rs.next()) {
                 Commande c = new Commande();
                 c.setId(rs.getInt("id"));
+                c.setUserId(rs.getInt("user_id"));
                 c.setNomClient(rs.getString("nom_client"));
                 c.setAdresseEmail(rs.getString("adresse_email"));
                 c.setDateCommande(rs.getDate("date_commande"));
@@ -90,12 +92,40 @@ public class CommandeService implements InterfaceCRUD<Commande> {
                 c.setTotalCom(rs.getDouble("total_com"));
                 c.setPays(rs.getString("pays"));
                 c.setNumTelephone(rs.getInt("num_telephone"));
-
+                c.setPaymentId(rs.getString("payment_id"));
                 commandes.add(c);
             }
             System.out.println("✅ Récupération des commandes terminée.");
         } catch (SQLException e) {
             System.out.println("❌ Erreur récupération commandes : " + e.getMessage());
+        }
+        return commandes;
+    }
+
+    public List<Commande> findByNomClient(String nomClient) {
+        String req = "SELECT * FROM `commande` WHERE `nom_client` LIKE ?";
+        List<Commande> commandes = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(req);
+            ps.setString(1, "%" + nomClient + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Commande c = new Commande();
+                c.setId(rs.getInt("id"));
+                c.setUserId(rs.getInt("user_id"));
+                c.setNomClient(rs.getString("nom_client"));
+                c.setAdresseEmail(rs.getString("adresse_email"));
+                c.setDateCommande(rs.getDate("date_commande"));
+                c.setAdresse(rs.getString("adresse"));
+                c.setTotalCom(rs.getDouble("total_com"));
+                c.setPays(rs.getString("pays"));
+                c.setNumTelephone(rs.getInt("num_telephone"));
+                c.setPaymentId(rs.getString("payment_id"));
+                commandes.add(c);
+            }
+            System.out.println("✅ Recherche des commandes du client '" + nomClient + "' réussie !");
+        } catch (SQLException e) {
+            System.out.println("❌ Erreur recherche commande : " + e.getMessage());
         }
         return commandes;
     }
