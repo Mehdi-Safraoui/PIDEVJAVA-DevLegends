@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane stylesheets="@/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.maya.QuizSelectionPageController" prefWidth="600" prefHeight="400">
+
+    <VBox spacing="20" alignment="TOP_CENTER" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+
+        <Text text="Choisissez un type de quiz" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+        <!-- Conteneur avec cadre blanc -->
+        <VBox alignment="CENTER" spacing="20"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #ccc; -fx-border-radius: 15;
+                     -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+
+            <Button text="Passer un quiz classique" fx:id="classicQuizButton" onAction="#handleClassicQuiz" prefWidth="200"/>
+            <Button text="Passer un quiz via API" fx:id="apiQuizButton" onAction="#handleApiQuiz" prefWidth="200"/>
+
+        </VBox>
+
+    </VBox>
+</AnchorPane>

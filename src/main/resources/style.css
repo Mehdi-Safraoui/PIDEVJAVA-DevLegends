@@ -103,6 +103,43 @@
     -fx-cursor: hand;
 }
 
+/* Style pour le titre */
+.title-label {
+    font-size: 24px;
+    font-weight: bold;
+    text-fill: #2c3e50; /* Couleur de texte foncé */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+    margin-bottom: 10px;
+}
+
+/* Style pour la catégorie */
+.category-label {
+    font-size: 18px;
+    color: #7f8c8d;
+}
+
+/* Style pour la zone de texte */
+.content-text {
+    -fx-font-size: 14px;
+    -fx-background-color: #ecf0f1;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+    padding: 10px;
+}
+
+/* Style pour le bouton Fermer */
+.close-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+}
+
+.close-button:hover {
+    -fx-background-color: #c0392b;
+
 #goToLoginButton {
     -fx-background-color: transparent;
     -fx-text-fill: #27ae60;

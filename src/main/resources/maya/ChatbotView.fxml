@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Priority?>
+
+<?import javafx.scene.control.Hyperlink?>
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.maya.ChatController" stylesheets="@/chat.css">
+    <VBox fx:id="chatArea" prefHeight="400" prefWidth="350" style="-fx-background-color: #f5f5f5; -fx-padding: 10;" VBox.vgrow="ALWAYS"/>
+    <HBox spacing="10">
+        <TextField fx:id="userInput" HBox.hgrow="ALWAYS" promptText="Posez votre question..." />
+        <Button fx:id="sendButton" text="Envoyer" />
+    </HBox>
+    <!-- Ajout d'un Hyperlink sous le champ de saisie -->
+    <Hyperlink text="Cliquez ici pour plus d'informations" onAction="#handleHyperlink" />
+
+</VBox>

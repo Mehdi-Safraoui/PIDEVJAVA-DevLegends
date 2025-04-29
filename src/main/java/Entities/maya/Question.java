@@ -1,5 +1,6 @@
 package Entities.maya;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
@@ -37,6 +38,21 @@ public class Question {
         this.answerType = answerType;
         this.points = points;
 //        this.quiz = quiz;
+    }
+
+    public Question(int id, String questionText) {
+        this.id = id;
+        this.questionText = questionText;
+        this.reponses = new ArrayList<>();
+    }
+
+    // Constructeur avec texte de question
+    public Question(String questionText) {
+        this.questionText = questionText;
+    }
+
+    public void addReponse(Reponse reponse) {
+        this.reponses.add(reponse);
     }
 
     // Getters & Setters

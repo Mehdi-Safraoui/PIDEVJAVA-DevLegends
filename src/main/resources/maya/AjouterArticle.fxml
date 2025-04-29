@@ -16,7 +16,8 @@
             <Insets bottom="30" left="30" right="30" top="30" />
         </padding>
 
-        <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Ajouter un Article de Conseil" />
+        <!-- Titre principal de la page -->
+        <Label styleClass="page-title" text="Ajouter un Article de Conseil" />
 
         <!-- Cadre blanc -->
         <VBox alignment="CENTER" prefHeight="350.0" prefWidth="518.0" spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);">
@@ -24,18 +25,13 @@
             <TextArea fx:id="contenuArea" prefRowCount="5" promptText="Contenu de l'article" />
             <ComboBox fx:id="categorieCombo" promptText="Catégorie mentale" />
 
-            <HBox alignment="CENTER" spacing="10">
+            <HBox alignment="CENTER" spacing="10" styleClass="file-chooser-container">
                 <Button onAction="#handleChooseImage" text="Choisir une image" />
                 <Label fx:id="imageLabel" text="Aucune image sélectionnée" />
             </HBox>
-
-            <HBox spacing="10">
-                <TextField fx:id="imagePathField" promptText="Chemin de l'image" />
-                <Button onAction="#handleChooseImage" text="Parcourir..." />
-            </HBox>
         </VBox>
-   
-                                       <Button onAction="#ajouterArticle" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Ajouter l'article" />
+
+        <Button onAction="#ajouterArticle" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Ajouter l'article" />
         <!-- Bouton pour aller à l'affichage des articles -->
         <Button onAction="#goToAfficherArticles" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Voir les articles" />
     </VBox>

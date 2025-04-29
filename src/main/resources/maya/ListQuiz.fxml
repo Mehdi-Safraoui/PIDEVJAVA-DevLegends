@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane stylesheets="@/style.css" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.maya.ListQuizController"
+            prefWidth="800.0" prefHeight="600.0">
+
+    <padding>
+        <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+    </padding>
+
+    <children>
+
+        <!-- Titre centré -->
+        <HBox alignment="CENTER" prefWidth="800.0" spacing="10.0">
+            <Label text="Liste des Quiz" style="-fx-font-size: 24px; -fx-font-weight: bold;">
+                <font>
+                    <Font name="Arial" size="24"/>
+                </font>
+            </Label>
+        </HBox>
+
+        <!-- Zone de tri et recherche -->
+        <HBox layoutY="50.0" spacing="10.0" alignment="CENTER_LEFT">
+            <ComboBox fx:id="comboTri" promptText="Trier par..." prefWidth="150.0" />
+            <CheckBox fx:id="checkDesc" text="Tri décroissant" />
+            <Button onAction="#trierQuiz" text="Trier" />
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchField" promptText="Rechercher..." prefWidth="200.0" />
+        </HBox>
+
+        <!-- TableView de quiz -->
+        <TableView fx:id="quizTableView" layoutY="100.0" prefHeight="400.0" prefWidth="780.0">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="75.0"/>
+                <TableColumn fx:id="scoreColumn" text="Score" prefWidth="150.0"/>
+                <TableColumn fx:id="etatMentalColumn" text="État Mental" prefWidth="250.0"/>
+                <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="150.0"/>
+            </columns>
+        </TableView>
+
+        <!-- Zone de statut -->
+        <Label fx:id="statusLabel" layoutY="520.0" prefWidth="780.0" text="" />
+    </children>
+</AnchorPane>

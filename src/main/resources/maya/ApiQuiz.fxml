@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.maya.ApiQuizController"
+            stylesheets="@/quiz.css">
+
+    <top>
+        <Label text="Quiz de Santé Mentale (API)"
+               styleClass="title-label"
+               BorderPane.alignment="CENTER"/>
+        <Label fx:id="modeLabel" text="Mode de génération : En attente..." />
+
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox fx:id="quizContainer"
+                  spacing="20"
+                  styleClass="quiz-container">
+                <padding>
+                    <Insets top="10" right="15" bottom="10" left="15"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <Button text="Soumettre le Quiz"
+                onAction="#handleSubmit"
+                styleClass="submit-button"
+                BorderPane.alignment="CENTER"/>
+    </bottom>
+
+</BorderPane>

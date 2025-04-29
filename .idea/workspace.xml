@@ -24,8 +24,9 @@
       <list>
         <option value="package-info" />
         <option value="Interface" />
-        <option value="JavaFXApplication" />
         <option value="CSS File" />
+        <option value="JavaFXApplication" />
+        <option value="FxmlFile" />
         <option value="Class" />
         <option value="FxmlFile" />
       </list>
@@ -67,6 +68,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ApiQuizGenerator.executor": "Run",
+    "Application.HuggingFaceAPI.executor": "Run",
     "Application.MainFX.executor": "Run",
     "Application.MainFXConsultation.executor": "Run",
     "Application.Test.executor": "Run",
@@ -74,6 +77,10 @@
     "Maven.testpidev [javafx:run].executor": "Run",
     "Maven.testpidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Consultation-Branch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/A59/PIDEVJAVA-DevLegends",
+    "list.type.of.created.stylesheet": "CSS",
     "git-widget-placeholder": "main-0.2",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/fatma/IdeaProjects/testpidev",
@@ -85,6 +92,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
     "vue.rearranger.settings.migration": "true"
   }
@@ -95,6 +103,32 @@
     </key>
   </component>
   <component name="RunManager" selected="Maven.testpidev [javafx:run]">
+    <configuration name="ApiQuizGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Services.maya.ApiQuizGenerator" />
+      <module name="testpidev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Services.maya.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HuggingFaceAPI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Controllers.maya.HuggingFaceAPI" />
+      <module name="testpidev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Controllers.maya.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Tests.MainFX" />
       <module name="malek" />
@@ -154,6 +188,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Maven.testpidev [javafx:run]" />
+        <item itemvalue="Application.HuggingFaceAPI" />
+        <item itemvalue="Application.ApiQuizGenerator" />
         <item itemvalue="Application.MainFX" />
         <item itemvalue="Application.MainFXConsultation" />
       </list>
@@ -198,6 +234,12 @@
       <workItem from="1745834720944" duration="1800000" />
       <workItem from="1745836545349" duration="1909000" />
       <workItem from="1744969880194" duration="2850000" />
+      <workItem from="1745066092437" duration="265000" />
+      <workItem from="1745319003403" duration="37265000" />
+      <workItem from="1745398547673" duration="827000" />
+      <workItem from="1745695038726" duration="23876000" />
+      <workItem from="1745778947333" duration="51929000" />
+      <workItem from="1745931393661" duration="1945000" />
       <workItem from="1745309798545" duration="8490000" />
       <workItem from="1745346051136" duration="2172000" />
       <workItem from="1745621477303" duration="768000" />
@@ -208,6 +250,20 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Entities/maya/Chatbot.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

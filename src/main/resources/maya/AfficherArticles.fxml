@@ -1,20 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane stylesheets="@/style.css" fx:id="scrollPane" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.maya.AfficherArticlesController">
-    <VBox spacing="20">
-        <padding>
-            <Insets top="20" right="20" bottom="20" left="20" />
-        </padding>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane stylesheets="@/style.css" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.maya.AfficherArticlesController">
+    <!-- Container principal -->
+    <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
 
-        <!-- Bouton retour -->
-        <Button text="Retour" onAction="#goBack" style="-fx-background-color: #0b6614; -fx-text-fill: white;" />
+        <!-- Section de recherche et de tri -->
+        <HBox spacing="10">
+            <!-- Champ de recherche -->
+            <TextField fx:id="searchField" promptText="Rechercher un article" HBox.hgrow="ALWAYS" />
 
-        <!-- Container des cartes -->
-        <FlowPane fx:id="cardContainer" hgap="15" vgap="15" />
+            <!-- Liste déroulante pour trier les articles -->
+            <ComboBox fx:id="comboTri" prefWidth="150" HBox.hgrow="NEVER">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Titre" />
+                        <String fx:value="Catégorie" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Case à cocher pour l'ordre décroissant -->
+            <CheckBox fx:id="checkDesc" text="Ordre décroissant" />
+        </HBox>
+
+        <!-- ScrollPane pour afficher la liste des articles -->
+        <ScrollPane prefHeight="517.0" prefWidth="837.0" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+            <GridPane fx:id="container" hgap="20" vgap="20" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+                <!-- Les cartes des articles ajoutées dynamiquement apparaîtront ici -->
+            </GridPane>
+        </ScrollPane>
+        <!-- Pagination (précédent / suivant) -->
+        <HBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+            </padding>
+            <Button fx:id="btnPrecedent" text="⏮ Précédent" onAction="#handlePrecedent"/>
+            <Label fx:id="labelPage" text="Page 1/4" />
+            <Button fx:id="btnSuivant" text="Suivant ⏭" onAction="#handleSuivant"/>
+        </HBox>
     </VBox>
-</ScrollPane>
+</AnchorPane>

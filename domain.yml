@@ -1,0 +1,59 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - mood_great
+  - mood_sad
+  - stress
+  - anxious
+  - ask_for_advice
+  - ask_for_exercise
+  - thank_you
+
+responses:
+  utter_greet:
+    - text: "Salut ! Je suis ton compagnon de bien-être mental. Comment te sens-tu aujourd'hui ? 🤗"
+
+  utter_goodbye:
+    - text: "Prends soin de toi ! À bientôt. 🌟"
+
+  utter_mood_great:
+    - text: "Super ! Je suis heureux de l'entendre. Continue à prendre soin de toi ! 🌞"
+
+  utter_mood_sad:
+    - text: "Je suis désolé d'apprendre cela. Voici un film qui pourrait te remonter le moral 🎬 :"
+      image: "https://upload.wikimedia.org/wikipedia/en/5/53/Amelie_poster.jpg"
+      buttons:
+        - title: "Voir la bande annonce 🎥"
+          payload: "https://www.youtube.com/watch?v=HUECWi5pX7o"
+
+  utter_stress_advice:
+    - text: "Quand tu es stressé, prends quelques respirations profondes. Voici une musique relaxante 🎵 :"
+      image: "https://images.unsplash.com/photo-1518976024611-4882013fe2b4"
+      buttons:
+        - title: "Écouter la méditation"
+          payload: "https://www.youtube.com/watch?v=inpok4MKVLM"
+
+  utter_anxiety_advice:
+    - text: "Quand l'anxiété arrive, concentre-toi sur ta respiration. Essaie cette vidéo de relaxation guidée 🧘:"
+      buttons:
+        - title: "Voir la vidéo Relaxation"
+          payload: "https://www.youtube.com/watch?v=MIr3RsUWrdo"
+
+  utter_thank_you:
+    - text: "Avec plaisir ! N'hésite pas à revenir me voir. 🌸"
+
+  utter_suggest_playlist:
+    - text: "Voici une playlist de méditation que tu pourrais aimer 🎶 : [Peaceful Mind sur Spotify](https://open.spotify.com/playlist/37i9dQZF1DX3PIPIT6lEg5)"
+
+  utter_suggest_movie:
+    - text: "Je te recommande de regarder 'Le fabuleux destin d'Amélie Poulain'. C'est léger et réconfortant. 🎬"
+    - text: "Voici le lien pour voir la bande annonce : https://www.youtube.com/watch?v=HUECWi5pX7o"
+
+actions:
+  - action_recommend_exercise
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

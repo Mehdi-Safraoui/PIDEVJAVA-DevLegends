@@ -1,0 +1,56 @@
+{
+  "type": "IntentMaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "anxious": 0,
+        "ask_for_advice": 1,
+        "ask_for_exercise": 2,
+        "back": 3,
+        "goodbye": 4,
+        "greet": 5,
+        "mood_great": 6,
+        "mood_sad": 7,
+        "nlu_fallback": 8,
+        "out_of_scope": 9,
+        "restart": 10,
+        "session_start": 11,
+        "stress": 12,
+        "thank_you": 13
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_recommend_exercise": 13,
+        "utter_anxiety_advice": 14,
+        "utter_ask_feeling": 15,
+        "utter_goodbye": 16,
+        "utter_greet": 17,
+        "utter_mood_great": 18,
+        "utter_mood_sad": 19,
+        "utter_stress_advice": 20,
+        "utter_suggest_movie": 21,
+        "utter_suggest_playlist": 22,
+        "utter_thank_you": 23
+      },
+      "entities": {},
+      "slots": {},
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

@@ -1,0 +1,106 @@
+/* Style général */
+.root {
+    -fx-background-color: #f4f9ff;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* Titre */
+.label {
+    -fx-text-fill: #2c3e50;
+}
+
+.label#timerLabel {
+    -fx-text-fill: #e67e22;
+    -fx-font-weight: bold;
+}
+
+.label#resultLabel {
+    -fx-font-size: 16px;
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: bold;
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: #dce3f0;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+}
+
+/* VBox contenant chaque question */
+.vbox > .label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0 5 0;
+}
+
+/* RadioButton des réponses */
+.radio-button {
+    -fx-padding: 3 0 3 20;
+    -fx-text-fill: #34495e;
+}
+
+/* Bouton de soumission */
+.button#submitButton {
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
+    -fx-padding: 8 20;
+    -fx-background-radius: 10;
+    -fx-font-weight: bold;
+}
+
+.button#submitButton:hover {
+    -fx-background-color: #3498db;
+}
+
+/* Barre de progression */
+.progress-bar {
+    -fx-accent: #27ae60;
+    -fx-control-inner-background: #ecf0f1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.title-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 15px;
+}
+
+.quiz-container {
+    -fx-background-color: #ffffff;
+}
+
+.question-box {
+    -fx-background-color: #f8f9fa;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 3, 3, 0, 0);
+}
+
+.submit-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+}
+
+.submit-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.radio-button {
+    -fx-font-size: 13px;
+    -fx-padding: 5px;
+}
+
+.radio-button .radio {
+    -fx-padding: 0 5px 0 0;
+}

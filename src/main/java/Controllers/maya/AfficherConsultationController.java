@@ -17,6 +17,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.util.List;
 
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+
 public class AfficherConsultationController {
 
     @FXML private TableView<Consultation> tableConsultations;
@@ -31,6 +34,12 @@ public class AfficherConsultationController {
 
     private final ConsultationService consultationService = new ConsultationService();
 
+    @FXML private ComboBox<String> comboTri;
+    @FXML private CheckBox checkDesc;
+    @FXML
+    private TextField searchField;
+
+
     @FXML
     public void initialize() {
 
@@ -40,17 +49,19 @@ public class AfficherConsultationController {
         colDate.setCellValueFactory(new PropertyValueFactory<>("dateCons"));
         colLien.setCellValueFactory(new PropertyValueFactory<>("lienVisioCons"));
         colNotes.setCellValueFactory(new PropertyValueFactory<>("notesCons"));
+        comboTri.getItems().addAll("Nom", "Prénom", "Âge", "Date");
+        comboTri.setValue("Nom"); // Valeur par défaut
 
         loadData();
         addModifierButtonToTable();
         addSupprimerButtonToTable();
     }
 
-    private void loadData() {
-        List<Consultation> consultations = consultationService.find();
-        ObservableList<Consultation> observableList = FXCollections.observableArrayList(consultations);
-        tableConsultations.setItems(observableList);
-    }
+//    private void loadData() {
+//        List<Consultation> consultations = consultationService.find();
+//        ObservableList<Consultation> observableList = FXCollections.observableArrayList(consultations);
+//        tableConsultations.setItems(observableList);
+//    }
 
     public void refreshTable() {
         tableConsultations.getItems().clear();
@@ -154,6 +165,100 @@ public class AfficherConsultationController {
         }
     }
 
+    private boolean triCroissant = true;
+
+    @FXML
+    void trierParNom(ActionEvent event) {
+        ObservableList<Consultation> consultations = tableConsultations.getItems();
+
+        if (triCroissant) {
+            FXCollections.sort(consultations, (c1, c2) -> c1.getNom().compareToIgnoreCase(c2.getNom()));
+        } else {
+            FXCollections.sort(consultations, (c1, c2) -> c2.getNom().compareToIgnoreCase(c1.getNom()));
+        }
+
+        triCroissant = !triCroissant;
+        tableConsultations.setItems(consultations);
+    }
+
+    @FXML
+    void trierConsultations(ActionEvent event) {
+        String critere = comboTri.getValue();
+        boolean triDescendant = checkDesc.isSelected();
+
+        // Copier la liste dans une nouvelle liste modifiable
+        ObservableList<Consultation> originalList = tableConsultations.getItems();
+        ObservableList<Consultation> sortedList = FXCollections.observableArrayList(originalList);
+
+        switch (critere) {
+            case "Nom":
+                sortedList.sort((c1, c2) -> triDescendant ?
+                        c2.getNom().compareToIgnoreCase(c1.getNom()) :
+                        c1.getNom().compareToIgnoreCase(c2.getNom()));
+                break;
+            case "Prénom":
+                sortedList.sort((c1, c2) -> triDescendant ?
+                        c2.getPrenom().compareToIgnoreCase(c1.getPrenom()) :
+                        c1.getPrenom().compareToIgnoreCase(c2.getPrenom()));
+                break;
+            case "Âge":
+                sortedList.sort((c1, c2) -> triDescendant ?
+                        Integer.compare(c2.getAge(), c1.getAge()) :
+                        Integer.compare(c1.getAge(), c2.getAge()));
+                break;
+            case "Date":
+                sortedList.sort((c1, c2) -> triDescendant ?
+                        c2.getDateCons().compareTo(c1.getDateCons()) :
+                        c1.getDateCons().compareTo(c2.getDateCons()));
+                break;
+            default:
+                break;
+        }
+
+        tableConsultations.setItems(sortedList);
+    }
+
+    private void loadData() {
+        List<Consultation> consultations = consultationService.find();
+        ObservableList<Consultation> observableList = FXCollections.observableArrayList(consultations);
+
+        // 🔍 Ajout de la logique de filtrage
+        FilteredList<Consultation> filteredData = new FilteredList<>(observableList, b -> true);
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(consultation -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (consultation.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (consultation.getPrenom().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (String.valueOf(consultation.getAge()).contains(lowerCaseFilter)) {
+                    return true;
+                } else if (consultation.getDateCons().toString().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (consultation.getLienVisioCons().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (consultation.getNotesCons().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                // Recherche par ID (ajoutée ici)
+                else if (String.valueOf(consultation.getId()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        SortedList<Consultation> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tableConsultations.comparatorProperty());
+
+        tableConsultations.setItems(sortedData);
+    }
 
 
 }

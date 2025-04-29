@@ -1,0 +1,50 @@
+version: "3.1"
+
+stories:
+  - story: utilisateur de bonne humeur
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_mood_great
+
+  - story: utilisateur stressé
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: stress
+      - action: utter_stress_advice
+
+  - story: utilisateur anxieux
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: anxious
+      - action: utter_anxiety_advice
+
+  - story: utilisateur triste
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_sad
+      - action: utter_mood_sad
+
+  - story: demander un conseil
+    steps:
+      - intent: ask_for_advice
+      - action: utter_stress_advice
+
+  - story: demander un exercice
+    steps:
+      - intent: ask_for_exercise
+      - action: action_recommend_exercise
+
+  - story: dire merci
+    steps:
+      - intent: thank_you
+      - action: utter_thank_you
+
+  - story: dire au revoir
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
