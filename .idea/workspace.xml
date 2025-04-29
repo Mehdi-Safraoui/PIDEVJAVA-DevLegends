@@ -46,7 +46,7 @@
     "Maven.testpidev [javafx:run].executor": "Run",
     "Maven.testpidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Gestion--Des--Consultations",
+    "git-widget-placeholder": "Consultation-Branch",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Lenovo/Desktop/A59/PIDEVJAVA-DevLegends",
     "list.type.of.created.stylesheet": "CSS",
@@ -189,7 +189,7 @@
       <workItem from="1745398547673" duration="827000" />
       <workItem from="1745695038726" duration="23876000" />
       <workItem from="1745778947333" duration="51929000" />
-      <workItem from="1745931393661" duration="1403000" />
+      <workItem from="1745931393661" duration="1945000" />
     </task>
     <servers />
   </component>
