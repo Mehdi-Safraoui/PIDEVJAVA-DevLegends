@@ -5,67 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e8515e2-fec0-4a82-a4e1-865c41c40ac0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ApiQuizController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ChatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ChatbotController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/DetailsArticleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/HuggingFaceAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ListConsultationBack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ListQuizController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/QuizAPIHuggingFaceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/QuizController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/QuizSelectionPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ResultatQuizController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/maya/Chatbot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/maya/Quiz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/maya/ApiQuizGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/maya/ChatbotUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/maya/QuizGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/maya/QuizService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/maya/TherapistService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/maya/TranslationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/maya/UnsplashAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/maya/YouTubeAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rasa/RasaClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/chat.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/ApiQuiz.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/ChatbotView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/DetailsArticle.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/ListConsultationBack.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/ListQuiz.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/Quiz.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/QuizAPIHuggingFace.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/QuizSelectionPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/ResultatQuiz.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maya/chatbotUI.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/quiz.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/SidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/SidebarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/maya/AfficherArticlesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/AfficherArticlesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/maya/AfficherConsultationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/AfficherConsultationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/maya/AjouterArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/AjouterArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/maya/ArticleCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ArticleCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/maya/DetailsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/DetailsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/maya/ListArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ListArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/maya/ListQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ListQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/maya/ListReponseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/maya/ListReponseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/maya/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/maya/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/maya/Reponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/maya/Reponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/CentreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/CentreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/ContratService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/ContratService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/malek/PackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/malek/PackService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/maya/ArticleConseilService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/maya/ArticleConseilService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/maya/ReponseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/maya/ReponseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sidebar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maya/AfficherArticles.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maya/AfficherArticles.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maya/AfficherConsultation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maya/AfficherConsultation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maya/AjouterArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maya/AjouterArticle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maya/ArticleCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maya/ArticleCard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maya/ListArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maya/ListArticle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maya/ListQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maya/ListQuestion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maya/ListReponse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maya/ListReponse.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,9 +46,9 @@
     "Maven.testpidev [javafx:run].executor": "Run",
     "Maven.testpidev [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Gestion--Des--Consultations",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Lenovo/IdeaProjects/PIDEVJAVA-DevLegends",
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/A59/PIDEVJAVA-DevLegends",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -248,7 +188,8 @@
       <workItem from="1745319003403" duration="37265000" />
       <workItem from="1745398547673" duration="827000" />
       <workItem from="1745695038726" duration="23876000" />
-      <workItem from="1745778947333" duration="50057000" />
+      <workItem from="1745778947333" duration="51929000" />
+      <workItem from="1745931393661" duration="1403000" />
     </task>
     <servers />
   </component>
