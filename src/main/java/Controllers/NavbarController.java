@@ -123,9 +123,11 @@ public class NavbarController {
     }
 
     public void goToAvisFront(ActionEvent actionEvent) {
+        loadScene("/mehdi/AjouterAvis.fxml", "Avis", actionEvent);
     }
 
     public void goToReclamationFront(ActionEvent actionEvent) {
+        loadScene("/mehdi/AjouterReclamation.fxml", "Reclamations", actionEvent);
     }
 
     public void goToArticles(ActionEvent actionEvent) {

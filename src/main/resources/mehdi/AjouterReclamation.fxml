@@ -4,16 +4,19 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane stylesheets="AvisRecStyle.css" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.mehdi.AjouterReclamationController" prefWidth="600" prefHeight="400">
+<AnchorPane stylesheets="AvisRecStyle.css" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.mehdi.AjouterReclamationController"
+            prefWidth="600" prefHeight="400">
     <children>
-        <VBox spacing="10" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
-            <Label text="Ajouter une Réclamation" style="-fx-font-size: 20px;"/>
+        <fx:include source="../Navbar.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" />
 
+        <VBox spacing="10" alignment="CENTER"
+              AnchorPane.topAnchor="60" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+            <Label text="Ajouter une Réclamation" style="-fx-font-size: 20px;"/>
             <TextField fx:id="tfSujet" promptText="Sujet"/>
             <TextArea fx:id="taContenu" promptText="Contenu"/>
             <TextField fx:id="tfEmail" promptText="Email"/>
 
-            <!-- Les deux boutons dans un HBox pour les aligner horizontalement -->
             <HBox spacing="10" alignment="CENTER">
                 <Button text="Ajouter" onAction="#ajouterReclamation"/>
                 <Button text="Annuler" onAction="#clearFields"/>
